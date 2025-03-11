@@ -1,0 +1,13 @@
+{
+  "Id": "EconomyMod",
+  "DisplayName": "Economic Equalization Overhaul",
+  "title": "Economic Equalization Overhaul",
+  "Author": "explodoboy",
+  "description": "Modifies the way national economies work, to better represent the way countries of different sizes compare.",
+  "Version": "0.2.2",
+  "ManagerVersion": "0.25.0",
+  "GameVersion": "0.4.19",
+  "AssemblyName": "TIEconomyMod.dll",
+  "EntryMethod": "TIEconomyMod.Main.Load",
+  "mod url": "https://steamcommunity.com/sharedfiles/filedetails/?id=1713985476"
+}

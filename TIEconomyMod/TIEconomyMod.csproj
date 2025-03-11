@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{44220737-E9E2-435B-A840-49FA339324C7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TIEconomyMod</RootNamespace>
+    <AssemblyName>TIEconomyMod</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>ModFiles\Assembly\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Terra Invicta\TerraInvicta_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Accessibility" />
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Terra Invicta\TerraInvicta_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Terra Invicta\TerraInvicta_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Terra Invicta\TerraInvicta_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityModManager">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Terra Invicta\TerraInvicta_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Patches\AIPatches\AIEvaluateControlPointPatch.cs" />
+    <Compile Include="Patches\AIPatches\AIEvaluateNationPatch.cs" />
+    <Compile Include="Patches\EconomyInvestmentPatches\EconomyGDPEffectPatch.cs" />
+    <Compile Include="Patches\EconomyInvestmentPatches\EconomyInequalityEffectPatch.cs" />
+    <Compile Include="Patches\EconomyInvestmentPatches\EconomyMarketEffectPatch.cs" />
+    <Compile Include="Patches\EconomyInvestmentPatches\EconomyRegionEffectPatch.cs" />
+    <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentRegionEffectPatch.cs" />
+    <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentSustainabilityEffectPatch.cs" />
+    <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeCohesionEffectPatch.cs" />
+    <Compile Include="GlobalTools.cs" />
+    <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeEducationEffectPatch.cs" />
+    <Compile Include="Patches\OppressionInvestmentEffects\OppressionCohesionEffectPatch.cs" />
+    <Compile Include="Patches\OppressionInvestmentEffects\OppressionUnrestEffectPatch.cs" />
+    <Compile Include="Patches\OppressionInvestmentEffects\OppressionDemocracyEffectPatch.cs" />
+    <Compile Include="Patches\OtherInvestmentPatches\GovernmentDemocracyEffectPatch.cs" />
+    <Compile Include="Patches\MissionPatches\MissionGDPDifficultyPatch.cs" />
+    <Compile Include="Patches\OtherInvestmentPatches\FundingEffectPatch.cs" />
+    <Compile Include="Patches\NationalValuesPatches\BaseInvestmentPointPatch.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Patches\MilitaryInvestmentPatches\MilitaryTechEffectPatch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Patches\NationalValuesPatches\ControlPointCostPatch.cs" />
+    <Compile Include="Patches\NationalValuesPatches\ResearchPointsPatch.cs" />
+    <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsDemocracyEffectPatch.cs" />
+    <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsEffectsPatch.cs" />
+    <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsEnvironmentEffectPatch.cs" />
+    <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsInequalityEffectPatch.cs" />
+    <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsMoneyEffectPatch.cs" />
+    <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsSustainabilityEffectPatch.cs" />
+    <Compile Include="Patches\UIPatches\PriorityTooltipPatch.cs" />
+    <Compile Include="Patches\UIPatches\IPTooltipPatch.cs" />
+    <Compile Include="Patches\UnityInvestmentPatches\UnityEducationEffectPatch.cs" />
+    <Compile Include="Patches\UnityInvestmentPatches\UnityCohesionEffectPatch.cs" />
+    <Compile Include="Patches\UnityInvestmentPatches\UnityEffectsPatch.cs" />
+    <Compile Include="Patches\WelfareInvestmentPatches\WelfareRegionEffectPatch.cs" />
+    <Compile Include="Patches\WelfareInvestmentPatches\WelfareInequalityEffectPatch.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ModFiles\Localization\TIEffectTemplate.en" />
+    <None Include="ModFiles\ModInfo.json" />
+    <None Include="ModFiles\Templates\TIEffectTemplate.json" />
+    <None Include="ModFiles\Templates\TIGlobalConfig.json" />
+    <None Include="ModFiles\Templates\TINationTemplate.json" />
+    <None Include="ModFiles\Templates\TITechTemplate.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModFiles\Economic Equalization Overhaul.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
