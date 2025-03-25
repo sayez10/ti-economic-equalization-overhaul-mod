@@ -26,16 +26,6 @@ namespace TIEconomyMod
             float democracyMult = 1f + (__instance.democracy * 0.05f);
             float educationMult = 1f + (__instance.education * 0.15f);
 
-
-
-            //Per capita GDP multiplier
-            //This is an exponential decay function that gives countries with very low GDP per capita a large (up to 6 times!) bonus to growth
-            //This is 6 for a country with 0 gdp per capita, about 3.25 for a country with 15k, 1.76 for a country with 30k, 1 for a country with 44k, and 0.34 for a country with 70k
-            //In other words, countries with low gdp per capita will grow their absolute gdp per capita much faster than a country with higher, with things really speeding up for the first 15-20k, and really slowing down after 50k gdp per capita
-            //float scalingMult = 6f * Mathf.Pow(0.96f, __instance.perCapitaGDP / 1000f);
-
-
-
             // Exponential decay function that gives low-PCGDP countries a considerable boost to growth. Heavily modified from the original mod author's vision.
             /* This was done because growth simply didn't make sense in the original mod. Poor countries grew WAY too fast, and rich countries were practically stagnant.
              * Take China and the US (the main countries I balanced this mod around) for example. In the real world, China's GDP 2022-2023 growth percentage was about 66% quicker than in the US. In the original run of this mod, the US had about 15% the growth rate of China.
@@ -59,6 +49,20 @@ namespace TIEconomyMod
             float modifiedGDPChange = baseGDPChange * regionMult * democracyMult * educationMult * scalingMult;
 
             __result = modifiedGDPChange / __instance.population;
+
+
+
+
+            // Below is an experiment in making this function change GDP as a percentage rather than 
+            //float baseGDPGrowthPercentage = 3.0f / 100f; //current calculations say: 8.5f
+            //float GTemp = baseGDPGrowthPercentage + (0.77f / 100f); //TEMP, climate change crutch
+            //float GTemp2 = GTemp / 0.23f; //TEMP, should get AI-driven US 3% growth/year
+
+            // Distributes GDP growth across every IP 
+            //float growthPerDay = GTemp / 365;
+            //float growthPerIP = growthPerDay / __instance.economyScore;
+
+            //__result = ((float)__instance.GDP / growthPerIP) / __instance.population;
 
 
 
