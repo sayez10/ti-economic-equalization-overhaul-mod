@@ -18,6 +18,9 @@ namespace TIEconomyMod
         [HarmonyPostfix]
         public static void GetControlPointMaintenanceCostPostfix(ref float __result, TINationState __instance)
         {
+            // If mod has been disabled, abort patch.
+            if (!Main.enabled) { return; }
+
             if (__result != 0) //Will be 0 and should stay 0 if the nation's controller is the aliens
             {
                 float baseControlCost = __instance.economyScore; //Total cost to control the entire nation. 1 cost per 1 IP
@@ -29,9 +32,8 @@ namespace TIEconomyMod
                 if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("ArrivalGovernance")) numTechs++;
                 if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("Accelerando")) numTechs++;
 
-                /* I changed the reduction in control point cost to a flat multiplier. To compensate, I also increased the reduced control point cost. I may increase it further later. */
-                float mult = 1;
-                mult -= (0.15f * numTechs);
+                /* I changed the reduction in control point cost to a flat multiplier. To compensate, I also increased the reduced control point cost. I may modify it further later. */
+                float mult = 1 - (Main.settings.ControlPointCostReduction * numTechs);
 
                 //__result = (float)Mathd.Pow(baseControlCost, power) / __instance.numControlPoints; //Total cost is split across the control points
                 __result = (baseControlCost * mult) / __instance.numControlPoints; //Total cost is split across the control points

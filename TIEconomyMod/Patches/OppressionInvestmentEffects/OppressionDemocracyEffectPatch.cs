@@ -10,16 +10,21 @@ using System.Threading.Tasks;
 
 namespace TIEconomyMod
 {
-    [HarmonyPatch(typeof(TINationState), "OppressionPriorityDemocracyChange", MethodType.Getter)] /* Was 'knowledgePriorityDemocracyChange', but it looks like the method was renamed to 'governmentPriorityDemocracyChange'. Seems to work. */
+    [HarmonyPatch(typeof(TINationState), "OppressionPriorityDemocracyChange", MethodType.Getter)]
     public static class OppressionDemocracyEffectPatch
     {
         [HarmonyPrefix]
         public static bool GetOppressionPriorityDemocracyChangeOverwrite(ref float __result, TINationState __instance)
         {
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
+            // Settings values are cached for readability.
+            float baseDemocracy = Main.settings.oppressionInvestment.baseDemocracy;
 
             // About 35% of (base) Government effect.
             // Refer to EffectStrength() comments for explanation.
-            __result = Tools.EffectStrength(-0.0175f, __instance.population);
+            __result = Tools.EffectStrength(baseDemocracy, __instance.population);
 
 
 

@@ -17,8 +17,14 @@ namespace TIEconomyMod
         {
             //Patch changes the democracy effect of a spoils investment to scale inversely with population size
 
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
+            // Settings values are cached for readability.
+            float baseDemocracy = Main.settings.spoilsInvestment.baseDemocracy;
+
             // Refer to EffectStrength() comments for explanation.
-            __result = Tools.EffectStrength(0.02f, __instance.population);
+            __result = Tools.EffectStrength(baseDemocracy, __instance.population);
 
             return false; //Skip original getter
         }

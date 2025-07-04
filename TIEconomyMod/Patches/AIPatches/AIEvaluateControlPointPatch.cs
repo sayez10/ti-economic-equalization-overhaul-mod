@@ -17,6 +17,9 @@ namespace TIEconomyMod.AIPatches
         {
             //Patches AI evaluation of a control point's value/importance to account for the higher IP amount in large modded nations
 
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
             //As vanilla
             float num = 0f;
             TINationState nation = controlPoint.nation;

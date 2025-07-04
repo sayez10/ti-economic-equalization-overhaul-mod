@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace TIEconomyMod
 {
-    [HarmonyPatch(typeof(TINationState), "OppressionPriorityUnrestChange", MethodType.Getter)] /* Was 'knowledgePriorityDemocracyChange', but it looks like the method was renamed to 'governmentPriorityDemocracyChange'. Seems to work. */
+    [HarmonyPatch(typeof(TINationState), "OppressionPriorityUnrestChange", MethodType.Getter)]
     public static class OppressionUnrestEffectPatch
     {
         [HarmonyPrefix]
@@ -19,15 +19,22 @@ namespace TIEconomyMod
         {
             // Changes Oppression so its effect scales inversely with population.
 
-            // VERY powerful for totalitarian nations...especially if they're rich. In practice, no country will get this close without heavy player intervention.
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
+            // Settings values are cached for readability.
+            float baseUnrest = Main.settings.oppressionInvestment.baseUnrest;
+            float unrestPenaltyMultPerDemocracyLevel = Main.settings.oppressionInvestment.unrestPenaltyMultPerDemocracyLevel;
+
+            // VERY powerful for totalitarian nations...especially if they're rich. In practice, no country will get this close unless controlled by the player.
             // Refer to EffectStrength() comments for explanation.
-            float baseEffect = Tools.EffectStrength(-5.0f, __instance.population);
+            float baseEffect = Tools.EffectStrength(baseUnrest, __instance.population);
 
             // Effect is reduced by Democracy, -10% per full point. At full Democracy, Oppression does nothing to Unrest.
-            float adjustedEffect = baseEffect * (1f * (__instance.democracy * 0.1f));
+            float adjustedEffect = baseEffect * (1f - (__instance.democracy * unrestPenaltyMultPerDemocracyLevel));
 
             // For whatever reason, vanilla code explicitly disallows a value that'd go under 0. I'm playing it safe by doing that too.
-            __result = Mathf.Min(-__instance.unrest, baseEffect);
+            __result = 0f - Mathf.Min(__instance.unrest, baseEffect);
 
 
 

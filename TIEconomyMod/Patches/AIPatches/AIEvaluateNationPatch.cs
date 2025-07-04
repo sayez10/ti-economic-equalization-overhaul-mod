@@ -16,6 +16,9 @@ namespace TIEconomyMod.AIPatches
         {
             //Patches AI evaluation of a nation's value/importance to account for the higher IP amount in large modded nations
 
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
             float num = nation.economyScore * 100f; //Changed from economyScore^3, which was vanilla GDP in billions, to this, which is modded GDP in billions. Vanilla and modded nations will be evaluated the same given a certain GDP.
 
             //Below as vanilla

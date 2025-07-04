@@ -17,9 +17,15 @@ namespace TIEconomyMod
         {
             //Patch changes the knowledge effect of a unity investment to scale inversely with population size
 
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
+            // Settings values cached for readability.
+            float baseEducation = Main.settings.unityInvestment.baseEducation;
+
             // 1/10 effect of Knowledge priority.
             // Refer to EffectStrength() comments for explanation.
-            __result = Tools.EffectStrength(-0.01f, __instance.population);
+            __result = Tools.EffectStrength(baseEducation, __instance.population);
 
 
 

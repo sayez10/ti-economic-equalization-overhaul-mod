@@ -13,20 +13,30 @@ namespace TIEconomyMod
     [HarmonyPatch(typeof(TIMissionModifier_TargetNationGDP), "GetModifier")]
     public static class MissionGDPDifficultyPatch
     {
+        // Grab the reflection info for ObjectToNation(TIFactionState, TIGameState).
+        // The function is protected, so it can't be run directly.
+        private static readonly MethodInfo objectToNationMethod = AccessTools.Method(typeof(TIMissionModifier), "ObjectToNation", new Type[] { typeof(TIFactionState), typeof(TIGameState) });
+
         [HarmonyPrefix]
         public static bool GetModifierOverwrite(ref float __result, TICouncilorState attackingCouncilor, TIGameState target = null, float resourcesSpent = 0f, FactionResource resource = FactionResource.None)
         {
             //Patches the default amount of mission difficulty from national economy size for certain missions like control nation
             //Amount of difficulty for a given nation with a given GDP is to be identical in vanilla and this mod
 
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
             if (target == null)
             {
                 __result = 0f;
+                return false; // End the overwrite here, skip original method.
             }
-            TINationState tINationState = YoinkObjectToNation(attackingCouncilor.faction, target);
-            if (tINationState != null)
+
+            __result = 0f;
+            TINationState nation = YoinkObjectToNation(attackingCouncilor.faction, target);
+            if (nation != null)
             {
-                float vanillaEcoScore = (float)Mathd.Pow(tINationState.economyScore * 100f, 0.33f); //This is the vanilla economyScore the country would have
+                float vanillaEcoScore = (float)Mathd.Pow(nation.economyScore * 100f, 0.33f); //This is the vanilla economyScore the country would have
                 __result = vanillaEcoScore * TemplateManager.global.TIMissionModifier_TargetNationGDP_Multiplier;
             }
 
@@ -34,17 +44,17 @@ namespace TIEconomyMod
             return false; //Skip orignal method
         }
 
-        // Not gonna lie, I have ChatGPT to thank for this.
-        public static TINationState YoinkObjectToNation(object faction, TIGameState target)
+        // Not gonna lie, I have ChatGPT to thank for much of this.
+        public static TINationState YoinkObjectToNation(TIFactionState faction, TIGameState target)
         {
-            // Get the MethodInfo for the protected static method 'ObjectToNation'
-            MethodInfo method = AccessTools.Method(typeof(TIMissionModifier), "ObjectToNation", new Type[] { faction.GetType(), typeof(TIGameState) });
-            if (method == null)
+            // In case the developers decide to change ObjectToNation()'s name or parameters, a check is done to confirm the method was actually acquired.
+            if (objectToNationMethod == null)
             {
-                throw new Exception("Could not find method ObjectToNation");
+                throw new MissingMethodException("Could not find method ObjectToNation");
             }
+
             // Call the method; note that since it is static, pass null as the instance
-            object result = method.Invoke(null, new object[] { faction, target });
+            object result = objectToNationMethod.Invoke(null, new object[] { faction, target });
             return result as TINationState;
         }
     }

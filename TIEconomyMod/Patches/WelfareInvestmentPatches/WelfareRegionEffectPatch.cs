@@ -7,28 +7,39 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using System.Reflection.Emit;
+using System.Reflection;
 
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "OnWelfarePriorityComplete")]
     public static class WelfareRegionEffectPatch
     {
-        // The base threshold is stored as its own variable to allow quick fixing if the devs change the hardcoded requirement.
-        public static int baseDecolonizeThreshold = 1000;
-        public static int decolonizeThreshold = baseDecolonizeThreshold * 5;
+        // Refer to EconomyRegionEffectPatch.cs for specifics on everything that's happening here.
 
-        // This replaces hardcoded variables, in this case I'm increasing the requirements by 5x due to all the extra IP.
-        // This does NOT change the localization's reported requirement to add a special region. That has to be done separately.
+        public static int baseDecolonizeThreshold = 1000;
+        public static int decolonizeThreshold;
+        public static readonly FieldInfo getDecolonizeThreshold = AccessTools.Field(typeof(WelfareRegionEffectPatch), nameof(decolonizeThreshold));
+
+        // Replaces hardcoded variables in OnWelfarePriorityComplete(). The tooltip's stated threshold has to be updated separately.
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
+            // Refer to PriorityTooltipPatch.cs for details.
             foreach (var instruction in instructions)
             {
                 if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == baseDecolonizeThreshold)
                 {
-                    instruction.operand = decolonizeThreshold;
+                    yield return new CodeInstruction(OpCodes.Ldsfld, getDecolonizeThreshold);
                 }
-                yield return instruction;
+                else
+                {
+                    yield return instruction;
+                }
             }
+        }
+
+        public static void Recalculate()
+        {
+            decolonizeThreshold = (Main.enabled) ? baseDecolonizeThreshold * Main.settings.regionUpgradeThresholdMult : baseDecolonizeThreshold;
         }
     }
 }

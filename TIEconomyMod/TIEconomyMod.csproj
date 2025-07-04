@@ -15,8 +15,8 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>ModFiles\Assembly\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -91,15 +91,17 @@
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeCohesionEffectPatch.cs" />
     <Compile Include="GlobalTools.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeEducationEffectPatch.cs" />
+    <Compile Include="Patches\MissionPatches\MissionGDPDifficultyPatch.cs" />
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionCohesionEffectPatch.cs" />
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionUnrestEffectPatch.cs" />
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionDemocracyEffectPatch.cs" />
     <Compile Include="Patches\OtherInvestmentPatches\GovernmentDemocracyEffectPatch.cs" />
-    <Compile Include="Patches\MissionPatches\MissionGDPDifficultyPatch.cs" />
     <Compile Include="Patches\OtherInvestmentPatches\FundingEffectPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\BaseInvestmentPointPatch.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="Patches\MilitaryInvestmentPatches\MilitaryTechEffectPatch.cs" />
+    <Compile Include="Patches\OtherInvestmentPatches\MilitaryTechEffectPatch.cs" />
+    <Compile Include="Patches\UIPatches\PriorityTooltipPatch.cs" />
+    <Compile Include="Patches\WelfareInvestmentPatches\WelfareRegionEffectPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patches\NationalValuesPatches\ControlPointCostPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\ResearchPointsPatch.cs" />
@@ -109,12 +111,10 @@
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsInequalityEffectPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsMoneyEffectPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsSustainabilityEffectPatch.cs" />
-    <Compile Include="Patches\UIPatches\PriorityTooltipPatch.cs" />
     <Compile Include="Patches\UIPatches\IPTooltipPatch.cs" />
     <Compile Include="Patches\UnityInvestmentPatches\UnityEducationEffectPatch.cs" />
     <Compile Include="Patches\UnityInvestmentPatches\UnityCohesionEffectPatch.cs" />
     <Compile Include="Patches\UnityInvestmentPatches\UnityEffectsPatch.cs" />
-    <Compile Include="Patches\WelfareInvestmentPatches\WelfareRegionEffectPatch.cs" />
     <Compile Include="Patches\WelfareInvestmentPatches\WelfareInequalityEffectPatch.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -124,9 +124,6 @@
     <None Include="ModFiles\Templates\TIGlobalConfig.json" />
     <None Include="ModFiles\Templates\TINationTemplate.json" />
     <None Include="ModFiles\Templates\TITechTemplate.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ModFiles\Economic Equalization Overhaul.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

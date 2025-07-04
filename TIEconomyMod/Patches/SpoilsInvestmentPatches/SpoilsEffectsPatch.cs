@@ -22,6 +22,12 @@ namespace TIEconomyMod
             //This overwrite is necessary to fix the propoganda effect, which would otherwise be far too powerful
             //Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
 
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
+            // Settings values are cached for readability.
+            float propagandaOffset = Main.settings.spoilsInvestment.propagandaOffset;
+
             // Below as vanilla.
             __instance.AddToInequality(__instance.spoilsPriorityInequalityChange, InequalityChangeReason.InqReason_SpoilsPriority);
             __instance.AddToDemocracy(__instance.spoilsPriorityDemocracyChange, DemocracyChangeReason.DemReason_SpoilsPriority);
@@ -46,7 +52,7 @@ namespace TIEconomyMod
             float strength = (__instance.education + __instance.democracy) * -0.125f;
             foreach (TIFactionState item in __instance.FactionsWithControlPoint)
             {
-                __instance.PropagandaOnPop_PerOwnedCPFraction(item.ideology, strength * 0.2f);
+                __instance.PropagandaOnPop_PerOwnedCPFraction(item.ideology, strength * propagandaOffset);
             }
 
             // Below as vanilla.

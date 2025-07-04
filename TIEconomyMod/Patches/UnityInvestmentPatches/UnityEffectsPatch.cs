@@ -20,6 +20,12 @@ namespace TIEconomyMod
             //This overwrite is necessary to fix the propoganda effect, which would otherwise be far too powerful
             //Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
 
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
+            // Settings values cached for readability.
+            float propagandaOffset = Main.settings.unityInvestment.propagandaOffset;
+
 
             //-------Propoganda Effect-------
             //As with the Spoils propoganda effect, it's unfortunately beyond me to understand this well enough to get things where I want them
@@ -35,7 +41,7 @@ namespace TIEconomyMod
             foreach (TIFactionState item in __instance.FactionsWithControlPoint)
             {
                 // Strength is multiplied by 0.2, to account for much higher IP.
-                __instance.PropagandaOnPop_PerOwnedCP(item.ideology, TemplateManager.global.unityPublicOpinionBaseStrength * __instance.priorityEffectPopScaling * 0.2f, (controlPointOfTypeFaction == item) ? TemplateManager.global.religionUnityPublicOpinionBonusStrength : 0);
+                __instance.PropagandaOnPop_PerOwnedCP(item.ideology, TemplateManager.global.unityPublicOpinionBaseStrength * __instance.priorityEffectPopScaling * propagandaOffset, (controlPointOfTypeFaction == item) ? TemplateManager.global.religionUnityPublicOpinionBonusStrength : 0);
             }
 
             // Below as vanilla.

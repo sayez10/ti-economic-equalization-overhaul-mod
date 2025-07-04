@@ -1,15 +1,16 @@
-﻿namespace TIEconomyMod
+﻿using UnityEngine;
+
+namespace TIEconomyMod
 {
     // This is a helper class used to streamline things, and centralize important variables.
     public static class Tools
     {
-        public static float GDPPerIP = 100000000000f;
-
-        // These are declared outside of EffectStrength() because that function will be called several times. Also it looks nice IMO.
-        // For an explanation as to why I did this, check the comments inside the function.
-        private static float theoreticalGDP = GDPPerIP; //1 IP
-        private static float theoreticalPCGDP = 30000f;
-        private static float theoreticalPopulation = theoreticalGDP / theoreticalPCGDP;
+        // These values are dynamically calculated inside a function.
+        // They're first calculated after the mod loads, and then whenever settings are changed.
+        public static double GDPPerIP;
+        private static float theoreticalGDP;
+        private static float theoreticalPCGDP;
+        private static float theoreticalPopulation;
 
         public static float EffectStrength(float idealGainPerMonth, float population)
         {
@@ -39,6 +40,18 @@
             float effectStrength = idealGainPerMonth * theoreticalPopulation;
 
             return effectStrength / population;
+        }
+
+        public static void Recalculate()
+        {
+            // 1 billion * setting value
+            GDPPerIP = 1000000000 * Main.settings.investmentPoints.IPPerGDPBillions;
+
+            // These are declared outside of EffectStrength() because that function will be called several times. Also, it's readable IMO.
+            // For an explanation as to why I did this, check the comments inside the function.
+            theoreticalGDP = (float)GDPPerIP; //1 IP
+            theoreticalPCGDP = Main.settings.investmentPoints.baseEffectStrengthPCGDP;
+            theoreticalPopulation = theoreticalGDP / theoreticalPCGDP;
         }
     }
 }

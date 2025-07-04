@@ -15,10 +15,17 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool GetEconomyPriorityInequalityChangeOverwrite(ref float __result, TINationState __instance)
         {
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
+            // Settings values are cached for readability.
+            float baseInequality = Main.settings.economyInvestmentOther.baseInequality;
+            float inequalityMultPerResourceRegion = Main.settings.economyInvestmentOther.inequalityMultPerResourceRegion;
+
             // Effect is ~13.3 times weaker than welfare.
             // Refer to EffectStrength() comments for explanation.
-            float baseInequalityGain = Tools.EffectStrength(0.0075f, __instance.population);
-            float resourceRegionsMult = 1f + ((float)__instance.currentResourceRegions * 0.15f);
+            float baseInequalityGain = Tools.EffectStrength(baseInequality, __instance.population);
+            float resourceRegionsMult = 1f + ((float)__instance.currentResourceRegions * inequalityMultPerResourceRegion);
 
             __result = baseInequalityGain * resourceRegionsMult;
 

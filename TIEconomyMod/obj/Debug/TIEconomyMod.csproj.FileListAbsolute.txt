@@ -11,8 +11,6 @@ D:\Documents\Visual Studio Projects\TIEconomyMod\TIEconomyMod\obj\Debug\TIEconom
 D:\Documents\Visual Studio Projects\TIEconomyMod\TIEconomyMod\obj\Debug\TIEconomyMod.dll
 D:\Documents\Visual Studio Projects\TIEconomyMod\TIEconomyMod\obj\Debug\TIEconomyMod.pdb
 D:\Documents\GitHub Projects\Economic-Equalization-Overhaul\TIEconomyMod\ModFiles\Assembly\TIEconomyMod.dll
-D:\Documents\GitHub Projects\Economic-Equalization-Overhaul\TIEconomyMod\ModFiles\Assembly\TIEconomyMod.pdb
 D:\Documents\GitHub Projects\Economic-Equalization-Overhaul\TIEconomyMod\obj\Debug\TIEconomyMod.csproj.AssemblyReference.cache
 D:\Documents\GitHub Projects\Economic-Equalization-Overhaul\TIEconomyMod\obj\Debug\TIEconomyMod.csproj.CoreCompileInputs.cache
 D:\Documents\GitHub Projects\Economic-Equalization-Overhaul\TIEconomyMod\obj\Debug\TIEconomyMod.dll
-D:\Documents\GitHub Projects\Economic-Equalization-Overhaul\TIEconomyMod\obj\Debug\TIEconomyMod.pdb

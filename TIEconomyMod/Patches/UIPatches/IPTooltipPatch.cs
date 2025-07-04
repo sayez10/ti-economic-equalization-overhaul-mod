@@ -15,6 +15,9 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool BuildInvestmentTooltipOverwrite(ref string __result, TINationState nation)
         {
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
             /* Improved breakdown of IP bonuses and penalties */
             StringBuilder stringBuilder = new StringBuilder(Loc.T("UI.Nation.InvestmentPoints")).AppendLine();
             bool penaltyMilitary = false;
@@ -47,24 +50,12 @@ namespace TIEconomyMod
             int armiesAtHome = nation.armies.Count((TIArmyState x) => x.investmentArmyFactor > 0f && x.useHomeInvestmentFactor);
             int deployedArmies = nation.armies.Count((TIArmyState x) => x.investmentArmyFactor > 0f && !x.useHomeInvestmentFactor);
             int numNavies = nation.armies.Count((TIArmyState x) => x.deploymentType == DeploymentType.Naval && x.investmentNavyFactor > 0f);
-            //float maxArmyPercentageCostHome = ArmyInvestmentUpkeepPatch.maxArmyPercentageCostHome;
-            //float maxArmyPercentageCostAway = ArmyInvestmentUpkeepPatch.maxArmyPercentageCostAway;
             float upkeepHomeMult = TemplateManager.global.nationalInvestmentArmyFactorHome;
             float upkeepAwayMult = TemplateManager.global.nationalInvestmentArmyFactorAway;
             float upkeepNavyMult = TemplateManager.global.nationalInvestmentNavyFactor;
             float totalArmyHomeUpkeep = (float)armiesAtHome * upkeepHomeMult;
             float totalArmyAwayUpkeep = (float)deployedArmies * upkeepAwayMult;
             float totalNavyUpkeep = (float)numNavies * upkeepNavyMult;
-            
-            /* Take into account the discount applied to armies that (individually) cost too much percentage of a nation's GDP. */
-            /*if (upkeepHomeMult > economyScore * maxArmyPercentageCostHome)
-            {
-                totalArmyHomeUpkeep *= maxArmyPercentageCostHome;
-            }
-            if (upkeepAwayMult > economyScore * maxArmyPercentageCostAway)
-            {
-                totalArmyAwayUpkeep *= maxArmyPercentageCostAway;
-            }*/
 
             if (armiesAtHome > 0)
             {

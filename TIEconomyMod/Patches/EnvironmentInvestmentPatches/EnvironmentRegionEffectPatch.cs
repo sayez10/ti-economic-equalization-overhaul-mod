@@ -3,6 +3,7 @@ using PavonisInteractive.TerraInvicta;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,22 +14,32 @@ namespace TIEconomyMod
     [HarmonyPatch(typeof(TINationState), "OnEnvironmentPriorityComplete")]
     public static class EnvironmentRegionEffectPatch
     {
-        // The base threshold is stored as its own variable to allow quick fixing if the devs change the hardcoded requirement.
-        public static int baseCleanupThreshold = 100;
-        public static int cleanupThreshold = cleanupThreshold * 5;
+        // Refer to EconomyRegionEffectPatch.cs for specifics on everything that's happening here.
 
-        // This replaces hardcoded variables, in this case I'm increasing the requirements by 5x due to all the extra IP.
-        // This does NOT change the localization's reported requirement to add a special region. That has to be done separately.
+        public static int baseCleanupThreshold = 100;
+        public static int cleanupThreshold;
+        public static readonly FieldInfo getCleanupThreshold = AccessTools.Field(typeof(EnvironmentRegionEffectPatch), nameof(cleanupThreshold));
+
+        // Replaces hardcoded variables in OnEnvironmentPriorityComplete(). The tooltip's stated threshold has to be updated separately.
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
+            // Refer to PriorityTooltipPatch.cs for details.
             foreach (var instruction in instructions)
             {
                 if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == baseCleanupThreshold)
                 {
-                    instruction.operand = cleanupThreshold;
+                    yield return new CodeInstruction(OpCodes.Ldsfld, getCleanupThreshold);
                 }
-                yield return instruction;
+                else
+                {
+                    yield return instruction;
+                }
             }
+        }
+
+        public static void Recalculate()
+        {
+            cleanupThreshold = (Main.enabled) ? baseCleanupThreshold * Main.settings.regionUpgradeThresholdMult : baseCleanupThreshold;
         }
     }
 }

@@ -15,8 +15,13 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool GetWelfarePriorityInequalityChangeOverwrite(ref float __result, TINationState __instance)
         {
+            // If mod has been disabled, abort patch and use original method.
+            if (!Main.enabled) { return true; }
+
+            float baseInequality = Main.settings.welfareInvestment.baseInequality;
+
             // Refer to EffectStrength() comments for explanation.
-            __result = Tools.EffectStrength(-0.1f, __instance.population);
+            __result = Tools.EffectStrength(baseInequality, __instance.population);
 
 
 
