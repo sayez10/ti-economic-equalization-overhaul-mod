@@ -32,7 +32,7 @@ namespace TIEconomyMod
 
             // Refer to EffectStrength() comments for explanation.
             float inequalityGain = Tools.EffectStrength(BASE_INEQUALITY, __instance.population);
-            float resourceRegionsMult = 1f * (__instance.currentResourceRegions * INEQUALITY_MULT_PER_RESOURCE_REGION);
+            float resourceRegionsMult = 1f + (__instance.currentResourceRegions * INEQUALITY_MULT_PER_RESOURCE_REGION);
 
             __result = inequalityGain * resourceRegionsMult;
 

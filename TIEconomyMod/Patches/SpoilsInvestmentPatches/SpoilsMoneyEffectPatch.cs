@@ -27,7 +27,7 @@ namespace TIEconomyMod
             const float MAX_MULT_FROM_LOW_DEMOCRACY = 0.3f;
 
             // Add money per resource region.
-            float resourceRegionsMult = __instance.currentResourceRegions * MONEY_MULT_PER_RESOURCE_REGION;
+            float resourceRegionsMult = 1f + (__instance.currentResourceRegions * MONEY_MULT_PER_RESOURCE_REGION);
 
             // Up to 30% extra money at 0 democracy, 0% extra at 10 democracy
             float democracyMult = 1f + MAX_MULT_FROM_LOW_DEMOCRACY - (__instance.democracy * MAX_MULT_FROM_LOW_DEMOCRACY / 10f);

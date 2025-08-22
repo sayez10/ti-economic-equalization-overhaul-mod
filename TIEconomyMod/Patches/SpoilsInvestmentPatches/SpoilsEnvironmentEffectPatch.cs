@@ -24,7 +24,7 @@ namespace TIEconomyMod
             if (!Main.enabled) { return true; }
 
             const float ENVIRONMENT_MULT_PER_RESOURCE_REGION = 0.5f;
-            float resourceRegionsMult = 1f + nation.currentResourceRegions * ENVIRONMENT_MULT_PER_RESOURCE_REGION;
+            float resourceRegionsMult = 1f + (nation.currentResourceRegions * ENVIRONMENT_MULT_PER_RESOURCE_REGION);
 
             // CO2
             float effectCO2 = TemplateManager.global.SpoCO2_ppm * resourceRegionsMult;
