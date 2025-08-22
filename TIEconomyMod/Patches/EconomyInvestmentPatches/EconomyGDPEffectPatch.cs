@@ -40,7 +40,7 @@ namespace TIEconomyMod
             // Per-capita GDP increments for applying diminishment
             const float DECAY_INCREMENT_PER_CAPITA_GDP = 1500f;
 
-	    float numSpecialRegions = __instance.currentResourceRegions + __instance.numCoreEconomicRegions_dailyCache;
+            float numSpecialRegions = __instance.currentResourceRegions + __instance.numCoreEconomicRegions_dailyCache;
             float specialRegionMult = 1f + (numSpecialRegions * GROWTH_MULT_PER_SPECIAL_REGION);
             float democracyMult = 1f + (__instance.democracy * GROWTH_MULT_PER_DEMOCRACY_LEVEL);
             float educationMult = 1f + (__instance.education * GROWTH_MULT_PER_EDUCATION_LEVEL);
