@@ -20,34 +20,40 @@ namespace TIEconomyMod
             // This patch changes the economy investment's GDP effect from increasing gdp per capita by a flat(ish) amount, to increasing gdp by a flat(ish) amount and distributing that across the pop as gdp per capita
             // The most significant change is that GDP growth is dependent on an exponential decay function off of per capita GDP. This makes developing poor countries much more effective than developing rich ones, accounting for all factors
 
-            // If mod has been disabled, abort patch and use original method.
+            // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            // Settings values are cached for readability.
-            float baseChangeBillions = Main.settings.econonyInvestmentGDP.baseChangeBillions;
-            float growthMultPerSpecialRegion = Main.settings.econonyInvestmentGDP.growthMultPerSpecialRegion;
-            float growthMultPerDemocracyLevel = Main.settings.econonyInvestmentGDP.growthMultPerDemocracyLevel;
-            float growthMultPerEducationLevel = Main.settings.econonyInvestmentGDP.growthMultPerEducationLevel;
-            float maxScaleFactor = Main.settings.econonyInvestmentGDP.maxScaleFactor;
-            float decayFactor = Main.settings.econonyInvestmentGDP.decayFactor;
-            float decayIncrementPerCapitaGDP = Main.settings.econonyInvestmentGDP.decayIncrementPerCapitaGDP;
+            // Base GDP change in billions, written this way because it's easier for me to modify.
+            const float BASE_GDP_CHANGE_BILLIONS = 0.25f;
+            const float BASE_GDP_CHANGE = BASE_GDP_CHANGE_BILLIONS * 1000000000f;
 
-            // Written this way because it's easier for me to modify.
-            float baseGDPChange = baseChangeBillions * 1000000000f;
+            const float GROWTH_MULT_PER_SPECIAL_REGION = 0.1f;
+            const float GROWTH_MULT_PER_DEMOCRACY_LEVEL = 0.05f;
+            const float GROWTH_MULT_PER_EDUCATION_LEVEL = 0.15f;
 
-            float regionMult = 1f + (__instance.currentResourceRegions * growthMultPerSpecialRegion) + (__instance.numCoreEconomicRegions_dailyCache * growthMultPerSpecialRegion);
-            float democracyMult = 1f + (__instance.democracy * growthMultPerDemocracyLevel);
-            float educationMult = 1f + (__instance.education * growthMultPerEducationLevel);
+            // Maximum GDP growth bonus from low per-capita GDP, as multiplier
+            const float MAX_SCALING_MULT = 2f;
 
-            // Exponential decay function that gives low-PCGDP countries a considerable boost to growth. Heavily modified from the original mod author's vision.
+            // Base GDP growth diminishment rate, as multiplier
+            const float DECAY_FACTOR = 0.98f;
+
+            // Per-capita GDP increments for applying diminishment
+            const float DECAY_INCREMENT_PER_CAPITA_GDP = 1500f;
+
+	    float numSpecialRegions = __instance.currentResourceRegions + __instance.numCoreEconomicRegions_dailyCache;
+            float specialRegionMult = 1f + (numSpecialRegions * GROWTH_MULT_PER_SPECIAL_REGION);
+            float democracyMult = 1f + (__instance.democracy * GROWTH_MULT_PER_DEMOCRACY_LEVEL);
+            float educationMult = 1f + (__instance.education * GROWTH_MULT_PER_EDUCATION_LEVEL);
+
             /*
+             * Exponential decay function that gives low-PCGDP countries a considerable boost to growth. Heavily modified from the original mod author's vision.
+             *
              * This was done because growth simply didn't make sense in the original mod. Poor countries grew WAY too fast, and rich countries were practically stagnant.
              * Take China and the US (the main countries I balanced this mod around) for example. In the real world, China's GDP 2022-2023 growth percentage was about 66% quicker than in the US.
              * In the original run of this mod, the US had about 15% the growth rate of China.
              * With this new function, China should have a mostly-accurate natural growth rate compared to the US. More importantly, China still has a lot of potential but isn't so powerful that choosing any other major power is a bad idea.
              * Note that during testing, China invested 24% of its IP into Economy, and the US invested 21%. This is what the factionless AI does, so that is what I kept it at.
              * Democracy and education have a strong effect on GDP growth, so the US' raw multiplier (at game start) is about half of China's, but after other factors it's ~60%.
-             * I shudder at the thought of what a Full Democracy, 20 Education China would be capable of. China truly #1 LOLOLOL
              *
              * Anyways, the big numbers, at default values:
              * 200% growth rate at 0 PCGDP
@@ -59,23 +65,11 @@ namespace TIEconomyMod
              *
              * The main takeaway from this is that poor nations get a strong bonus, which drops off relatively quickly. Rich ones get diminishing - but (hopefully) manageable - returns.
              */
-            float scalingMult = maxScaleFactor * Mathf.Pow(decayFactor, __instance.perCapitaGDP / decayIncrementPerCapitaGDP);
+            float scalingMult = MAX_SCALING_MULT * Mathf.Pow(DECAY_FACTOR, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
 
-            float modifiedGDPChange = baseGDPChange * regionMult * democracyMult * educationMult * scalingMult;
+            float modifiedGDPChange = BASE_GDP_CHANGE * specialRegionMult * democracyMult * educationMult * scalingMult;
 
             __result = modifiedGDPChange / __instance.population;
-
-
-            // Below is an experiment in making this function change GDP as a percentage rather than
-            //float baseGDPGrowthPercentage = 3.0f / 100f; //current calculations say: 8.5f
-            //float GTemp = baseGDPGrowthPercentage + (0.77f / 100f); //TEMP, climate change crutch
-            //float GTemp2 = GTemp / 0.23f; //TEMP, should get AI-driven US 3% growth/year
-
-            // Distributes GDP growth across every IP
-            //float growthPerDay = GTemp / 365;
-            //float growthPerIP = growthPerDay / __instance.economyScore;
-
-            //__result = ((float)__instance.GDP / growthPerIP) / __instance.population;
 
 
             return false; // Skip original method
