@@ -35,7 +35,7 @@ namespace TIEconomyMod
                 // These now have a much high IP/CP ratio and are much more efficient to control that multiple small nations
                 // Effects: Unification is clearly more efficient now and the global techs to reduce CP cost aren't critical anymore
                 const float COST_DECAY_EXPONENT = 0.7f;
-                const float MULT = 2f;
+                const float MULT = 4f;
 
                 // Total cost is split across the control points
                 __result = Mathf.Pow(baseControlCost, COST_DECAY_EXPONENT) * MULT / __instance.numControlPoints;
