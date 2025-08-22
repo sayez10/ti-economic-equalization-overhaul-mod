@@ -23,26 +23,20 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            // Settings values are cached for readability.
-            float greenhouseEmissionsOffset = Main.settings.spoilsInvestment.greenhouseEmissionsOffset;
-
-            float regions = nation.currentResourceRegions;
-            float regionMult = 0.5f;
+            const float ENVIRONMENT_MULT_PER_RESOURCE_REGION = 0.5f;
+            float resourceRegionsMult = 1f + nation.currentResourceRegions * ENVIRONMENT_MULT_PER_RESOURCE_REGION;
 
             // CO2
-            float baseCO2 = TemplateManager.global.SpoCO2_ppm;
-            float resRegionCO2Mult = 1.0f + (regions * regionMult);
-            __instance.AddCO2_ppm(baseCO2 * resRegionCO2Mult * greenhouseEmissionsOffset, GHGSources.SpoilsPriority);
+            float effectCO2 = TemplateManager.global.SpoCO2_ppm * resourceRegionsMult;
+            __instance.AddCO2_ppm(effectCO2, GHGSources.SpoilsPriority);
 
             // CH4
-            float baseCH4 = TemplateManager.global.SpoCH4_ppm;
-            float resRegionCH4Mult = 1.0f + (regions * regionMult);
-            __instance.AddCH4_ppm(baseCH4 * resRegionCH4Mult * greenhouseEmissionsOffset, GHGSources.SpoilsPriority);
+            float effectCH4 = TemplateManager.global.SpoCH4_ppm * resourceRegionsMult;
+            __instance.AddCH4_ppm(effectCH4, GHGSources.SpoilsPriority);
 
             // N2O
-            float baseN2O = TemplateManager.global.SpoN2O_ppm;
-            float resRegionN2OMult = 1.0f + (regions * regionMult);
-            __instance.AddN2O_ppm(baseN2O * resRegionN2OMult * greenhouseEmissionsOffset, GHGSources.SpoilsPriority);
+            float effectN2O = TemplateManager.global.SpoN2O_ppm * resourceRegionsMult;
+            __instance.AddN2O_ppm(effectN2O, GHGSources.SpoilsPriority);
 
 
             return false; // Skip original method

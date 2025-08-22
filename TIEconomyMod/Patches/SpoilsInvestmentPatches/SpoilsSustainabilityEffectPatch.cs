@@ -23,19 +23,18 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            // Settings values are cached for readability.
-            // baseSustainability is inverted, because for whatever reason sustainability increases with negative change, and decreases with positive change.
-            float baseSustainability = -Main.settings.spoilsInvestment.baseSustainability;
-            float sustainabilityMultPerResourceRegion = Main.settings.spoilsInvestment.sustainabilityMultPerResourceRegion;
+            // BASE_SUSTAINABILITY is inverted, because for whatever reason sustainability increases with negative change, and decreases with positive change.
+            const float BASE_SUSTAINABILITY = 0.05f;
+            const float SUSTAINABILITY_MULT_PER_RESOURCE_REGION = 0.25f;
 
             // Effect is 1/2 that of Environment.
             // Refer to EffectStrength() comments for explanation.
-            float baseEffect = Tools.EffectStrength(baseSustainability, __instance.population);
+            float baseEffect = Tools.EffectStrength(BASE_SUSTAINABILITY, __instance.population);
 
             // Scaling is more aggressive than in Environment. We'll see if this ends up being a good idea.
-            float regionMult = 1f + (__instance.currentResourceRegions * sustainabilityMultPerResourceRegion);
+            float resourceRegionsMult = 1f + (__instance.currentResourceRegions * SUSTAINABILITY_MULT_PER_RESOURCE_REGION);
 
-            __result = baseEffect * regionMult;
+            __result = baseEffect * resourceRegionsMult;
 
 
             return false; // Skip original method

@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using static PavonisInteractive.TerraInvicta.TINationState;
 
-/* I'm disabling this file because for the reason of keeping propaganda around, even if it ends up being a bit busted. */
-
 
 
 namespace TIEconomyMod
@@ -27,14 +25,12 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            // Settings values are cached for readability.
-            float propagandaOffset = Main.settings.spoilsInvestment.propagandaOffset;
-
-            // Below as vanilla.
+            // Below as vanilla
             __instance.AddToInequality(__instance.spoilsPriorityInequalityChange, InequalityChangeReason.InqReason_SpoilsPriority);
             __instance.AddToDemocracy(__instance.spoilsPriorityDemocracyChange, DemocracyChangeReason.DemReason_SpoilsPriority);
             TIFactionState controlPointTypeOwner = __instance.GetControlPointTypeOwner(ControlPointType.Aristocracy);
             TIFactionState controlPointTypeOwner2 = __instance.GetControlPointTypeOwner(ControlPointType.ExtractiveSector);
+
             foreach (TIControlPoint controlPoint in __instance.controlPoints)
             {
                 float num = __instance.spoilsPriorityMoneyPerControlPoint * ((controlPointTypeOwner == controlPoint.faction) ? TemplateManager.global.aristoracySpoilsMult : 1f) + ((controlPointTypeOwner2 == controlPoint.faction) ? (TemplateManager.global.extractiveSpoilsBonusPerResourceRegion * (float)__instance.currentResourceRegions) : 0f);
@@ -54,13 +50,15 @@ namespace TIEconomyMod
              * The original author disabled it, but I didn't like that.
              * For now, I'm tacking on a x0.2 multiplier until I can understand what's going on there.
              */
-            float strength = (__instance.education + __instance.democracy) * -0.125f;
+            const float BASE_PROPAGANDA = -0.025f;
+            float propagandaEffect = (__instance.education + __instance.democracy) * BASE_PROPAGANDA;
+
             foreach (TIFactionState item in __instance.FactionsWithControlPoint)
             {
-                __instance.PropagandaOnPop_PerOwnedCPFraction(item.ideology, strength * propagandaOffset);
+                __instance.PropagandaOnPop_PerOwnedCPFraction(item.ideology, propagandaEffect);
             }
 
-            // Below as vanilla.
+            // Below as vanilla
             __instance.AddToSustainability(__instance.spoilsSustainabilityChange);
             TIGlobalValuesState.GlobalValues.AddSpoilsPriorityEnvEffect(__instance, __instance.priorityEffectPopScaling * __instance.sustainability);
 

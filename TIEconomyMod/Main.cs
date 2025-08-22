@@ -166,21 +166,6 @@ namespace TIEconomyMod
         }
 
         [DrawFields(DrawFieldMask.Public)]
-        public class SpoilsInvestmentSettings
-        {
-            [Draw("Base amount of the money resource given, per IP invested: (default: 60.0)", Min = 0.0, Precision = 1)] public float baseMoney = 60.0f;
-            [Draw("Bonus multiplier to money generated, per resource region: (default: 0.15)", Min = 0.0, Precision = 2)] public float moneyMultPerResourceRegion = 0.15f;
-            [Draw("Maximum extra multiplier to money generated, at level 0 democracy: (default: 0.3)", Min = 0.0, Precision = 2)] public float maxMultFromLowDemocracy = 0.3f;
-            [Draw("Base sustainability change, at 100% IP investment and 1x per-capita GDP investment rate: (default: -0.05)", Max = 0.0, Precision = 3)] public float baseSustainability = -0.05f;
-            [Draw("Extra boost to sustainability change as a multiplier, per resource region: (default: 0.25)", Min = 0.0, Precision = 2)] public float sustainabilityMultPerResourceRegion = 0.25f;
-            [Draw("Multiplier to overall greenhouse gas emissions generated directly by priority: (default: 1.0)", Min = 0.0, Precision = 2)] public float greenhouseEmissionsOffset = 1.0f;
-            [Draw("Base inequality change, at 100% IP investment and 1x per-capita GDP investment rate: (default: 0.05)", Min = 0.0, Precision = 3)] public float baseInequality = 0.05f;
-            [Draw("Extra boost to inequality change as a multiplier, per resource region: (default: 0.25)", Min = 0.0, Precision = 2)] public float inequalityMultPerResourceRegion = 0.25f;
-            [Draw("Base democracy change, at 100% IP investment and 1x per-capita GDP investment rate: (default: 0.02)", Min = 0.0, Precision = 3)] public float baseDemocracy = -0.02f;
-            [Draw("Multiplier to overall (anti-)propaganda power: (default: 0.2)", Min = 0.0, Precision = 2)] public float propagandaOffset = 0.2f;
-        }
-
-        [DrawFields(DrawFieldMask.Public)]
         public class MilitaryInvestmentSettings
         {
             [Draw("Base miltech change, at 100% IP investment and 1x per-capita GDP investment rate: (default: 0.025)", Min = 0.0, Precision = 3)] public float baseMiltech = 0.025f;
@@ -203,7 +188,6 @@ namespace TIEconomyMod
             [Draw("Unity Investment", Collapsible = true)] public UnityInvestmentSettings unityInvestment = new UnityInvestmentSettings();
             [Draw("Oppression Investment", Collapsible = true)] public OppressionInvestmentSettings oppressionInvestment = new OppressionInvestmentSettings();
             [Draw("Funding Investment", Collapsible = true)] public FundingInvestmentSettings fundingInvestment = new FundingInvestmentSettings();
-            [Draw("Spoils Investment", Collapsible = true)] public SpoilsInvestmentSettings spoilsInvestment = new SpoilsInvestmentSettings();
             [Draw("Military Investment", Collapsible = true)] public MilitaryInvestmentSettings militaryInvestment = new MilitaryInvestmentSettings();
 
             // These settings don't neatly fit into any category, and are thus ungrouped.

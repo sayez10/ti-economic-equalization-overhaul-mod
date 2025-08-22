@@ -22,18 +22,17 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            // Settings values are cached for readability.
-            float baseMoney = Main.settings.spoilsInvestment.baseMoney;
-            float moneyMultPerResourceRegion = Main.settings.spoilsInvestment.moneyMultPerResourceRegion;
-            float maxMultFromLowDemocracy = Main.settings.spoilsInvestment.maxMultFromLowDemocracy;
+            const float BASE_MONEY = 60f;
+            const float MONEY_MULT_PER_RESOURCE_REGION = 0.15f;
+            const float MAX_MULT_FROM_LOW_DEMOCRACY = 0.3f;
 
             // Add money per resource region.
-            float resourceRegionBonusMoney = __instance.currentResourceRegions * moneyMultPerResourceRegion;
+            float resourceRegionsMult = __instance.currentResourceRegions * MONEY_MULT_PER_RESOURCE_REGION;
 
             // Up to 30% extra money at 0 democracy, 0% extra at 10 democracy
-            float democracyMult = (1f + maxMultFromLowDemocracy) - (__instance.democracy * (maxMultFromLowDemocracy / 10f));
+            float democracyMult = 1f + MAX_MULT_FROM_LOW_DEMOCRACY - (__instance.democracy * MAX_MULT_FROM_LOW_DEMOCRACY / 10f);
 
-            __result = baseMoney * resourceRegionBonusMoney * democracyMult;
+            __result = BASE_MONEY * resourceRegionsMult * democracyMult;
 
 
             return false; // Skip original method

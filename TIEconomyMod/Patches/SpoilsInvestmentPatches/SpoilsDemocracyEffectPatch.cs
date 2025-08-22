@@ -22,11 +22,10 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            // Settings values are cached for readability.
-            float baseDemocracy = Main.settings.spoilsInvestment.baseDemocracy;
+            const float BASE_DEMOCRACY = -0.02f;
 
             // Refer to EffectStrength() comments for explanation.
-            __result = Tools.EffectStrength(baseDemocracy, __instance.population);
+            __result = Tools.EffectStrength(BASE_DEMOCRACY, __instance.population);
 
 
             return false; // Skip original method
