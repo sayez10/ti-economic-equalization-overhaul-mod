@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "OnEconomyPriorityComplete")]
@@ -35,7 +37,7 @@ namespace TIEconomyMod
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             // What this does, is that it replaces several hard-coded integers in priorityTipStr() with read-only variables.
-            // Those read-only variables 
+            // Those read-only variables
             foreach (var instruction in instructions)
             {
                 if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == baseOilThreshold)
@@ -56,6 +58,8 @@ namespace TIEconomyMod
                 }
             }
         }
+
+
 
         public static void Recalculate()
         {

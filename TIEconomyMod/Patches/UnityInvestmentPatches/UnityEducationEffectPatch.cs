@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "unityPriorityEducationChange", MethodType.Getter)]
@@ -15,7 +17,7 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool GetUnityPriorityEducationChangeOverwrite(ref float __result, TINationState __instance)
         {
-            //Patch changes the knowledge effect of a unity investment to scale inversely with population size
+            // Patch changes the knowledge effect of a unity investment to scale inversely with population size
 
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
@@ -28,8 +30,7 @@ namespace TIEconomyMod
             __result = Tools.EffectStrength(baseEducation, __instance.population);
 
 
-
-            return false; //Skip original getter
+            return false; // Skip original method
         }
     }
 }

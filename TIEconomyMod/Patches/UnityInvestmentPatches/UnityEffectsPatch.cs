@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using static PavonisInteractive.TerraInvicta.TINationState;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "OnUnityPriorityComplete")]
@@ -16,9 +18,9 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool OnUnityPriorityCompleteOverwrite(TINationState __instance)
         {
-            //This patch changes the effects of the unity investment
-            //This overwrite is necessary to fix the propoganda effect, which would otherwise be far too powerful
-            //Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
+            // This patch changes the effects of the unity investment
+            // This overwrite is necessary to fix the propoganda effect, which would otherwise be far too powerful
+            // Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
 
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
@@ -27,10 +29,10 @@ namespace TIEconomyMod
             float propagandaOffset = Main.settings.unityInvestment.propagandaOffset;
 
 
-            //-------Propoganda Effect-------
-            //As with the Spoils propoganda effect, it's unfortunately beyond me to understand this well enough to get things where I want them
-            //For now, the best way for me to handle this issue is to simply disable the system entirely, pending additional research and math
-            //TODO change this once I understand PropogandaOnPop
+            //-------Propaganda Effect-------
+            // As with the Spoils propoganda effect, it's unfortunately beyond me to understand this well enough to get things where I want them
+            // For now, the best way for me to handle this issue is to simply disable the system entirely, pending additional research and math
+            // TODO change this once I understand PropagandaOnPop
 
             /* I honestly don't understand this either AT ALL, but I want to have the propaganda effect active.
              * So, I'm going to do something quick and dirty, and just reduce the power of propaganda overall.
@@ -49,8 +51,7 @@ namespace TIEconomyMod
             __instance.AddToEducation(__instance.unityPriorityEducationChange, EducationChangeReason.EducationReason_UnityPriority);
 
 
-
-            return false; //Cancels the call to the original method but runs any other prefixes
+            return false; // Skip original method
         }
     }
 }

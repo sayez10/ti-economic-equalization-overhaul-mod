@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using UnityEngine;
 using static PavonisInteractive.TerraInvicta.TINationState;
 
-/* I'm disabling this file because for the reason on keeping propaganda around, even if it ends up being a bit busted. */
+/* I'm disabling this file because for the reason of keeping propaganda around, even if it ends up being a bit busted. */
+
+
 
 namespace TIEconomyMod
 {
@@ -18,9 +20,9 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool OnSpoilsPriorityCompleteOverwrite(TINationState __instance)
         {
-            //This patch changes the effects of the spoils investment
-            //This overwrite is necessary to fix the propoganda effect, which would otherwise be far too powerful
-            //Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
+            // This patch changes the effects of the spoils investment
+            // This overwrite is necessary to fix the propoganda effect, which would otherwise be far too powerful
+            // Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
 
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
@@ -45,9 +47,12 @@ namespace TIEconomyMod
                 }
             }
 
-            /* Propaganda Effect:
-             * 
-             * Neither I nor the original author yet understand what's going on with propaganda enough to understand how it scales with population. The original author disabled it, but I didn't like that. For now, I'm tacking on a x0.2 multiplier until I can understand what's going on there.
+            /*
+             * Propaganda Effect:
+             *
+             * Neither I nor the original author yet understand what's going on with propaganda enough to understand how it scales with population.
+             * The original author disabled it, but I didn't like that.
+             * For now, I'm tacking on a x0.2 multiplier until I can understand what's going on there.
              */
             float strength = (__instance.education + __instance.democracy) * -0.125f;
             foreach (TIFactionState item in __instance.FactionsWithControlPoint)
@@ -60,8 +65,7 @@ namespace TIEconomyMod
             TIGlobalValuesState.GlobalValues.AddSpoilsPriorityEnvEffect(__instance, __instance.priorityEffectPopScaling * __instance.sustainability);
 
 
-
-            return false; //Skip the original method
+            return false; // Skip original method
         }
     }
 }

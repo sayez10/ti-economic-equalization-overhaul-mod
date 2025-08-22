@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-/* Pending deletion; Knowledge no longer has a Democracy modifier. */
+
 
 namespace TIEconomyMod
 {
@@ -17,7 +17,7 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool GetGovernmentPriorityDemocracyChangeOverwrite(ref float __result, TINationState __instance)
         {
-            //Patch changes the democracy effect of a knowledge investment to scale inversely with population size
+            // Patch changes the democracy effect of a knowledge investment to scale inversely with population size
 
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
@@ -35,8 +35,7 @@ namespace TIEconomyMod
             __result = baseEffect * educationMult;
 
 
-
-            return false; //Skip original getter
+            return false; // Skip original method
         }
     }
 }

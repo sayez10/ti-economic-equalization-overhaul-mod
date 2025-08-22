@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "environmentPrioritySustainabilityChange", MethodType.Getter)]
@@ -42,8 +44,7 @@ namespace TIEconomyMod
             __result = (baseEffect * nukedMult) * sustainabilityMult;
 
 
-
-            return false; //Skip the original method
+            return false; // Skip original method
         }
     }
 }

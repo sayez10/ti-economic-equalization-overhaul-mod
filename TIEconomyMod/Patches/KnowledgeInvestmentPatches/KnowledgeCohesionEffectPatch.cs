@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "knowledgePriorityCohesionChange", MethodType.Getter)]
@@ -24,15 +26,18 @@ namespace TIEconomyMod
 
             // Cohesion change is a centering effect, drawing it towards 5; additional logis is needed for that.
             // Refer to EffectStrength() comments for explanation.
-            float cohesionChangeAmount = Math.Min(Mathf.Abs(__instance.cohesion - 5f), (Tools.EffectStrength(baseCohesion, __instance.population))); //Calculate the amount of change and prevent overshooting 5
+            // Calculate the amount of change and prevent overshooting 5
+            float cohesionChangeAmount = Math.Min(Mathf.Abs(__instance.cohesion - 5f), (Tools.EffectStrength(baseCohesion, __instance.population)));
             if (__instance.cohesion > 5f)
             {
-                cohesionChangeAmount *= -1f; //Make it reduce cohesion instead if it's currently above 5
+                // Make it reduce cohesion instead if it's currently above 5
+                cohesionChangeAmount *= -1f;
             }
 
             __result = cohesionChangeAmount;
 
-            return false; //Skip original getter
+
+            return false; // Skip original method
         }
     }
 }

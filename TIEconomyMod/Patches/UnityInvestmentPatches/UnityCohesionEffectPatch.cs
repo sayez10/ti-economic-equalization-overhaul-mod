@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "unityPriorityCohesionChange", MethodType.Getter)]
@@ -15,7 +17,7 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool GetUnityPriorityCohesionChangeOverwrite(ref float __result, TINationState __instance)
         {
-            //Patch changes the cohesion effect of a unity investment to scale inversely with population size
+            // Patch changes the cohesion effect of a unity investment to scale inversely with population size
 
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
@@ -35,8 +37,7 @@ namespace TIEconomyMod
             __result = baseEffect * penaltyMult;
 
 
-
-            return false; //Skip original getter
+            return false; // Skip original method
         }
     }
 }

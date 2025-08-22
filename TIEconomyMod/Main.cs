@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityModManagerNet;
 using static UnityModManagerNet.UnityModManager;
 
+
+
 namespace TIEconomyMod
 {
     /// <summary>
@@ -27,7 +29,9 @@ namespace TIEconomyMod
             settings = UnityModManager.ModSettings.Load<Settings>(modEntry);
             mod = modEntry;
             harmony.PatchAll(Assembly.GetExecutingAssembly());
-            modEntry.OnToggle = OnToggle; //disabled until i fully implement it
+
+            // Disabled until I fully implement it
+            modEntry.OnToggle = OnToggle;
             modEntry.OnGUI = OnGUI;
             modEntry.OnSaveGUI = OnSaveGUI;
 
@@ -46,7 +50,7 @@ namespace TIEconomyMod
         {
             // Frankly, adding functionality for disabling this mod during runtime is absolutely unnecessary. This mod does a lot of things.
             // I'm doing this not particularly because it's necessary, but because it's good practice. Especially for transpilers.
-            // So...basically, it's because I can.
+            // So... basically, it's because I can.
 
             enabled = value;
 
@@ -184,7 +188,7 @@ namespace TIEconomyMod
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public class Settings : UnityModManager.ModSettings, IDrawable
         {

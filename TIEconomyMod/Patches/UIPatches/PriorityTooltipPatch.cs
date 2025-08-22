@@ -10,9 +10,11 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Reflection;
 
+
+
 namespace TIEconomyMod
 {
-    // THIS PRICK TOOK FOREVER TO FIND OH MY GOD I HAD TWO INSTALL TWO SEPARATE PROGRAMS TO FIND THIS ACCURSED FUNCTION
+    // THIS PRICK TOOK FOREVER TO FIND OH MY GOD I HAD TO INSTALL TWO SEPARATE PROGRAMS TO FIND THIS ACCURSED FUNCTION
     // I REGRET NOTHING
     [HarmonyPatch(typeof(PriorityListItemController), "priorityTipStr")]
     public static class PriorityPatches

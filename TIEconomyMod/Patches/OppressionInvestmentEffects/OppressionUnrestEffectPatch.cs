@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-/* Pending deletion; Knowledge no longer has a Democracy modifier. */
+
 
 namespace TIEconomyMod
 {
@@ -37,8 +37,7 @@ namespace TIEconomyMod
             __result = 0f - Mathf.Min(__instance.unrest, baseEffect);
 
 
-
-            return false; //Skip original getter
+            return false; // Skip original method
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "economyScore", MethodType.Getter)]
@@ -15,7 +17,7 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool GetEconomyScoreOverwrite(ref float __result, TINationState __instance)
         {
-            //Patches the amount of Investment Points available to a nation
+            // Patches the amount of Investment Points available to a nation
 
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
@@ -24,7 +26,7 @@ namespace TIEconomyMod
             float crutchLimit = Main.settings.investmentPoints.crutchLimit;
             float crutchAggressiveness = Main.settings.investmentPoints.crutchAggressiveness;
 
-            //ex: 500 billion GDP / 100 billion = 5 IP/month
+            // ex: 500 billion GDP / 100 billion = 5 IP/month
             float baseIP = (float)(__instance.GDP / Tools.GDPPerIP);
 
 
@@ -49,7 +51,8 @@ namespace TIEconomyMod
                 __result = baseIP;
             }
 
-            return false; //Skip original getter
+
+            return false; // Skip original method
         }
     }
 }

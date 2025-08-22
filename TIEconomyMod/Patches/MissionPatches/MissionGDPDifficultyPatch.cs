@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using System.Reflection;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TIMissionModifier_TargetNationGDP), "GetModifier")]
@@ -20,8 +22,8 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool GetModifierOverwrite(ref float __result, TICouncilorState attackingCouncilor, TIGameState target = null, float resourcesSpent = 0f, FactionResource resource = FactionResource.None)
         {
-            //Patches the default amount of mission difficulty from national economy size for certain missions like control nation
-            //Amount of difficulty for a given nation with a given GDP is to be identical in vanilla and this mod
+            // Patches the default amount of mission difficulty from national economy size for certain missions like control nation
+            // Amount of difficulty for a given nation with a given GDP is to be identical in vanilla and this mod
 
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
@@ -36,13 +38,16 @@ namespace TIEconomyMod
             TINationState nation = YoinkObjectToNation(attackingCouncilor.faction, target);
             if (nation != null)
             {
-                float vanillaEcoScore = (float)Mathd.Pow(nation.economyScore * 100f, 0.33f); //This is the vanilla economyScore the country would have
+                // This is the vanilla economyScore the country would have
+                float vanillaEcoScore = (float)Mathd.Pow(nation.economyScore * 100f, 0.33f);
                 __result = vanillaEcoScore * TemplateManager.global.TIMissionModifier_TargetNationGDP_Multiplier;
             }
 
 
-            return false; //Skip orignal method
+            return false; // Skip original method
         }
+
+
 
         // Not gonna lie, I have ChatGPT to thank for much of this.
         public static TINationState YoinkObjectToNation(TIFactionState faction, TIGameState target)

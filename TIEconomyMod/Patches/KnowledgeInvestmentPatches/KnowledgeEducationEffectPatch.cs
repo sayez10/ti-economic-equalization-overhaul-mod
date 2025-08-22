@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "knowledgePriorityEducationChange", MethodType.Getter)]
@@ -28,17 +30,16 @@ namespace TIEconomyMod
             float baseChange = Tools.EffectStrength(baseEducation, __instance.population);
 
 
-            //Additionally, scale the education change based on current education, using an exponential decay relationship
-            //With a multiplier of 4, and a base of 0.87, we get:
-            //400% education gain at 0 education, 200% at 5 education, 100% at 10 education, 50% at 15 education, etc...
+            // Additionally, scale the education change based on current education, using an exponential decay relationship
+            // With a multiplier of 4, and a base of 0.87, we get:
+            // 400% education gain at 0 education, 200% at 5 education, 100% at 10 education, 50% at 15 education, etc...
             // Basically, the effectiveness of the knowledge priority halves every 5 education.
             float exDecayMult = maxScaleFactor * (float)Mathd.Pow(decayFactor, __instance.education);
 
             __result = baseChange * exDecayMult;
 
 
-
-            return false; //Skip original getter
+            return false; // Skip original method
         }
     }
 }

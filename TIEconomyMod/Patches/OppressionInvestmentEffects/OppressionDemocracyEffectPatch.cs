@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/* Pending deletion; Knowledge no longer has a Democracy modifier. */
+
 
 namespace TIEconomyMod
 {
@@ -27,8 +27,7 @@ namespace TIEconomyMod
             __result = Tools.EffectStrength(baseDemocracy, __instance.population);
 
 
-
-            return false; //Skip original getter
+            return false; // Skip original method
         }
     }
 }

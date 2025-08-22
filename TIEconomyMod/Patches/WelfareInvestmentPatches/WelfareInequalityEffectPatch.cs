@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "welfarePriorityInequalityChange", MethodType.Getter)]
@@ -24,8 +26,7 @@ namespace TIEconomyMod
             __result = Tools.EffectStrength(baseInequality, __instance.population);
 
 
-
-            return false; //Skip original getter
+            return false; // Skip original method
         }
     }
 }

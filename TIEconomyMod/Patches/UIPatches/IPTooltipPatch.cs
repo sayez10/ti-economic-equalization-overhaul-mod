@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(NationInfoController), "BuildInvestmentTooltip")]
@@ -18,7 +20,7 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            /* Improved breakdown of IP bonuses and penalties */
+            // Improved breakdown of IP bonuses and penalties
             StringBuilder stringBuilder = new StringBuilder(Loc.T("UI.Nation.InvestmentPoints")).AppendLine();
             bool penaltyMilitary = false;
             bool penaltyUnrest = false;
@@ -46,7 +48,7 @@ namespace TIEconomyMod
                 stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.IPUnrestPenalty", investmentPoints_unrestPenalty_frac.ToPercent("P0"), TIUtilities.FormatSmallNumber(unrestPenalty)));
             }
 
-            //Changed to reflect impact from mil tech
+            // Changed to reflect impact from mil tech
             int armiesAtHome = nation.armies.Count((TIArmyState x) => x.investmentArmyFactor > 0f && x.useHomeInvestmentFactor);
             int deployedArmies = nation.armies.Count((TIArmyState x) => x.investmentArmyFactor > 0f && !x.useHomeInvestmentFactor);
             int numNavies = nation.armies.Count((TIArmyState x) => x.deploymentType == DeploymentType.Naval && x.investmentNavyFactor > 0f);
@@ -73,8 +75,8 @@ namespace TIEconomyMod
                 stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.NaviesPenalty", TIUtilities.FormatSmallNumber(upkeepNavyMult), TIUtilities.FormatSmallNumber(totalNavyUpkeep)));
             }
 
-            /* Added additional tooltip that combines Home, Away, and Navy costs. */
-            // example text: The above penalties have a combined Investment Point penalty of {0}
+            // Added additional tooltip that combines Home, Away, and Navy costs.
+            // Example text: The above penalties have a combined Investment Point penalty of {0}
             if (armiesAtHome > 0 || deployedArmies > 0)
             {
                 stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.MilitaryTotalPenalty", TIUtilities.FormatSmallNumber(totalArmyHomeUpkeep + totalArmyAwayUpkeep + totalNavyUpkeep)));
@@ -87,7 +89,8 @@ namespace TIEconomyMod
 
             __result = stringBuilder.ToString().Trim();
 
-            return false; //Skip original method
+
+            return false; // Skip original method
         }
     }
 }

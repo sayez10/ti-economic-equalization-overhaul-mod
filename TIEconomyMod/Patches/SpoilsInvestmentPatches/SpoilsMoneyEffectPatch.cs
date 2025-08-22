@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "spoilsPriorityMoney", MethodType.Getter)]
@@ -15,7 +17,7 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool GetSpoilsPriorityMoneyOverwrite(ref float __result, TINationState __instance)
         {
-            //Patch changes the instant money effect of a spoils investment to be a flat value, not scaled by nation size
+            // Patch changes the instant money effect of a spoils investment to be a flat value, not scaled by nation size
 
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
@@ -25,16 +27,16 @@ namespace TIEconomyMod
             float moneyMultPerResourceRegion = Main.settings.spoilsInvestment.moneyMultPerResourceRegion;
             float maxMultFromLowDemocracy = Main.settings.spoilsInvestment.maxMultFromLowDemocracy;
 
-            //Add money per resource region.
+            // Add money per resource region.
             float resourceRegionBonusMoney = __instance.currentResourceRegions * moneyMultPerResourceRegion;
 
-            //(by default) Up to 30% extra money at 0 democracy, 0% extra at 10 democracy
+            // Up to 30% extra money at 0 democracy, 0% extra at 10 democracy
             float democracyMult = (1f + maxMultFromLowDemocracy) - (__instance.democracy * (maxMultFromLowDemocracy / 10f));
 
             __result = baseMoney * resourceRegionBonusMoney * democracyMult;
 
 
-            return false; //Skip original getter
+            return false; // Skip original method
         }
     }
 }

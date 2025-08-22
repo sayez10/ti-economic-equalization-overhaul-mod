@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod.AIPatches
 {
     [HarmonyPatch(typeof(AIEvaluators), "EvaluateControlPoint")]
@@ -15,19 +17,19 @@ namespace TIEconomyMod.AIPatches
         [HarmonyPrefix]
         public static bool EvaluateControlPointOverwrite(TIFactionState faction, TIControlPoint controlPoint, ref float __result)
         {
-            //Patches AI evaluation of a control point's value/importance to account for the higher IP amount in large modded nations
+            // Patches AI evaluation of a control point's value/importance to account for the higher IP amount in large modded nations
 
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            //As vanilla
+            // As vanilla
             float num = 0f;
             TINationState nation = controlPoint.nation;
 
-            //This line adjusted from economyScore^3, which was vanilla GDP in billions, to this, which is modded GDP in billions. Vanilla and modded control points will be evaluated the same given a certain GDP.
+            // This line adjusted from economyScore^3, which was vanilla GDP in billions, to this, which is modded GDP in billions. Vanilla and modded control points will be evaluated the same given a certain GDP.
             num += nation.economyScore * 100f;
 
-            //As vanilla
+            // As vanilla
             num += (nation.spaceFlightProgram ? (100f * faction.aiValues.wantSpaceFacilities * faction.aiValues.wantSpaceWarCapability) : 0f);
             num += AIEvaluators.EvaluateMonthlyResourceIncome(faction, FactionResource.Research, nation.GetMonthlyResearchFromControlPoint(faction));
             num += AIEvaluators.EvaluateMonthlyResourceIncome(faction, FactionResource.Money, nation.GetMonthlyMoneyIncomeFromControlPoint(faction));
@@ -49,7 +51,7 @@ namespace TIEconomyMod.AIPatches
             __result = num;
 
 
-            return false; //Skip original method
+            return false; // Skip original method
         }
     }
 }

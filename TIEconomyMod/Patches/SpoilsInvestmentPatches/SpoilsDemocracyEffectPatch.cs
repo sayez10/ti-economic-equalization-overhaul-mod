@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(TINationState), "spoilsPriorityDemocracyChange", MethodType.Getter)]
@@ -15,7 +17,7 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool GetSpoilsPriorityDemocracyChangeOverwrite(ref float __result, TINationState __instance)
         {
-            //Patch changes the democracy effect of a spoils investment to scale inversely with population size
+            // Patch changes the democracy effect of a spoils investment to scale inversely with population size
 
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
@@ -26,7 +28,8 @@ namespace TIEconomyMod
             // Refer to EffectStrength() comments for explanation.
             __result = Tools.EffectStrength(baseDemocracy, __instance.population);
 
-            return false; //Skip original getter
+
+            return false; // Skip original method
         }
     }
 }
