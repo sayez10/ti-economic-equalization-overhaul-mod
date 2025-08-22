@@ -30,7 +30,8 @@ namespace TIEconomyMod
             const float MILTECH_MALUS_PER_ARMY = -0.001f;
             const float MILTECH_MALUS_PER_NAVY = -0.0005f;
 
-	    float armiesNumberEffect = Mathf.Max(MILTECH_MALUS_CAP, (__instance.numStandardArmies * MILTECH_MALUS_PER_ARMY) + (__instance.numNavies * MILTECH_MALUS_PER_NAVY));
+            // FIXME: Formula is too simplistic. Let malus grow asymptotically to the base miltech effect? Add multiplicative knowledge bonus? Miltech growth probably too fast, too.
+            float armiesNumberEffect = Mathf.Max(MILTECH_MALUS_CAP, (__instance.numStandardArmies * MILTECH_MALUS_PER_ARMY) + (__instance.numNavies * MILTECH_MALUS_PER_NAVY));
 
             // Additionally, add a catch-up multiplier dependent on how far behind the max tech level the country is
             // A bonus 50% tech gain per full tech level behind the global max
