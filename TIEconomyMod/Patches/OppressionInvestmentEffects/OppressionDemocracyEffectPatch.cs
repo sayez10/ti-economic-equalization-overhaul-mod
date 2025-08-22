@@ -19,12 +19,11 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            // Settings values are cached for readability.
-            float baseDemocracy = Main.settings.oppressionInvestment.baseDemocracy;
+            float BASE_DEMOCRACY = -0.0175f;
 
             // About 35% of (base) Government effect.
             // Refer to EffectStrength() comments for explanation.
-            __result = Tools.EffectStrength(baseDemocracy, __instance.population);
+            __result = Tools.EffectStrength(BASE_DEMOCRACY, __instance.population);
 
 
             return false; // Skip original method

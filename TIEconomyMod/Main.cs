@@ -88,16 +88,6 @@ namespace TIEconomyMod
             [Draw("Worst allowed penalty multiplier from low per-capita GDP: (default: 0.6)", DrawType.Slider, Min = 0.0, Max = 1.0, Precision = 2)] public float worstMalus = 0.6f;
         }
 
-        [DrawFields(DrawFieldMask.Public)]
-        public class OppressionInvestmentSettings
-        {
-            [Draw("Base monthly unrest change, at 100% IP investment and 1x per-capita GDP investment rate: (default: -2.5)", Max = 0.0, Precision = 2)] public float baseUnrest = -2.5f;
-            [Draw("Penalty to unrest change as a multiplier, per level of democracy: (default: 0.1)", DrawType.Slider, Min = 0.0, Max = 0.1, Precision = 2)] public float unrestPenaltyMultPerDemocracyLevel = 0.1f;
-            [Draw("Base monthly cohesion change, at 100% IP investment, 1x per-capita GDP investment rate, and level 10 democracy: (default: -1.0)", Min = 1.0, Precision = 2)] public float baseCohesion = -1.0f;
-            [Draw("The democracy level which the cohesion loss effect begins to take effect. If set to 10, cohesion loss is disabled: (default: 5.0)", DrawType.Slider, Min = 0.0, Max = 10.0, Precision = 1)] public float minDemocracyForCohesionChange = 5.0f;
-            [Draw("Base monthly democracy change, at 100% IP investment and 1x per-capita GDP investment rate: (default: -0.0175)", Max = 0.0, Precision = 4)] public float baseDemocracy = -0.0175f;
-        }
-
         /// <summary>
         ///
         /// </summary>
@@ -105,7 +95,6 @@ namespace TIEconomyMod
         {
             [Draw("Investment Points", Collapsible = true)] public InvestmentPointsSettings investmentPoints = new InvestmentPointsSettings();
             [Draw("Research Production", Collapsible = true)] public ResearachProductionSettings researchProduction = new ResearachProductionSettings();
-            [Draw("Oppression Investment", Collapsible = true)] public OppressionInvestmentSettings oppressionInvestment = new OppressionInvestmentSettings();
 
             // These settings don't neatly fit into any category, and are thus ungrouped.
             [Draw("Percentage which control point costs are reduced by techs: (default: 0.15)", DrawType.Slider, Max = 0, Min = 0.2)] public float ControlPointCostReduction = 0.15f;

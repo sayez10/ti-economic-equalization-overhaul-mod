@@ -23,15 +23,15 @@ namespace TIEconomyMod
             if (!Main.enabled) { return true; }
 
             // Settings values are cached for readability.
-            float baseUnrest = Main.settings.oppressionInvestment.baseUnrest;
-            float unrestPenaltyMultPerDemocracyLevel = Main.settings.oppressionInvestment.unrestPenaltyMultPerDemocracyLevel;
+            const float BASE_UNREST = -2.5f;
+            const float UNREST_PENALTY_MULT_PER_DEMOCRACY_LEVEL = 0.1f;
 
-            // VERY powerful for totalitarian nations...especially if they're rich. In practice, no country will get this close unless controlled by the player.
-            // Refer to EffectStrength() comments for explanation.
-            float baseEffect = Tools.EffectStrength(baseUnrest, __instance.population);
+            // VERY powerful for totalitarian nations... especially if they're rich. In practice, no country will get this close unless controlled by the player.
+            // Refer to EffectStrength() comments for explanation
+            float baseEffect = Tools.EffectStrength(BASE_UNREST, __instance.population);
 
             // Effect is reduced by Democracy, -10% per full point. At full Democracy, Oppression does nothing to Unrest.
-            float adjustedEffect = baseEffect * (1f - (__instance.democracy * unrestPenaltyMultPerDemocracyLevel));
+            float adjustedEffect = baseEffect * (1f - (__instance.democracy * UNREST_PENALTY_MULT_PER_DEMOCRACY_LEVEL));
 
             // For whatever reason, vanilla code explicitly disallows a value that'd go under 0. I'm playing it safe by doing that too.
             __result = 0f - Mathf.Min(__instance.unrest, baseEffect);
