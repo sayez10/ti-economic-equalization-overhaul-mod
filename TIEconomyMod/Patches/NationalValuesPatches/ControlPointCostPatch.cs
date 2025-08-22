@@ -40,7 +40,7 @@ namespace TIEconomyMod
                 // I changed the reduction in control point cost to a flat multiplier. To compensate, I also increased the reduced control point cost. I may modify it further later.
                 float mult = 1 - (Main.settings.ControlPointCostReduction * numTechs);
 
-                // __result = (float)Mathd.Pow(baseControlCost, power) / __instance.numControlPoints; // Total cost is split across the control points
+                // __result = Mathf.Pow(baseControlCost, power) / __instance.numControlPoints; // Total cost is split across the control points
 
                 // Total cost is split across the control points
                 __result = (baseControlCost * mult) / __instance.numControlPoints;

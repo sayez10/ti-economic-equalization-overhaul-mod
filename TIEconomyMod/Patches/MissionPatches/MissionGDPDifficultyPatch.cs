@@ -39,7 +39,7 @@ namespace TIEconomyMod
             if (nation != null)
             {
                 // This is the vanilla economyScore the country would have
-                float vanillaEcoScore = (float)Mathd.Pow(nation.economyScore * 100f, 0.33f);
+                float vanillaEcoScore = Mathf.Pow(nation.economyScore * 100f, 0.33f);
                 __result = vanillaEcoScore * TemplateManager.global.TIMissionModifier_TargetNationGDP_Multiplier;
             }
 
@@ -49,7 +49,6 @@ namespace TIEconomyMod
 
 
 
-        // Not gonna lie, I have ChatGPT to thank for much of this.
         public static TINationState YoinkObjectToNation(TIFactionState faction, TIGameState target)
         {
             // In case the developers decide to change ObjectToNation()'s name or parameters, a check is done to confirm the method was actually acquired.
