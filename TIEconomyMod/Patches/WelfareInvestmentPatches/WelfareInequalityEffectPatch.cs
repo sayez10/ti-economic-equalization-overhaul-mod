@@ -20,10 +20,10 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            float baseInequality = Main.settings.welfareInvestment.baseInequality;
+            const float BASE_INEQUALITY = -0.1f;
 
-            // Refer to EffectStrength() comments for explanation.
-            __result = Tools.EffectStrength(baseInequality, __instance.population);
+            // Refer to EffectStrength() comments for explanation
+            __result = Tools.EffectStrength(BASE_INEQUALITY, __instance.population);
 
 
             return false; // Skip original method
