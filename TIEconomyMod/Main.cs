@@ -80,23 +80,15 @@ namespace TIEconomyMod
             [Draw("IP crutch scaling aggressiveness: (default: 0.5)", DrawType.Slider, Max = 0, Min = 1.0, Precision = 1)] public float crutchAggressiveness = 0.5f;
         }
 
-        [DrawFields(DrawFieldMask.Public)]
-        public class ResearachProductionSettings
-        {
-            [Draw("Multiplier to overall research production: (default: 1.0)", Min = 0.0, Precision = 2)] public float researchOffset = 1.0f;
-            [Draw("1x bonus at per-capita GDP: (default: 20000.0)", Min = 1.0, Precision = 0)] public float baseResearchAtPCGDP = 20000.0f;
-            [Draw("Worst allowed penalty multiplier from low per-capita GDP: (default: 0.6)", DrawType.Slider, Min = 0.0, Max = 1.0, Precision = 2)] public float worstMalus = 0.6f;
-        }
-
         /// <summary>
         ///
         /// </summary>
         public class Settings : UnityModManager.ModSettings, IDrawable
         {
             [Draw("Investment Points", Collapsible = true)] public InvestmentPointsSettings investmentPoints = new InvestmentPointsSettings();
-            [Draw("Research Production", Collapsible = true)] public ResearachProductionSettings researchProduction = new ResearachProductionSettings();
 
-            // These settings don't neatly fit into any category, and are thus ungrouped.
+            [Draw("Multiplier to overall research production: (default: 1.0)", Min = 0.0, Precision = 2)] public float researchOffset = 1.0f;
+
             [Draw("Region upgrade/decolonize/cleanup threshold multiplier, whole number: (default: 5, requires restart)", Min = 1)] public int regionUpgradeThresholdMult = 5;
 
             public override void Save(UnityModManager.ModEntry modEntry)
