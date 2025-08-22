@@ -22,12 +22,11 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            // Settings values cached for readability.
-            float baseEducation = Main.settings.unityInvestment.baseEducation;
+            const float BASE_EDUCATION = -0.01f;
 
             // 1/10 effect of Knowledge priority.
             // Refer to EffectStrength() comments for explanation.
-            __result = Tools.EffectStrength(baseEducation, __instance.population);
+            __result = Tools.EffectStrength(BASE_EDUCATION, __instance.population);
 
 
             return false; // Skip original method

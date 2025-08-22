@@ -120,16 +120,6 @@ namespace TIEconomyMod
         }
 
         [DrawFields(DrawFieldMask.Public)]
-        public class UnityInvestmentSettings
-        {
-            [Draw("Base monthly cohesion change, at 100% IP investment and 1x per-capita GDP investment rate: (default: 1.0)", Min = 0.0, Precision = 2)] public float baseCohesion = 1.0f;
-            [Draw("Penalty to cohesion change as a multiplier, per level of education and democracy: (default: 0.025)", Min = 0.0, Precision = 3)] public float cohesionPenaltyMultPerEducationAndDemocracyLevel = 0.025f;
-            [Draw("Worst allowed penalty multiplier from high education and/or democracy level: (default: 0.5)", DrawType.Slider, Min = 0.0, Max = 1.0, Precision = 2)] public float worstMalus = 0.5f;
-            [Draw("Base monthly educcation change, at 100% IP investment and 1x per-capita GDP investment rate: (default: -0.01)", Max = 0.0, Precision = 3)] public float baseEducation = -0.01f;
-            [Draw("Multiplier to overall propaganda power: (default: 0.2)", Min = 0.0, Precision = 2)] public float propagandaOffset = 0.2f;
-        }
-
-        [DrawFields(DrawFieldMask.Public)]
         public class OppressionInvestmentSettings
         {
             [Draw("Base monthly unrest change, at 100% IP investment and 1x per-capita GDP investment rate: (default: -2.5)", Max = 0.0, Precision = 2)] public float baseUnrest = -2.5f;
@@ -163,7 +153,6 @@ namespace TIEconomyMod
             [Draw("Environment Investment", Collapsible = true)] public EnvironmentInvestmentSettings environmentInvestment = new EnvironmentInvestmentSettings();
             [Draw("Knowledge Investment", Collapsible = true)] public KnowledgeInvestmentSettings knowledgeInvestment = new KnowledgeInvestmentSettings();
             [Draw("Government Investment", Collapsible = true)] public GovernmentInvestmentSettings governmentInvestment = new GovernmentInvestmentSettings();
-            [Draw("Unity Investment", Collapsible = true)] public UnityInvestmentSettings unityInvestment = new UnityInvestmentSettings();
             [Draw("Oppression Investment", Collapsible = true)] public OppressionInvestmentSettings oppressionInvestment = new OppressionInvestmentSettings();
             [Draw("Funding Investment", Collapsible = true)] public FundingInvestmentSettings fundingInvestment = new FundingInvestmentSettings();
             [Draw("Military Investment", Collapsible = true)] public MilitaryInvestmentSettings militaryInvestment = new MilitaryInvestmentSettings();
