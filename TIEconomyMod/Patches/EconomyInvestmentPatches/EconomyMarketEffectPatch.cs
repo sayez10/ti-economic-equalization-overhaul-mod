@@ -20,12 +20,12 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            const float RESOURCE_MARKET_VALUE_OFFSET = 1f;
+            const float RESOURCE_MARKET_VALUE_MULT = 1f + 0.000001f;
 
             // Patches the small increase to metal and noble metal price that is triggered by every economy investment completion
-            // Expect 1500 vs vanilla's 200-400 economy completions a month, so value is 20% of the vanilla value
-            __instance.resourceMarketValues[FactionResource.Metals] *= 1f + UnityEngine.Random.Range(2E-06f, 4E-06f) * RESOURCE_MARKET_VALUE_OFFSET;
-            __instance.resourceMarketValues[FactionResource.NobleMetals] *= 1f + UnityEngine.Random.Range(1E-06f, 2E-06f) * RESOURCE_MARKET_VALUE_OFFSET;
+            // Substantially reduce the multiplier (in particular for non-noble metals) to avoid breaking the game due to the massively increased number of economy priority completions
+            __instance.resourceMarketValues[FactionResource.Metals] *= RESOURCE_MARKET_VALUE_MULT;
+            __instance.resourceMarketValues[FactionResource.NobleMetals] *= RESOURCE_MARKET_VALUE_MULT;
 
 
             return false; // Skip original method
