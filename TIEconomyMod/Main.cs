@@ -89,21 +89,6 @@ namespace TIEconomyMod
         }
 
         [DrawFields(DrawFieldMask.Public)]
-        public class WelfareInvestmentSettings
-        {
-            [Draw("Base monthly inequality reduction, at 100% IP investment and 1x per-capita GDP investment rate: (default: -0.1)", Max = 0.0f, Precision = 2)] public float baseInequality = -0.1f;
-        }
-
-        [DrawFields(DrawFieldMask.Public)]
-        public class EnvironmentInvestmentSettings
-        {
-            [Draw("Base sustainability change, at 100% IP investment and 1x per-capita GDP investment rate: (default: 0.1)", Min = 0.0, Precision = 2)] public float baseSustainability = 0.1f;
-            [Draw("Multiplicative boost to sustainability change, per level of sustainability: (default: 0.1)", Min = 0.0, Precision = 2)] public float sustainabilityMultPerSustainabilityLevel = 0.1f;
-            [Draw("Penalty to sustainability change, each time territory has been nuked: (default: 0.05)", Min = 0.0, Precision = 2)] public float penaltyPerNukedRegion = 0.05f;
-            [Draw("Minimum allowed sustainability change multiplier, regardless of how many regions are nuked: (default: 0.5)", DrawType.Slider, Min = 0.0, Max = 1.0, Precision = 2)] public float maxPenaltyFromNukedRegions = 0.5f;
-        }
-
-        [DrawFields(DrawFieldMask.Public)]
         public class KnowledgeInvestmentSettings
         {
             [Draw("Base monthly education change, at 100% IP investment and 1x per-capita GDP investment rate: (default: 0.1)", Min = 0.0, Precision = 2)] public float baseEducation = 0.1f;
@@ -129,8 +114,6 @@ namespace TIEconomyMod
         {
             [Draw("Investment Points", Collapsible = true)] public InvestmentPointsSettings investmentPoints = new InvestmentPointsSettings();
             [Draw("Research Production", Collapsible = true)] public ResearachProductionSettings researchProduction = new ResearachProductionSettings();
-            [Draw("Welfare Investment", Collapsible = true)] public WelfareInvestmentSettings welfareInvestment = new WelfareInvestmentSettings();
-            [Draw("Environment Investment", Collapsible = true)] public EnvironmentInvestmentSettings environmentInvestment = new EnvironmentInvestmentSettings();
             [Draw("Knowledge Investment", Collapsible = true)] public KnowledgeInvestmentSettings knowledgeInvestment = new KnowledgeInvestmentSettings();
             [Draw("Oppression Investment", Collapsible = true)] public OppressionInvestmentSettings oppressionInvestment = new OppressionInvestmentSettings();
 
