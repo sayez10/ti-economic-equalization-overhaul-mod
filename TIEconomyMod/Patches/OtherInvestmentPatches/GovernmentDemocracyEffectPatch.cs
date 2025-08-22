@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace TIEconomyMod
 {
-    [HarmonyPatch(typeof(TINationState), "governmentPriorityDemocracyChange", MethodType.Getter)] /* Was 'knowledgePriorityDemocracyChange', but it looks like the method was renamed to 'governmentPriorityDemocracyChange'. Seems to work. */
+    [HarmonyPatch(typeof(TINationState), "governmentPriorityDemocracyChange", MethodType.Getter)]
     public static class KnowledgeDemocracyEffectPatch
     {
         [HarmonyPrefix]
@@ -22,15 +22,14 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            // Settings values are cached for readability.
-            float baseDemocracy = Main.settings.governmentInvestment.baseDemocracy;
-            float democracyMultPerEducationLevel = Main.settings.governmentInvestment.democracyMultPerEducationLevel;
+            const float BASE_DEMOCRACY = 0.05f;
+            const float DEMOCRACY_MULT_PER_EDUCATION_LEVEL = 0.1f;
 
             // Refer to EffectStrength() comments for explanation.
-            float baseEffect = Tools.EffectStrength(baseDemocracy, __instance.population);
+            float baseEffect = Tools.EffectStrength(BASE_DEMOCRACY, __instance.population);
 
             // Each full point of Education gives +10% Democracy score.
-            float educationMult = 1f + (__instance.education * democracyMultPerEducationLevel);
+            float educationMult = 1f + (__instance.education * DEMOCRACY_MULT_PER_EDUCATION_LEVEL);
 
             __result = baseEffect * educationMult;
 

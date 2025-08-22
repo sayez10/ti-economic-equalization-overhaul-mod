@@ -113,13 +113,6 @@ namespace TIEconomyMod
         }
 
         [DrawFields(DrawFieldMask.Public)]
-        public class GovernmentInvestmentSettings
-        {
-            [Draw("Base monthly democracy change, at 100% IP investment and 1x per-capita GDP investment rate: (default: 0.05)", Min = 0.0, Precision = 2)] public float baseDemocracy = 0.05f;
-            [Draw("Multiplicative boost to democracy change, per level of education: (default: 0.1)", Min = 0.0, Precision = 2)] public float democracyMultPerEducationLevel = 0.1f;
-        }
-
-        [DrawFields(DrawFieldMask.Public)]
         public class OppressionInvestmentSettings
         {
             [Draw("Base monthly unrest change, at 100% IP investment and 1x per-capita GDP investment rate: (default: -2.5)", Max = 0.0, Precision = 2)] public float baseUnrest = -2.5f;
@@ -127,19 +120,6 @@ namespace TIEconomyMod
             [Draw("Base monthly cohesion change, at 100% IP investment, 1x per-capita GDP investment rate, and level 10 democracy: (default: -1.0)", Min = 1.0, Precision = 2)] public float baseCohesion = -1.0f;
             [Draw("The democracy level which the cohesion loss effect begins to take effect. If set to 10, cohesion loss is disabled: (default: 5.0)", DrawType.Slider, Min = 0.0, Max = 10.0, Precision = 1)] public float minDemocracyForCohesionChange = 5.0f;
             [Draw("Base monthly democracy change, at 100% IP investment and 1x per-capita GDP investment rate: (default: -0.0175)", Max = 0.0, Precision = 4)] public float baseDemocracy = -0.0175f;
-        }
-
-        [DrawFields(DrawFieldMask.Public)]
-        public class FundingInvestmentSettings
-        {
-            [Draw("Flat increase to a country's monthly money resource output, per investment point: (default: 15.0)", Min = 0.0, Precision = 1)] public float fundingAmount = 15.0f;
-        }
-
-        [DrawFields(DrawFieldMask.Public)]
-        public class MilitaryInvestmentSettings
-        {
-            [Draw("Base miltech change, at 100% IP investment and 1x per-capita GDP investment rate: (default: 0.025)", Min = 0.0, Precision = 3)] public float baseMiltech = 0.025f;
-            [Draw("Extra boost to miltech change as a multiplier, per level behind the global limit: (default: 0.5)", Min = 0.0, Precision = 2)] public float miltechPerMiltechLevelBehind = 0.5f;
         }
 
         /// <summary>
@@ -152,10 +132,7 @@ namespace TIEconomyMod
             [Draw("Welfare Investment", Collapsible = true)] public WelfareInvestmentSettings welfareInvestment = new WelfareInvestmentSettings();
             [Draw("Environment Investment", Collapsible = true)] public EnvironmentInvestmentSettings environmentInvestment = new EnvironmentInvestmentSettings();
             [Draw("Knowledge Investment", Collapsible = true)] public KnowledgeInvestmentSettings knowledgeInvestment = new KnowledgeInvestmentSettings();
-            [Draw("Government Investment", Collapsible = true)] public GovernmentInvestmentSettings governmentInvestment = new GovernmentInvestmentSettings();
             [Draw("Oppression Investment", Collapsible = true)] public OppressionInvestmentSettings oppressionInvestment = new OppressionInvestmentSettings();
-            [Draw("Funding Investment", Collapsible = true)] public FundingInvestmentSettings fundingInvestment = new FundingInvestmentSettings();
-            [Draw("Military Investment", Collapsible = true)] public MilitaryInvestmentSettings militaryInvestment = new MilitaryInvestmentSettings();
 
             // These settings don't neatly fit into any category, and are thus ungrouped.
             [Draw("Percentage which control point costs are reduced by techs: (default: 0.15)", DrawType.Slider, Max = 0, Min = 0.2)] public float ControlPointCostReduction = 0.15f;

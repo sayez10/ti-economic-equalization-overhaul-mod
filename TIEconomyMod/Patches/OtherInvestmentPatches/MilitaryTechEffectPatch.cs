@@ -24,18 +24,16 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method.
             if (!Main.enabled) { return true; }
 
-            // Settings values are cached for readability.
-            float baseMiltech = Main.settings.militaryInvestment.baseMiltech;
-            float miltechPerMiltechLevelBehind = Main.settings.militaryInvestment.miltechPerMiltechLevelBehind;
+            const float BASE_MILTECH = 0.025f;
+            const float MILTECH_PER_MILTECH_LEVEL_BEHIND = 0.5f;
 
             // Refer to EffectStrength() comments for explanation.
-            float baseEffect = Tools.EffectStrength(baseMiltech, __instance.population);
-
+            float baseEffect = Tools.EffectStrength(BASE_MILTECH, __instance.population);
 
             // Additionally, add a catch-up multiplier dependent on how far behind the max tech level the country is
             // A bonus 50% tech gain per full tech level behind the global max
             // Max to 1 is to prevent weirdness if somehow mil tech is above max mil tech
-            float catchUpMult = Mathf.Max(1.0f + (miltechPerMiltechLevelBehind * (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel)), 1.0f);
+            float catchUpMult = Mathf.Max(1.0f + (MILTECH_PER_MILTECH_LEVEL_BEHIND * (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel)), 1.0f);
 
             __result = baseEffect * catchUpMult;
 
