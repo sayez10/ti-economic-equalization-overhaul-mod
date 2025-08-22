@@ -29,21 +29,16 @@ namespace TIEconomyMod
                 // Total cost to control the entire nation. 1 cost per 1 IP
                 float baseControlCost = __instance.economyScore;
 
-                // Number of control-cost-reducing techs that have been researched
-                int numTechs = 0;
-                if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("ArrivalInternationalRelations")) numTechs++;
-                if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("UnityMovements")) numTechs++;
-                if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("GreatNations")) numTechs++;
-                if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("ArrivalGovernance")) numTechs++;
-                if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("Accelerando")) numTechs++;
-
-                // I changed the reduction in control point cost to a flat multiplier. To compensate, I also increased the reduced control point cost. I may modify it further later.
-                float mult = 1 - (Main.settings.ControlPointCostReduction * numTechs);
-
-                // __result = Mathf.Pow(baseControlCost, power) / __instance.numControlPoints; // Total cost is split across the control points
+                // Reverted the change from a power function to a flat multiplicative control point cost reduction
+                // Also removed the control point cost reducing effect of five global technologies
+                // Instead reduced the exponent to further reduce the control cost, in particular of large/rich nations
+                // These now have a much high IP/CP ratio and are much more efficient to control that multiple small nations
+                // Effects: Unification is clearly more efficient now and the global techs to reduce CP cost aren't critical anymore
+                const float COST_DECAY_EXPONENT = 0.7f;
+                const float MULT = 2f;
 
                 // Total cost is split across the control points
-                __result = (baseControlCost * mult) / __instance.numControlPoints;
+                __result = Mathf.Pow(baseControlCost, COST_DECAY_EXPONENT) * MULT / __instance.numControlPoints;
             }
         }
     }

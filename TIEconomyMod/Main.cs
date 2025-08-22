@@ -97,7 +97,6 @@ namespace TIEconomyMod
             [Draw("Research Production", Collapsible = true)] public ResearachProductionSettings researchProduction = new ResearachProductionSettings();
 
             // These settings don't neatly fit into any category, and are thus ungrouped.
-            [Draw("Percentage which control point costs are reduced by techs: (default: 0.15)", DrawType.Slider, Max = 0, Min = 0.2)] public float ControlPointCostReduction = 0.15f;
             [Draw("Region upgrade/decolonize/cleanup threshold multiplier, whole number: (default: 5, requires restart)", Min = 1)] public int regionUpgradeThresholdMult = 5;
 
             public override void Save(UnityModManager.ModEntry modEntry)
