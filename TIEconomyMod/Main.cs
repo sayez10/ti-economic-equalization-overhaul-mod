@@ -89,15 +89,6 @@ namespace TIEconomyMod
         }
 
         [DrawFields(DrawFieldMask.Public)]
-        public class KnowledgeInvestmentSettings
-        {
-            [Draw("Base monthly education change, at 100% IP investment and 1x per-capita GDP investment rate: (default: 0.1)", Min = 0.0, Precision = 2)] public float baseEducation = 0.1f;
-            [Draw("Maximum boost to education change, at education level 0: (default: 4.0)", Min = 0.0, Precision = 1)] public float maxScaleFactor = 4.0f;
-            [Draw("Education growth diminishment multiplier: (default: 0.87)", DrawType.Slider, Min = 0.0, Max = 1.0, Precision = 2)] public float decayFactor = 0.87f;
-            [Draw("Base monthly cohesion change, at 100% IP investment and 1x per-capita GDP investment rate: (default: 0.1)", Min = 0.0, Precision = 2)] public float baseCohesion = 0.1f;
-        }
-
-        [DrawFields(DrawFieldMask.Public)]
         public class OppressionInvestmentSettings
         {
             [Draw("Base monthly unrest change, at 100% IP investment and 1x per-capita GDP investment rate: (default: -2.5)", Max = 0.0, Precision = 2)] public float baseUnrest = -2.5f;
@@ -114,7 +105,6 @@ namespace TIEconomyMod
         {
             [Draw("Investment Points", Collapsible = true)] public InvestmentPointsSettings investmentPoints = new InvestmentPointsSettings();
             [Draw("Research Production", Collapsible = true)] public ResearachProductionSettings researchProduction = new ResearachProductionSettings();
-            [Draw("Knowledge Investment", Collapsible = true)] public KnowledgeInvestmentSettings knowledgeInvestment = new KnowledgeInvestmentSettings();
             [Draw("Oppression Investment", Collapsible = true)] public OppressionInvestmentSettings oppressionInvestment = new OppressionInvestmentSettings();
 
             // These settings don't neatly fit into any category, and are thus ungrouped.
