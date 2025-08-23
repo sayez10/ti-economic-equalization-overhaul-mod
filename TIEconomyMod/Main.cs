@@ -76,8 +76,6 @@ namespace TIEconomyMod
         {
             [Draw("IP per [n] billion GDP: (default: 100.0)", Min = 1.0, Precision = 1)] public double IPPerGDPBillions = 100.0;
             [Draw("1x investment scaling at per-capita GDP: (default: 30000.0)", Min = 1.0, Precision = 0)] public float baseEffectStrengthPCGDP = 30000.0f;
-            [Draw("IP crutch up to base IP/month of: (default: 50.0)", Min = 0.0, Precision = 1)] public float crutchLimit = 50.0f;
-            [Draw("IP crutch scaling aggressiveness: (default: 0.5)", DrawType.Slider, Max = 0, Min = 1.0, Precision = 1)] public float crutchAggressiveness = 0.5f;
         }
 
         /// <summary>
