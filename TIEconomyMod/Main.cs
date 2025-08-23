@@ -87,7 +87,7 @@ namespace TIEconomyMod
         {
             [Draw("Investment Points", Collapsible = true)] public InvestmentPointsSettings investmentPoints = new InvestmentPointsSettings();
 
-            [Draw("Multiplier to overall research production: (default: 1.0)", Min = 0.0, Precision = 2)] public float researchOffset = 1.0f;
+            [Draw("Multiplier to overall research production: (default: 1.0)", Min = 0.0, Precision = 2)] public float researchMult = 1.0f;
 
             [Draw("Region upgrade/decolonize/cleanup threshold multiplier, whole number: (default: 5, requires restart)", Min = 1)] public int regionUpgradeThresholdMult = 5;
 

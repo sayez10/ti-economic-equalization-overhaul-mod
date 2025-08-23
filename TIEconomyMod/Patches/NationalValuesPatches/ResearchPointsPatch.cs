@@ -28,36 +28,32 @@ namespace TIEconomyMod
             // So I'm gonna go with old faithful: Guess and check some values until it's where I want it to be.
 
             // Settings values cached for readability.
-            float researchOffset = Main.settings.researchOffset;
+            float researchMult = Main.settings.researchMult;
 
-            // Increased vanilla 0.00225 multiplier to 0.00370
-            const float BASE_RESEARCH = 0.00370f;
+            const float BASE_RESEARCH = 0.0000002f;
 
-            const float BASE_RESEARCH_AT_PCGDP = 20000f;
-            const float MALUS_CAP = 0.6f;
-
-            // Removed vanilla better-than-linear scaling.
-            float popMultiplier = __instance.population_Millions;
+            // Linear scaling with population
+            float popMult = __instance.population_Millions;
 
             // Vanilla power 2
             float educationEffect = __instance.education * __instance.education;
 
-            // Floored at 60% research at 12000 gdp per capita, 200% at 40k, and indefinitely upward
-            float gdpPerCapEffect = Mathf.Max(__instance.perCapitaGDP / BASE_RESEARCH_AT_PCGDP, MALUS_CAP);
+            // Linear scaling with GDP
+            float gdpPerCapEffect = __instance.perCapitaGDP;
 
-            // Vanilla, gives about 60% boost at 10 democracy, 40% penalty at 0
-            float democracyEffect = Mathf.Pow(Mathf.Max(__instance.democracy, 0.1f), 0.2f);
+            // Get 50% bonus at 10 democracy, 50% penalty at 0
+            float democracyEffect = 0.5f + (__instance.democracy * 0.1f);;
 
-            // Vanilla, get 25% research boost at 5 cohesion, 25% penalty at 0 or 10 cohesion
-            float cohesionEffect = (1.25f - Mathf.Abs(__instance.cohesion - 5f) * 0.1f);
+            // Vanilla, get 25% research bonus at 5 cohesion, 25% penalty at 0 or 10 cohesion
+            float cohesionEffect = 1.25f - (Mathf.Abs(__instance.cohesion - 5f) * 0.1f);
 
-            // Vanilla, get 100% research at <=2 unrest, up to 80% penalty at 10 unrest
-            float unrestEffect = (1f - Mathf.Max(__instance.unrest - 2f, 0f) * 0.1f);
+            // Vanilla, get 100% research at 0 unrest, increasing quadratically to 0% at 10 unrest
+            float unrestEffect = 1f - (__instance.unrest * __instance.unrest * 0.01f);
 
-            // Vanilla, up to 25% boost at 25 councilor science score
-            float advisorBonus = (1f + __instance.adviserScienceBonus);
+            // Vanilla, up to 25% bonus at 25 councilor science score
+            float advisorBonus = 1f + __instance.adviserScienceBonus;
 
-            __result = BASE_RESEARCH * popMultiplier * educationEffect * gdpPerCapEffect * democracyEffect * cohesionEffect * unrestEffect * advisorBonus * researchOffset;
+            __result = BASE_RESEARCH * popMult * educationEffect * gdpPerCapEffect * democracyEffect * cohesionEffect * unrestEffect * advisorBonus * researchMult;
 
 
             return false; // Skip original method
