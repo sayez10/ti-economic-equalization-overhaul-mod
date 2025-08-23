@@ -76,8 +76,8 @@ namespace TIEconomyMod
         public class Settings : UnityModManager.ModSettings, IDrawable
         {
             [Draw("GDP in billions per IP: (default: 100.0; lower = more IPs)", Min = 1.0, Precision = 1)] public double GDPBillionsPerIP = 100f;
-
-            [Draw("Multiplier to research production: (default: 1.0; higher = more research)", Min = 0.0, Precision = 2)] public float researchMult = 1f;
+            [Draw("Multiplier for research production: (default: 1.0; higher = more research)", Min = 0.0, Precision = 2)] public float researchMult = 1f;
+            [Draw("Multiplier for control points cost: (default: 4.0; lower = lower CP cost)", Min = 0.1, Precision = 2)] public float controlPointCostMult = 4f;
 
             public override void Save(UnityModManager.ModEntry modEntry)
             {

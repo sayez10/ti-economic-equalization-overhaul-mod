@@ -26,6 +26,9 @@ namespace TIEconomyMod
             // Will be 0 and should stay 0 if the nation's controller is the aliens
             if (__result != 0)
             {
+                // Settings values are cached for readability
+                float controlPointCostMult = Main.settings.controlPointCostMult;
+
                 // Total cost to control the entire nation. 1 cost per 1 IP
                 float baseControlCost = __instance.economyScore;
 
@@ -35,10 +38,9 @@ namespace TIEconomyMod
                 // These now have a much high IP/CP ratio and are much more efficient to control that multiple small nations
                 // Effects: Unification is clearly more efficient now and the global techs to reduce CP cost aren't critical anymore
                 const float COST_DECAY_EXPONENT = 0.7f;
-                const float MULT = 4f;
 
                 // Total cost is split across the control points
-                __result = Mathf.Pow(baseControlCost, COST_DECAY_EXPONENT) * MULT / __instance.numControlPoints;
+                __result = Mathf.Pow(baseControlCost, COST_DECAY_EXPONENT) * controlPointCostMult / __instance.numControlPoints;
             }
         }
     }
