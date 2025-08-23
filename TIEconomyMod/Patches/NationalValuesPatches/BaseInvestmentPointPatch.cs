@@ -22,11 +22,8 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            // Ex: 500 billion GDP / 100 billion = 5 IP/month
-            float baseIP = (float)(__instance.GDP / Tools.GDPPerIP);
-
-            // Use linear scaling
-            __result = baseIP;
+            // Linear scaling: E.g. 500 billion GDP / 100 billion = 5 IP/month
+            __result = (float)(__instance.GDP / Tools.GDPPerIP);
 
 
             return false; // Skip original method

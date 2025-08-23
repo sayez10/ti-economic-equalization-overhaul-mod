@@ -10,13 +10,12 @@ namespace TIEconomyMod
         // These values are dynamically calculated inside a function.
         // They're first calculated after the mod loads, and then whenever settings are changed.
         public static double GDPPerIP;
-        private static float theoreticalGDP;
-        private static float theoreticalPCGDP;
         private static float theoreticalPopulation;
 
         public static float EffectStrength(float idealGainPerMonth, float population)
         {
-            /* Calculates the effect strength for inverse population scaling.
+            /*
+             * Calculates the effect strength for inverse population scaling.
              *
              * A nation with 30k GDP per-capita will, if putting all of its focus on the relevant priority, increase a particular nation stat by [idealGainPerMonth].
              *
@@ -27,17 +26,17 @@ namespace TIEconomyMod
              * And so on.
              *
              * The effect strength you will see in-game will likely be much, much less, unless the nation generates less than 1 IP a month.
-             * */
-
-            /* The following reasoning is used in the below equation:
+             *
+             * The following reasoning is used in the below equation:
              *
              * Let's say the country has a GDP of 100 billion. They generate 1 IP per month.
              * The GDP per capita is 30k. Therefore, they have a population of 3.33 million.
              *
              * This then is divided by the nation's population to get the final effect strength.
-             * */
-
-            // TLDR: If a nation has 30k GDP per capita, a stat will be changed by [idealGainPerMonth] a month.
+             *
+             *
+             * TLDR: If a nation has 30k GDP per capita, a stat will be changed by [idealGainPerMonth] a month.
+             */
 
             float effectStrength = idealGainPerMonth * theoreticalPopulation;
 
@@ -47,13 +46,11 @@ namespace TIEconomyMod
         public static void Recalculate()
         {
             // 1 billion * setting value
-            GDPPerIP = 1000000000 * Main.settings.investmentPoints.IPPerGDPBillions;
+            GDPPerIP = 1000000000 * Main.settings.GDPBillionsPerIP;
 
             // These are declared outside of EffectStrength() because that function will be called several times. Also, it's readable IMO.
             // For an explanation as to why I did this, check the comments inside the function.
-            theoreticalGDP = (float)GDPPerIP; //1 IP
-            theoreticalPCGDP = Main.settings.investmentPoints.baseEffectStrengthPCGDP;
-            theoreticalPopulation = theoreticalGDP / theoreticalPCGDP;
+            theoreticalPopulation = (float)GDPPerIP / 30000f;
         }
     }
 }

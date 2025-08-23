@@ -70,22 +70,14 @@ namespace TIEconomyMod
             settings.Save(modEntry);
         }
 
-        // The following are settings fields.
-        [DrawFields(DrawFieldMask.Public)]
-        public class InvestmentPointsSettings
-        {
-            [Draw("IP per [n] billion GDP: (default: 100.0)", Min = 1.0, Precision = 1)] public double IPPerGDPBillions = 100.0;
-            [Draw("1x investment scaling at per-capita GDP: (default: 30000.0)", Min = 1.0, Precision = 0)] public float baseEffectStrengthPCGDP = 30000.0f;
-        }
-
         /// <summary>
         ///
         /// </summary>
         public class Settings : UnityModManager.ModSettings, IDrawable
         {
-            [Draw("Investment Points", Collapsible = true)] public InvestmentPointsSettings investmentPoints = new InvestmentPointsSettings();
+            [Draw("GDP in billions per IP: (default: 100.0; lower = more IPs)", Min = 1.0, Precision = 1)] public double GDPBillionsPerIP = 100f;
 
-            [Draw("Multiplier to overall research production: (default: 1.0)", Min = 0.0, Precision = 2)] public float researchMult = 1.0f;
+            [Draw("Multiplier to research production: (default: 1.0; higher = more research)", Min = 0.0, Precision = 2)] public float researchMult = 1f;
 
             [Draw("Region upgrade/decolonize/cleanup threshold multiplier, whole number: (default: 5, requires restart)", Min = 1)] public int regionUpgradeThresholdMult = 5;
 
