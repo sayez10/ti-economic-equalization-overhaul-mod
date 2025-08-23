@@ -1,3 +1,19 @@
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto generated files
+mono_crash.*
+
+# Visual Studio cache/options directory
 /.vs
 /TIEconomyMod/.vs
+
+# Build artifacts
 /TIEconomyMod/obj
