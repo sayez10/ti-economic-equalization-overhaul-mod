@@ -23,7 +23,7 @@ namespace TIEconomyMod
             if (!Main.enabled) { return true; }
 
             const float BASE_COHESION = 1f;
-            const float WORST_MALUS = 0.5f;
+            const float MALUS_LIMIT = 0.5f;
             const float COHESION_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL = 0.025f;
 
             // Refer to EffectStrength() comments for explanation
@@ -31,7 +31,7 @@ namespace TIEconomyMod
 
             // Democracy and Education incurs a 2.5% malus per point, up to -50%
             // A combined score of 15 causes the max effect
-            float penaltyMult = Mathf.Min(WORST_MALUS, 1f - ((__instance.education + __instance.democracy) * COHESION_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL));
+            float penaltyMult = Mathf.Min(MALUS_LIMIT, 1f - ((__instance.education + __instance.democracy) * COHESION_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL));
 
             __result = baseEffect * penaltyMult;
 
