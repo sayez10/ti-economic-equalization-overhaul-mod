@@ -18,7 +18,6 @@ namespace TIEconomyMod
     {
         // Refer to EconomyRegionEffectPatch.cs for specifics on everything that's happening here.
 
-        public static int baseDecolonizeThreshold = 1000;
         public static int decolonizeThreshold;
         public static readonly FieldInfo getDecolonizeThreshold = AccessTools.Field(typeof(WelfareRegionEffectPatch), nameof(decolonizeThreshold));
 
@@ -28,7 +27,7 @@ namespace TIEconomyMod
             // Refer to PriorityTooltipPatch.cs for details.
             foreach (var instruction in instructions)
             {
-                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == baseDecolonizeThreshold)
+                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_DECOLONIZE_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getDecolonizeThreshold);
                 }
@@ -41,7 +40,7 @@ namespace TIEconomyMod
 
         public static void Recalculate()
         {
-            decolonizeThreshold = (Main.enabled) ? baseDecolonizeThreshold * Main.settings.regionUpgradeThresholdMult : baseDecolonizeThreshold;
+            decolonizeThreshold = (Main.enabled) ? Tools.BASE_DECOLONIZE_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.BASE_DECOLONIZE_THRESHOLD;
         }
     }
 }

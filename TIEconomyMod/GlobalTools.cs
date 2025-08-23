@@ -7,6 +7,15 @@ namespace TIEconomyMod
     // This is a helper class used to streamline things, and centralize important variables.
     public static class Tools
     {
+        // The base threshold is stored as its own variable to allow quick fixing if the devs change the hardcoded requirement
+        public const int BASE_OIL_THRESHOLD = 500;
+        public const int BASE_MINING_THRESHOLD = 750;
+        public const int BASE_ECONOMIC_THRESHOLD = 1200;
+        public const int BASE_DECOLONIZE_THRESHOLD = 1000;
+        public const int BASE_CLEANUP_THRESHOLD = 100;
+
+        public const int REGION_UPGRADE_THRESHOLD_MULT = 5;
+
         // These values are dynamically calculated inside a function.
         // They're first calculated after the mod loads, and then whenever settings are changed.
         public static double GDPPerIP;

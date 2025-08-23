@@ -26,23 +26,23 @@ namespace TIEconomyMod
             // Refer to EconomyRegionEffectPatch.cs for specifics on what's happening here.
             foreach (var instruction in instructions)
             {
-                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == EconomyRegionEffectPatch.baseOilThreshold)
+                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_OIL_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, EconomyRegionEffectPatch.getOilThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == EconomyRegionEffectPatch.baseMiningThreshold)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_MINING_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, EconomyRegionEffectPatch.getMiningThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == EconomyRegionEffectPatch.baseEconomicThreshold)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_ECONOMIC_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, EconomyRegionEffectPatch.getEconomicThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == WelfareRegionEffectPatch.baseDecolonizeThreshold)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_DECOLONIZE_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, WelfareRegionEffectPatch.getDecolonizeThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == EnvironmentRegionEffectPatch.baseCleanupThreshold)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_CLEANUP_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, EnvironmentRegionEffectPatch.getCleanupThreshold);
                 }

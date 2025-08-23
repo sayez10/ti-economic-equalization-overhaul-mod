@@ -18,7 +18,6 @@ namespace TIEconomyMod
     {
         // Refer to EconomyRegionEffectPatch.cs for specifics on everything that's happening here.
 
-        public static int baseCleanupThreshold = 100;
         public static int cleanupThreshold;
         public static readonly FieldInfo getCleanupThreshold = AccessTools.Field(typeof(EnvironmentRegionEffectPatch), nameof(cleanupThreshold));
 
@@ -28,7 +27,7 @@ namespace TIEconomyMod
             // Refer to PriorityTooltipPatch.cs for details.
             foreach (var instruction in instructions)
             {
-                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == baseCleanupThreshold)
+                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_CLEANUP_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getCleanupThreshold);
                 }
@@ -41,7 +40,7 @@ namespace TIEconomyMod
 
         public static void Recalculate()
         {
-            cleanupThreshold = (Main.enabled) ? baseCleanupThreshold * Main.settings.regionUpgradeThresholdMult : baseCleanupThreshold;
+            cleanupThreshold = (Main.enabled) ? Tools.BASE_CLEANUP_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.BASE_CLEANUP_THRESHOLD;
         }
     }
 }

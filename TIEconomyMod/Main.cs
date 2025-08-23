@@ -79,8 +79,6 @@ namespace TIEconomyMod
 
             [Draw("Multiplier to research production: (default: 1.0; higher = more research)", Min = 0.0, Precision = 2)] public float researchMult = 1f;
 
-            [Draw("Region upgrade/decolonize/cleanup threshold multiplier, whole number: (default: 5, requires restart)", Min = 1)] public int regionUpgradeThresholdMult = 5;
-
             public override void Save(UnityModManager.ModEntry modEntry)
             {
                 Save(this, modEntry);

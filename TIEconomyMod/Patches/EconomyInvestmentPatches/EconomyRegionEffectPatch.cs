@@ -16,11 +16,6 @@ namespace TIEconomyMod
     [HarmonyPatch(typeof(TINationState), "OnEconomyPriorityComplete")]
     public static class EconomyRegionEffectPatch
     {
-        // The base threshold is stored as its own variable to allow quick fixing if the devs change the hardcoded requirement.
-        public static int baseOilThreshold = 500;
-        public static int baseMiningThreshold = 750;
-        public static int baseEconomicThreshold = 1200;
-
         // Rather than using a 'property' variable, whose value is basically refreshed each time it's called,
         // it's instead refreshed only when mod settings are changed. In other words, they're cached.
         public static int oilThreshold;
@@ -40,15 +35,15 @@ namespace TIEconomyMod
             // Those read-only variables
             foreach (var instruction in instructions)
             {
-                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == baseOilThreshold)
+                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_OIL_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getOilThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == baseMiningThreshold)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_MINING_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getMiningThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == baseEconomicThreshold)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_ECONOMIC_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getEconomicThreshold);
                 }
@@ -65,9 +60,9 @@ namespace TIEconomyMod
         {
             // If the mod is disabled, the vanilla value is inserted instead.
             // This allows for the mod to be fully disabled during runtime.
-            oilThreshold = (Main.enabled) ? baseOilThreshold * Main.settings.regionUpgradeThresholdMult : baseOilThreshold;
-            miningThreshold = (Main.enabled) ? baseMiningThreshold * Main.settings.regionUpgradeThresholdMult : baseMiningThreshold;
-            economicThreshold = (Main.enabled) ? baseEconomicThreshold * Main.settings.regionUpgradeThresholdMult : baseEconomicThreshold;
+            oilThreshold = (Main.enabled) ? Tools.BASE_OIL_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.BASE_OIL_THRESHOLD;
+            miningThreshold = (Main.enabled) ? Tools.BASE_MINING_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.BASE_MINING_THRESHOLD;
+            economicThreshold = (Main.enabled) ? Tools.BASE_ECONOMIC_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.BASE_ECONOMIC_THRESHOLD;
         }
     }
 }
