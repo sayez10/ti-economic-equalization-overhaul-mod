@@ -49,9 +49,8 @@ namespace TIEconomyMod
              *
              * Neither I nor the original author yet understand what's going on with propaganda enough to understand how it scales with population.
              * The original author disabled it, but I didn't like that.
-             * For now, I'm tacking on a x0.2 multiplier until I can understand what's going on there.
              */
-            const float BASE_PROPAGANDA = -0.025f;
+            const float BASE_PROPAGANDA = -0.1f;
             float propagandaEffect = (__instance.education + __instance.democracy) * BASE_PROPAGANDA;
 
             foreach (TIFactionState item in __instance.FactionsWithControlPoint)

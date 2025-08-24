@@ -23,7 +23,7 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_DEMOCRACY = -0.02f;
+            const float BASE_DEMOCRACY = -0.1f;
 
             __result = Tools.EffectStrength(BASE_DEMOCRACY, __instance.population);
 

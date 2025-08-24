@@ -22,11 +22,10 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float FUNDING_AMOUNT = 15f;
+            const float FUNDING_AMOUNT = 100f;
 
-            // Spoils gives a instant funding of around 60 money, at the cost of a fair bit of greenhouse gas and half an investment of welfare in inequality
-            // It seems balanced to make the monetary benefit of a funding investment be about equal to that of a spoils investment after a period of 20 game years
-            // The funding gained from a funding investment is annual, so an annual income of 15 money is equal to a spoils investment (about 300-400 money) after 20 years
+            // Spoils gives a instant funding of about 300-400 money, at the cost of a fair bit of greenhouse gas and half an investment of welfare in inequality
+            // The funding gained from a funding investment is annual, so an annual income of 100 money is equal to a typical spoils completion (about 300-500 money) after ~4 years
             __result = FUNDING_AMOUNT;
 
 

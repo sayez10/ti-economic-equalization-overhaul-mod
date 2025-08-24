@@ -23,15 +23,15 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_MONEY = 60f;
+            const float BASE_MONEY = 150;
             const float MONEY_MULT_PER_RESOURCE_REGION = 0.15f;
-            const float MAX_MULT_FROM_LOW_DEMOCRACY = 0.3f;
+            const float MONEY_MULT_FROM_LOW_DEMOCRACY = 0.1f;
 
             // Add money per resource region
             float resourceRegionsMult = 1f + (__instance.currentResourceRegions * MONEY_MULT_PER_RESOURCE_REGION);
 
-            // Up to 30% extra money at 0 democracy, 0% extra at 10 democracy
-            float democracyMult = 1f + MAX_MULT_FROM_LOW_DEMOCRACY - (__instance.democracy * MAX_MULT_FROM_LOW_DEMOCRACY * 0.1f);
+            // Up to 100% extra money at 0 democracy, 0% extra at 10 democracy
+            float democracyMult = 1f + ((10f - __instance.democracy) * MONEY_MULT_FROM_LOW_DEMOCRACY);
 
             __result = BASE_MONEY * resourceRegionsMult * democracyMult;
 
