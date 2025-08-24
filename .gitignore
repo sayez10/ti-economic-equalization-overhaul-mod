@@ -15,6 +15,11 @@ mono_crash.*
 /.vs
 /TIEconomyMod/.vs
 
+# vim/nvim work files
+*~
+.*.swp
+.*.un~
+
 # Build artifacts
 /TIEconomyMod/bin
 /TIEconomyMod/obj
