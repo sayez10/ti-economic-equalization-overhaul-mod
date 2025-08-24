@@ -54,7 +54,7 @@ namespace TIEconomyMod
             // As vanilla, up to 25% bonus at 25 councilor science score
             float advisorBonus = 1f + __instance.adviserScienceBonus;
 
-            __result = BASE_RESEARCH * popMult * educationEffect * gdpPerCapEffect * democracyEffect * cohesionEffect * unrestEffect * advisorBonus * researchMult;
+            __result = BASE_RESEARCH * researchMult * popMult * educationEffect * gdpPerCapEffect * democracyEffect * cohesionEffect * unrestEffect * advisorBonus;
 
 
             return false; // Skip original method

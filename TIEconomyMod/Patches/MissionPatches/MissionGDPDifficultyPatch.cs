@@ -29,13 +29,10 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            if (target == null)
-            {
-                __result = 0f;
-                return false; // End the overwrite here, skip original method.
-            }
-
             __result = 0f;
+
+            // End the overwrite here, skip original method
+            if (target == null) { return false; }
 
             TINationState nation = YoinkObjectToNation(attackingCouncilor.faction, target);
             if (nation != null)
