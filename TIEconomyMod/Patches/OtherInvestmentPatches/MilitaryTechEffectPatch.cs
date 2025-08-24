@@ -26,23 +26,22 @@ namespace TIEconomyMod
             if (!Main.enabled) { return true; }
 
             const float BASE_MILITARY = 0.001f;
-            const float MILITARY_MALUS_PER_ARMY_AND_NAVY = -0.00005f;
-            const float MILITARY_MALUS_LIMIT = -0.0005f;
             const float MILITARY_PER_MILITARY_LEVEL_BEHIND = 0.5f;
             const float MILITARY_MULT_PER_EDUCATION_LEVEL = 0.1f;
 
-            // FIXME: Formula is too simplistic. Let malus grow asymptotically to the base miltech effect?
-            float armiesNumberEffect = Mathf.Max(MILITARY_MALUS_LIMIT, ((__instance.numStandardArmies + __instance.numNavies) * MILITARY_MALUS_PER_ARMY_AND_NAVY));
+            // Each full point of education gives +10% military score
+            float educationMult = 1f + (__instance.education * MILITARY_MULT_PER_EDUCATION_LEVEL);
+
+            // Reduces the miltech increase per investment for each existing army or navy in nation
+            // Modifier has no effect for 0 armies, then grows asymptotically to 1
+            float armiesNumberMult = 5 / (5 + __instance.numStandardArmies + __instance.numNavies);
 
             // Add a catch-up multiplier dependent on how far behind the max miltech level the country is
             // A bonus 50% tech gain per full miltech level behind the global max
             // Max to 1 is to prevent weirdness if somehow current miltech is above max miltech
             float catchUpMult = Mathf.Max(1f, 1f + (MILITARY_PER_MILITARY_LEVEL_BEHIND * (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel)));
 
-            // Each full point of education gives +10% military score
-            float educationMult = 1f + (__instance.education * MILITARY_MULT_PER_EDUCATION_LEVEL);
-
-            __result = (BASE_MILITARY + armiesNumberEffect) * catchUpMult * educationMult;
+            __result = BASE_MILITARY * armiesNumberMult * educationMult * catchUpMult;
 
 
             return false; // Skip original method
