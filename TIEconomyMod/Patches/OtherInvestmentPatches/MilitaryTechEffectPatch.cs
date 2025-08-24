@@ -25,21 +25,24 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_MILTECH = 0.0025f;
-            const float MILTECH_PER_MILTECH_LEVEL_BEHIND = 0.5f;
-            const float MILTECH_MALUS_PER_ARMY = -0.001f;
-            const float MILTECH_MALUS_PER_NAVY = -0.0005f;
-            const float MALUS_LIMIT = -0.00125f;
+            const float BASE_MILITARY = 0.001f;
+            const float MILITARY_MALUS_PER_ARMY_AND_NAVY = -0.00005f;
+            const float MILITARY_MALUS_LIMIT = -0.0005f;
+            const float MILITARY_PER_MILITARY_LEVEL_BEHIND = 0.5f;
+            const float MILITARY_MULT_PER_EDUCATION_LEVEL = 0.1f;
 
-            // FIXME: Formula is too simplistic. Let malus grow asymptotically to the base miltech effect? Add multiplicative knowledge bonus? Miltech growth probably too fast, too.
-            float armiesNumberEffect = Mathf.Max(MALUS_LIMIT, (__instance.numStandardArmies * MILTECH_MALUS_PER_ARMY) + (__instance.numNavies * MILTECH_MALUS_PER_NAVY));
+            // FIXME: Formula is too simplistic. Let malus grow asymptotically to the base miltech effect?
+            float armiesNumberEffect = Mathf.Max(MILITARY_MALUS_LIMIT, ((__instance.numStandardArmies + __instance.numNavies) * MILITARY_MALUS_PER_ARMY_AND_NAVY));
 
-            // Additionally, add a catch-up multiplier dependent on how far behind the max tech level the country is
-            // A bonus 50% tech gain per full tech level behind the global max
-            // Max to 1 is to prevent weirdness if somehow mil tech is above max mil tech
-            float catchUpMult = Mathf.Max(1f, 1f + (MILTECH_PER_MILTECH_LEVEL_BEHIND * (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel)));
+            // Add a catch-up multiplier dependent on how far behind the max miltech level the country is
+            // A bonus 50% tech gain per full miltech level behind the global max
+            // Max to 1 is to prevent weirdness if somehow current miltech is above max miltech
+            float catchUpMult = Mathf.Max(1f, 1f + (MILITARY_PER_MILITARY_LEVEL_BEHIND * (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel)));
 
-            __result = (BASE_MILTECH + armiesNumberEffect) * catchUpMult;
+            // Each full point of education gives +10% military score
+            float educationMult = 1f + (__instance.education * MILITARY_MULT_PER_EDUCATION_LEVEL);
+
+            __result = (BASE_MILITARY + armiesNumberEffect) * catchUpMult * educationMult;
 
 
             return false; // Skip original method
