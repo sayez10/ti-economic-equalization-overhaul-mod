@@ -58,9 +58,9 @@ namespace TIEconomyMod
             int armiesAtHome = nation.armies.Count((TIArmyState x) => x.investmentArmyFactor > 0f && x.useHomeInvestmentFactor);
             int deployedArmies = nation.armies.Count((TIArmyState x) => x.investmentArmyFactor > 0f && !x.useHomeInvestmentFactor);
             int numNavies = nation.armies.Count((TIArmyState x) => x.deploymentType == DeploymentType.Naval && x.investmentNavyFactor > 0f);
-            float upkeepHomeMult = TemplateManager.global.nationalInvestmentArmyFactorHome;
-            float upkeepAwayMult = TemplateManager.global.nationalInvestmentArmyFactorAway;
-            float upkeepNavyMult = TemplateManager.global.nationalInvestmentNavyFactor;
+            float upkeepHomeMult = TemplateManager.global.nationalInvestmentArmyFactorHome * nation.militaryTechLevel;
+            float upkeepAwayMult = TemplateManager.global.nationalInvestmentArmyFactorAway * nation.militaryTechLevel;
+            float upkeepNavyMult = TemplateManager.global.nationalInvestmentNavyFactor * nation.militaryTechLevel;
             float totalArmyHomeUpkeep = (float)armiesAtHome * upkeepHomeMult;
             float totalArmyAwayUpkeep = (float)deployedArmies * upkeepAwayMult;
             float totalNavyUpkeep = (float)numNavies * upkeepNavyMult;
