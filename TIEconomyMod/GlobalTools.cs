@@ -4,10 +4,10 @@
 
 namespace TIEconomyMod
 {
-    // This is a helper class used to streamline things, and centralize important variables.
+    // This is a helper class used to streamline things, and centralize important variables
     public static class Tools
     {
-        // The base threshold is stored as its own variable to allow quick fixing if the devs change the hardcoded requirement
+        // The base thresholds are stored as their own variables to allow quick fixing if the devs change the hardcoded requirement
         public const int BASE_OIL_THRESHOLD = 500;
         public const int BASE_MINING_THRESHOLD = 750;
         public const int BASE_ECONOMIC_THRESHOLD = 1200;
@@ -16,8 +16,8 @@ namespace TIEconomyMod
 
         public const int REGION_UPGRADE_THRESHOLD_MULT = 5;
 
-        // These values are dynamically calculated inside a function.
-        // They're first calculated after the mod loads, and then whenever settings are changed.
+        // These values are dynamically calculated inside a function
+        // They're first calculated after the mod loads, and then whenever settings are changed
         public static double GDPPerIP;
         private static float theoreticalPopulation;
 
@@ -54,11 +54,11 @@ namespace TIEconomyMod
 
         public static void Recalculate()
         {
-            // 1 billion * setting value
+            // 1 billion * settings value
             GDPPerIP = 1000000000 * Main.settings.GDPBillionsPerIP;
 
-            // These are declared outside of EffectStrength() because that function will be called several times. Also, it's readable IMO.
-            // For an explanation as to why I did this, check the comments inside the function.
+            // Declared outside of EffectStrength() because that function will be called VERY often
+            // For an explanation as to why I did this, check the comments inside the function
             theoreticalPopulation = (float)GDPPerIP / 30000f;
         }
     }

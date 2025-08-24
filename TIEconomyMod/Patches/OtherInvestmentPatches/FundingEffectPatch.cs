@@ -10,15 +10,16 @@ using System.Threading.Tasks;
 
 namespace TIEconomyMod
 {
+    /// <summary>
+    /// Patch changes the monthly funding gain from completing a funding investment
+    /// </summary>
     [HarmonyPatch(typeof(TINationState), "spaceFundingPriorityIncomeChange", MethodType.Getter)]
     public static class FundingEffectPatch
     {
         [HarmonyPrefix]
         public static bool GetSpaceFundingPriorityIncomeChangeOverwrite(ref float __result, TINationState __instance)
         {
-            // Patches the monthly funding gain from completing a funding investment
-
-            // If mod has been disabled, abort patch and use original method.
+            // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
             const float FUNDING_AMOUNT = 15f;

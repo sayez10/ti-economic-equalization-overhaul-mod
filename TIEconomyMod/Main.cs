@@ -35,7 +35,7 @@ namespace TIEconomyMod
             modEntry.OnGUI = OnGUI;
             modEntry.OnSaveGUI = OnSaveGUI;
 
-            // Assign values to class variables.
+            // Assign values to class variables
             settings.OnChange();
             return true;
         }
@@ -48,14 +48,10 @@ namespace TIEconomyMod
         /// <returns></returns>
         static bool OnToggle(UnityModManager.ModEntry modEntry, bool value)
         {
-            // Frankly, adding functionality for disabling this mod during runtime is absolutely unnecessary. This mod does a lot of things.
-            // I'm doing this not particularly because it's necessary, but because it's good practice. Especially for transpilers.
-            // So... basically, it's because I can.
-
             enabled = value;
 
-            // Because transpilers can't just be turned off, all cached variables are refreshed.
-            // This is what ensures the mod can shut itself off during runtime.
+            // Because transpilers can't just be turned off, all cached variables are refreshed
+            // This is what ensures the mod can shut itself off during runtime
             settings.OnChange();
             return true;
         }
@@ -84,7 +80,8 @@ namespace TIEconomyMod
                 Save(this, modEntry);
             }
 
-            // Class variables need to be refreshed whenver settings get changed. This allows changing settings without needing to restart.
+            // Class variables need to be refreshed whenver settings get changed
+            // Allows changing settings without needing to restart
             public void OnChange()
             {
                 Tools.Recalculate();

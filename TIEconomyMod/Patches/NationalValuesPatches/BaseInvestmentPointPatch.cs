@@ -11,14 +11,15 @@ using UnityEngine;
 
 namespace TIEconomyMod
 {
+    /// <summary>
+    /// Patch changes the amount of investment points available to a nation to scale linearly with GDP
+    /// </summary>
     [HarmonyPatch(typeof(TINationState), "economyScore", MethodType.Getter)]
     public static class BaseInvestmentPointPatch
     {
         [HarmonyPrefix]
         public static bool GetEconomyScoreOverwrite(ref float __result, TINationState __instance)
         {
-            // Patches the amount of Investment Points available to a nation
-
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 

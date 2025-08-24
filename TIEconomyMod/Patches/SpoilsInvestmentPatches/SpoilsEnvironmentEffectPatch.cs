@@ -11,16 +11,17 @@ using UnityEngine;
 
 namespace TIEconomyMod
 {
+    /// <summary>
+    /// Patch overwrites the vanilla greenhouse gas emissions values for completing a spoils investment
+    /// Removes the scaling to emissions added in the vanilla function that does not work with this mod
+    /// </summary>
     [HarmonyPatch(typeof(TIGlobalValuesState), "AddSpoilsPriorityEnvEffect")]
     public static class SpoilsEnvironmentEffectPatch
     {
         [HarmonyPrefix]
         public static bool AddSpoilsPriorityEnvEffectOverwrite(TINationState nation, TIGlobalValuesState __instance)
         {
-            // Overwrites the vanilla greenhouse gas emissions values for completing a spoils investment
-            // Removes the scaling to emissions added in the vanilla function that does not work with this mod
-
-            // If mod has been disabled, abort patch and use original method.
+            // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
             const float ENVIRONMENT_MULT_PER_RESOURCE_REGION = 0.5f;

@@ -11,14 +11,15 @@ using UnityEngine;
 
 namespace TIEconomyMod
 {
+    /// <summary>
+    /// Patch changes the cohesion effect of a unity investment to scale inversely with population size
+    /// </summary>
     [HarmonyPatch(typeof(TINationState), "unityPriorityCohesionChange", MethodType.Getter)]
     public static class UnityCohesionEffectPatch
     {
         [HarmonyPrefix]
         public static bool GetUnityPriorityCohesionChangeOverwrite(ref float __result, TINationState __instance)
         {
-            // Patch changes the cohesion effect of a unity investment to scale inversely with population size
-
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
@@ -26,11 +27,10 @@ namespace TIEconomyMod
             const float MALUS_LIMIT = 0.5f;
             const float COHESION_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL = 0.025f;
 
-            // Refer to EffectStrength() comments for explanation
             float baseEffect = Tools.EffectStrength(BASE_COHESION, __instance.population);
 
             // Democracy and Education incurs a 2.5% malus per point, up to -50%
-            // A combined score of 15 causes the max effect
+            // A combined score of 20 causes the max effect
             float penaltyMult = Mathf.Min(MALUS_LIMIT, 1f - ((__instance.education + __instance.democracy) * COHESION_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL));
 
             __result = baseEffect * penaltyMult;

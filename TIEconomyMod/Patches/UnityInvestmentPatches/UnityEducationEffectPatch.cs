@@ -11,21 +11,21 @@ using UnityEngine;
 
 namespace TIEconomyMod
 {
+    /// <summary>
+    /// Patch changes the knowledge effect of a unity investment to scale inversely with population size
+    /// </summary>
     [HarmonyPatch(typeof(TINationState), "unityPriorityEducationChange", MethodType.Getter)]
     public static class UnityEducationEffectPatch
     {
         [HarmonyPrefix]
         public static bool GetUnityPriorityEducationChangeOverwrite(ref float __result, TINationState __instance)
         {
-            // Patch changes the knowledge effect of a unity investment to scale inversely with population size
-
-            // If mod has been disabled, abort patch and use original method.
+            // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
             const float BASE_EDUCATION = -0.01f;
 
-            // 1/10 effect of Knowledge priority.
-            // Refer to EffectStrength() comments for explanation.
+            // 1/10 effect of Knowledge priority
             __result = Tools.EffectStrength(BASE_EDUCATION, __instance.population);
 
 

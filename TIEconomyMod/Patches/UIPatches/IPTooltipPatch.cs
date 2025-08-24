@@ -17,7 +17,7 @@ namespace TIEconomyMod
         [HarmonyPrefix]
         public static bool BuildInvestmentTooltipOverwrite(ref string __result, TINationState nation)
         {
-            // If mod has been disabled, abort patch and use original method.
+            // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
             // Improved breakdown of IP bonuses and penalties
@@ -75,7 +75,7 @@ namespace TIEconomyMod
                 stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.NaviesPenalty", TIUtilities.FormatSmallNumber(upkeepNavyMult), TIUtilities.FormatSmallNumber(totalNavyUpkeep)));
             }
 
-            // Added additional tooltip that combines Home, Away, and Navy costs.
+            // Added additional tooltip that combines Home, Away, and Navy costs
             // Example text: The above penalties have a combined Investment Point penalty of {0}
             if (armiesAtHome > 0 || deployedArmies > 0)
             {

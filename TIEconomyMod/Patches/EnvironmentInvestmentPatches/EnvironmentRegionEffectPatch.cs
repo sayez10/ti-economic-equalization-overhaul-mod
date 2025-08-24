@@ -13,18 +13,23 @@ using UnityEngine;
 
 namespace TIEconomyMod
 {
+    /// <summary>
+    /// Patch replaces hardcoded integers in OnEnvironmentPriorityComplete(), to increase the requirements by 5x due to all the extra IP
+    /// This does NOT change the tooltip localization's reported threshold to add a special region, which has to be done separately by
+    /// patching priorityTipStr() in PriorityTooltipPatch.cs
+    /// </summary>
     [HarmonyPatch(typeof(TINationState), "OnEnvironmentPriorityComplete")]
     public static class EnvironmentRegionEffectPatch
     {
-        // Refer to EconomyRegionEffectPatch.cs for specifics on everything that's happening here.
-
+        // Rather than using a property variable, whose value is basically refreshed each time it's called,
+        // it's instead refreshed only when mod settings are changed. In other words, they're cached.
         public static int cleanupThreshold;
+
+        // This basically is a reference to the final threshold variables, which the post-transpiler code can call on
         public static readonly FieldInfo getCleanupThreshold = AccessTools.Field(typeof(EnvironmentRegionEffectPatch), nameof(cleanupThreshold));
 
-        // Replaces hardcoded variables in OnEnvironmentPriorityComplete(). The tooltip's stated threshold has to be updated separately.
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // Refer to PriorityTooltipPatch.cs for details.
             foreach (var instruction in instructions)
             {
                 if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_CLEANUP_THRESHOLD)
@@ -38,8 +43,12 @@ namespace TIEconomyMod
             }
         }
 
+
+
         public static void Recalculate()
         {
+            // If the mod is disabled, the vanilla value is inserted instead
+            // This allows for the mod to be fully disabled during runtime
             cleanupThreshold = (Main.enabled) ? Tools.BASE_CLEANUP_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.BASE_CLEANUP_THRESHOLD;
         }
     }

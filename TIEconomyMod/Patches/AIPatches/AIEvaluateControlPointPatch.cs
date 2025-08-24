@@ -11,22 +11,24 @@ using UnityEngine;
 
 namespace TIEconomyMod.AIPatches
 {
+    /// <summary>
+    /// Patch changes AI evaluation of a control point's value/importance to account for the higher IP amount in large modded nations
+    /// </summary>
     [HarmonyPatch(typeof(AIEvaluators), "EvaluateControlPoint")]
     public static class AIEvaluateControlPointPatch
     {
         [HarmonyPrefix]
         public static bool EvaluateControlPointOverwrite(TIFactionState faction, TIControlPoint controlPoint, ref float __result)
         {
-            // Patches AI evaluation of a control point's value/importance to account for the higher IP amount in large modded nations
-
-            // If mod has been disabled, abort patch and use original method.
+            // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
             // As vanilla
             float num = 0f;
             TINationState nation = controlPoint.nation;
 
-            // This line adjusted from economyScore^3, which was vanilla GDP in billions, to this, which is modded GDP in billions. Vanilla and modded control points will be evaluated the same given a certain GDP.
+            // This line adjusted from economyScore^3, which was vanilla GDP in billions, to this, which is modded GDP in billions
+            // Vanilla and modded control points will be evaluated the same given a certain GDP
             num += nation.economyScore * 100f;
 
             // As vanilla

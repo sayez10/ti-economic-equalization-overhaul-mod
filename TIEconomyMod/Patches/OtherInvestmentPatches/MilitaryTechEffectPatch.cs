@@ -11,17 +11,18 @@ using UnityEngine;
 
 namespace TIEconomyMod
 {
+    /// <summary>
+    /// Patch changes the military tech effect of a military investment to scale only with existing military units (armies and navies)
+    /// Population size doesn't affect the result
+    /// It also adds a catch-up boost to gain based on how far behind the global maximum tech level the country is
+    /// </summary>
     [HarmonyPatch(typeof(TINationState), "militaryPriorityTechLevelChange", MethodType.Getter)]
     public static class MilitaryTechEffectPatch
     {
         [HarmonyPrefix]
         public static bool GetMilitaryPriorityTechLevelChangeOverwrite(ref float __result, TINationState __instance)
         {
-            // Patch changes the military tech effect of a military investment to scale inversely with population size
-            // It also adds a catch-up boost to gain based on how far behind the global maximum tech level the country is
-            // This keeps the military tech improvement rate of nations of different populations but identical demographic stats otherwise the same
-
-            // If mod has been disabled, abort patch and use original method.
+            // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
             const float BASE_MILTECH = 0.0025f;

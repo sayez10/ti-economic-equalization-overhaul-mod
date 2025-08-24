@@ -11,19 +11,21 @@ using UnityEngine;
 
 namespace TIEconomyMod
 {
+    /// <summary>
+    /// Patch changes the economy investment's GDP effect from increasing GDPPC by a flat(ish) amount, to increasing GDP by a flat(ish) amount and distributing that across the population as GDPPC
+    /// The most significant change is that GDP growth is dependent on an exponential decay function off of per capita GDP
+    /// This makes developing poor countries much more effective than developing rich ones, accounting for all factors
+    /// </summary>
     [HarmonyPatch(typeof(TINationState), "economyPriorityPerCapitaIncomeChange", MethodType.Getter)]
     public static class EconomyGDPEffectPatch
     {
         [HarmonyPrefix]
         public static bool GetEconomyPriorityPerCapitaIncomeChangeOverwrite(ref float __result, TINationState __instance)
         {
-            // This patch changes the economy investment's GDP effect from increasing gdp per capita by a flat(ish) amount, to increasing gdp by a flat(ish) amount and distributing that across the pop as gdp per capita
-            // The most significant change is that GDP growth is dependent on an exponential decay function off of per capita GDP. This makes developing poor countries much more effective than developing rich ones, accounting for all factors
-
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            // Base GDP change in billions, written this way because it's easier for me to modify.
+            // Base GDP change in billions, written this way because it's easier to modify
             const float BASE_GDP_CHANGE_BILLIONS = 0.25f;
             const float BASE_GDP_CHANGE = BASE_GDP_CHANGE_BILLIONS * 1000000000f;
 
@@ -51,7 +53,8 @@ namespace TIEconomyMod
              * This was done because growth simply didn't make sense in the original mod. Poor countries grew WAY too fast, and rich countries were practically stagnant.
              * Take China and the US (the main countries I balanced this mod around) for example. In the real world, China's GDP 2022-2023 growth percentage was about 66% quicker than in the US.
              * In the original run of this mod, the US had about 15% the growth rate of China.
-             * With this new function, China should have a mostly-accurate natural growth rate compared to the US. More importantly, China still has a lot of potential but isn't so powerful that choosing any other major power is a bad idea.
+             * With this new function, China should have a mostly-accurate natural growth rate compared to the US.
+             * More importantly, China still has a lot of potential but isn't so powerful that choosing any other major power is a bad idea.
              * Note that during testing, China invested 24% of its IP into Economy, and the US invested 21%. This is what the factionless AI does, so that is what I kept it at.
              * Democracy and education have a strong effect on GDP growth, so the US' raw multiplier (at game start) is about half of China's, but after other factors it's ~60%.
              *

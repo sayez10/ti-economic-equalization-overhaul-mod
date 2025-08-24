@@ -12,20 +12,21 @@ using static PavonisInteractive.TerraInvicta.TINationState;
 
 namespace TIEconomyMod
 {
+    /// <summary>
+    /// Patch changes the effects of the spoils investment
+    /// This overwrite is necessary to fix the propoganda effect, which would otherwise be far too powerful
+    /// Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
+    /// </summary>
     [HarmonyPatch(typeof(TINationState), "OnSpoilsPriorityComplete")]
     public static class SpoilsEffectsPatch
     {
         [HarmonyPrefix]
         public static bool OnSpoilsPriorityCompleteOverwrite(TINationState __instance)
         {
-            // This patch changes the effects of the spoils investment
-            // This overwrite is necessary to fix the propoganda effect, which would otherwise be far too powerful
-            // Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
-
-            // If mod has been disabled, abort patch and use original method.
+            // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            // Below as vanilla
+            // As vanilla
             __instance.AddToInequality(__instance.spoilsPriorityInequalityChange, InequalityChangeReason.InqReason_SpoilsPriority);
             __instance.AddToDemocracy(__instance.spoilsPriorityDemocracyChange, DemocracyChangeReason.DemReason_SpoilsPriority);
             TIFactionState controlPointTypeOwner = __instance.GetControlPointTypeOwner(ControlPointType.Aristocracy);
@@ -58,7 +59,7 @@ namespace TIEconomyMod
                 __instance.PropagandaOnPop_PerOwnedCPFraction(item.ideology, propagandaEffect);
             }
 
-            // Below as vanilla
+            // As vanilla
             __instance.AddToSustainability(__instance.spoilsSustainabilityChange);
             TIGlobalValuesState.GlobalValues.AddSpoilsPriorityEnvEffect(__instance, __instance.priorityEffectPopScaling * __instance.sustainability);
 

@@ -14,16 +14,15 @@ using System.Reflection;
 
 namespace TIEconomyMod
 {
-    // THIS PRICK TOOK FOREVER TO FIND OH MY GOD I HAD TO INSTALL TWO SEPARATE PROGRAMS TO FIND THIS ACCURSED FUNCTION
-    // I REGRET NOTHING
     [HarmonyPatch(typeof(PriorityListItemController), "priorityTipStr")]
     public static class PriorityPatches
     {
-        // This ensures that tooltip readouts of region 'upgrade' IP requirements accurately reflect what the mod sets.
+        // This ensures that tooltip readouts of region upgrade IP requirements accurately reflect what the mod sets
 
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // Refer to EconomyRegionEffectPatch.cs for specifics on what's happening here.
+            // Refer to EconomyRegionEffectPatch.cs for specifics on what's happening here
+
             foreach (var instruction in instructions)
             {
                 if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_OIL_THRESHOLD)
