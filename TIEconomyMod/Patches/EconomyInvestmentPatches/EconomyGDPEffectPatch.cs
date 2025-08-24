@@ -1,4 +1,16 @@
-﻿using HarmonyLib;
+﻿// SPDX-FileCopyrightText: Copyright © 2022 - 2025 Verdiss, explodoboy, sayez10
+//
+// SPDX-License-Identifier: MIT
+
+
+
+// SPDX-FileCopyrightText: Copyright © 2022 - 2025 Verdiss, explodoboy, sayez10
+//
+// SPDX-License-Identifier: MIT
+
+
+
+using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
 using System;
 using System.Collections.Generic;

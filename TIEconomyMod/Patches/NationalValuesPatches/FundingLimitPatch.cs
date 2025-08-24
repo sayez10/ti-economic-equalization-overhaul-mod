@@ -1,4 +1,10 @@
-﻿using HarmonyLib;
+﻿// SPDX-FileCopyrightText: Copyright © 2025 sayez10
+//
+// SPDX-License-Identifier: MIT
+
+
+
+using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
 using System;
 using System.Collections.Generic;

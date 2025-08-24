@@ -1,4 +1,10 @@
-﻿using System.Reflection;
+﻿// SPDX-FileCopyrightText: Copyright © 2022 - 2025 Verdiss, explodoboy, sayez10
+//
+// SPDX-License-Identifier: MIT
+
+
+
+using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using UnityEngine;

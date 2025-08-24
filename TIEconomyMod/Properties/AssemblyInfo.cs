@@ -1,4 +1,10 @@
-﻿using System.Reflection;
+﻿// SPDX-FileCopyrightText: Copyright © 2022 - 2025 Verdiss, explodoboy, sayez10
+//
+// SPDX-License-Identifier: MIT
+
+
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -10,7 +16,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TIEconomyMod")]
-[assembly: AssemblyCopyright("Copyright © 2025 Sayez")]
+[assembly: AssemblyCopyright("Copyright © 2025 sayez10")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

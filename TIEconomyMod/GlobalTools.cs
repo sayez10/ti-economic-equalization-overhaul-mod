@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿// SPDX-FileCopyrightText: Copyright © 2022 - 2025 Verdiss, explodoboy, sayez10
+//
+// SPDX-License-Identifier: MIT
+
+
+
+using UnityEngine;
 using System.Runtime.CompilerServices;
 
 
