@@ -15,22 +15,28 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>ModFiles\Assembly\</OutputPath>
+    <OutputPath>bin\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>5</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>ModFiles\Assembly\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>5</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DebugSymbols>false</DebugSymbols>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -80,6 +86,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalTools.cs" />
+    <Compile Include="Main.cs" />
     <Compile Include="Patches\AIPatches\AIEvaluateControlPointPatch.cs" />
     <Compile Include="Patches\AIPatches\AIEvaluateNationPatch.cs" />
     <Compile Include="Patches\EconomyInvestmentPatches\EconomyGDPEffectPatch.cs" />
@@ -89,22 +97,17 @@
     <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentRegionEffectPatch.cs" />
     <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentSustainabilityEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeCohesionEffectPatch.cs" />
-    <Compile Include="GlobalTools.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeEducationEffectPatch.cs" />
     <Compile Include="Patches\MissionPatches\MissionGDPDifficultyPatch.cs" />
-    <Compile Include="Patches\OppressionInvestmentEffects\OppressionCohesionEffectPatch.cs" />
-    <Compile Include="Patches\OppressionInvestmentEffects\OppressionUnrestEffectPatch.cs" />
-    <Compile Include="Patches\OppressionInvestmentEffects\OppressionDemocracyEffectPatch.cs" />
-    <Compile Include="Patches\OtherInvestmentPatches\GovernmentDemocracyEffectPatch.cs" />
-    <Compile Include="Patches\OtherInvestmentPatches\FundingEffectPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\BaseInvestmentPointPatch.cs" />
-    <Compile Include="Main.cs" />
-    <Compile Include="Patches\OtherInvestmentPatches\MilitaryTechEffectPatch.cs" />
-    <Compile Include="Patches\UIPatches\PriorityTooltipPatch.cs" />
-    <Compile Include="Patches\WelfareInvestmentPatches\WelfareRegionEffectPatch.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patches\NationalValuesPatches\ControlPointCostPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\ResearchPointsPatch.cs" />
+    <Compile Include="Patches\OppressionInvestmentEffects\OppressionCohesionEffectPatch.cs" />
+    <Compile Include="Patches\OppressionInvestmentEffects\OppressionDemocracyEffectPatch.cs" />
+    <Compile Include="Patches\OppressionInvestmentEffects\OppressionUnrestEffectPatch.cs" />
+    <Compile Include="Patches\OtherInvestmentPatches\FundingEffectPatch.cs" />
+    <Compile Include="Patches\OtherInvestmentPatches\GovernmentDemocracyEffectPatch.cs" />
+    <Compile Include="Patches\OtherInvestmentPatches\MilitaryTechEffectPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsDemocracyEffectPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsEffectsPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsEnvironmentEffectPatch.cs" />
@@ -112,18 +115,17 @@
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsMoneyEffectPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsSustainabilityEffectPatch.cs" />
     <Compile Include="Patches\UIPatches\IPTooltipPatch.cs" />
+    <Compile Include="Patches\UIPatches\PriorityTooltipPatch.cs" />
     <Compile Include="Patches\UnityInvestmentPatches\UnityEducationEffectPatch.cs" />
     <Compile Include="Patches\UnityInvestmentPatches\UnityCohesionEffectPatch.cs" />
     <Compile Include="Patches\UnityInvestmentPatches\UnityEffectsPatch.cs" />
     <Compile Include="Patches\WelfareInvestmentPatches\WelfareInequalityEffectPatch.cs" />
+    <Compile Include="Patches\WelfareInvestmentPatches\WelfareRegionEffectPatch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ModFiles\Localization\TIEffectTemplate.en" />
     <None Include="ModFiles\ModInfo.json" />
-    <None Include="ModFiles\Templates\TIEffectTemplate.json" />
     <None Include="ModFiles\Templates\TIGlobalConfig.json" />
-    <None Include="ModFiles\Templates\TINationTemplate.json" />
-    <None Include="ModFiles\Templates\TITechTemplate.json" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

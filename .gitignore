@@ -16,4 +16,5 @@ mono_crash.*
 /TIEconomyMod/.vs
 
 # Build artifacts
+/TIEconomyMod/bin
 /TIEconomyMod/obj
