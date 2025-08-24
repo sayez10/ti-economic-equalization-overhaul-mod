@@ -121,8 +121,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ModFiles\ModInfo.json" />
-    <None Include="ModFiles\Templates\TIGlobalConfig.json" />
+    <None Include="package\ModInfo.json" />
+    <None Include="package\TIGlobalConfig.json" />
+    <None Include="package\EconomicEqualizationOverhaul.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
