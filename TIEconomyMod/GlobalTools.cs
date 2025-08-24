@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Runtime.CompilerServices;
 
 
 
@@ -21,6 +22,7 @@ namespace TIEconomyMod
         public static double GDPPerIP;
         private static float theoreticalPopulation;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float EffectStrength(float idealGainPerMonth, float population)
         {
             /*
