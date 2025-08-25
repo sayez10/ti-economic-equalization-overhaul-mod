@@ -1,4 +1,4 @@
-﻿// SPDX-FileCopyrightText: Copyright © 2025 explodoboy, sayez10
+﻿// SPDX-FileCopyrightText: Copyright © 2022 - 2025 Verdiss, explodoboy, sayez10
 //
 // SPDX-License-Identifier: MIT
 
