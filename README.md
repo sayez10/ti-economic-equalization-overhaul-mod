@@ -1,7 +1,7 @@
 # Economic Equalization Overhaul
 This is a fan mod for the game Terra Invicta. It modifies the way national economies work, to better represent the way countries of different sizes compare.
 
-The project was originally started by [Verdiss] (https://github.com/Verdiss). Development was later taken over by [explodoboy] (https://github.com/explodoboy). For now I am maintaining a fork.
+The project was originally started by [Verdiss] (https://github.com/Verdiss). Development was later taken over by [explodoboy] (https://github.com/explodoboy). For now I am maintaining a fork while it's unclear if any other fork is still being actively maintained.
 
 
 ### Philosophy
@@ -57,7 +57,7 @@ Current focuses for future updates are:
 
 
 ### Installation Info
-Version 0.2.3.0 of this mod is built for Terra Invicta version 0.4.90
+Version 0.2.3.0 of this mod was built for Terra Invicta version 0.4.90 (the current beta-release branch).
 
 This mod requires [Unity Mod Manager version 0.32.4](https://www.nexusmods.com/site/mods/21/?tab=description) to be installed on your Terra Invicta executable with the DoorstopProxy installation method.
 
