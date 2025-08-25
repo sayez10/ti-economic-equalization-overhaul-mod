@@ -58,7 +58,7 @@ namespace TIEconomyMod
             float specialRegionMult = 1f + (numSpecialRegions * GROWTH_MULT_PER_SPECIAL_REGION);
             float democracyMult = 1f + (__instance.democracy * GROWTH_MULT_PER_DEMOCRACY_LEVEL);
             float educationMult = 1f + (__instance.education * GROWTH_MULT_PER_EDUCATION_LEVEL);
-	    float bonusPCGDPMult = TIEffectsState.SumEffectsModifiers(Context.Economy_BasePCGDPIncrease, __instance, 1f);
+            float bonusPCGDPMult = TIEffectsState.SumEffectsModifiers(Context.Economy_BasePCGDPIncrease, __instance, 1f);
 
             /*
              * Exponential decay function that gives low-PCGDP countries a considerable boost to growth. Heavily modified from the original mod author's vision.
