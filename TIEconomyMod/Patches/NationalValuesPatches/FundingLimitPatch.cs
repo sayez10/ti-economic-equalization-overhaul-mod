@@ -29,7 +29,7 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const double ANNUAL_FUNDING_PER_GDP = 0.00000005;
+            const double ANNUAL_FUNDING_PER_GDP = 0.00000005f;
 
             __result = (float)(ANNUAL_FUNDING_PER_GDP * __instance.GDP);
 

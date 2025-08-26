@@ -35,12 +35,15 @@ namespace TIEconomyMod
             const float MILITARY_PER_MILITARY_LEVEL_BEHIND = 0.5f;
             const float MILITARY_MULT_PER_EDUCATION_LEVEL = 0.1f;
 
+            // Higher = faster miltech increase if nation has any armies
+            const float FORCES_NUMBER_MULT_GROWTH_FACTOR = 5f;
+
             // Each full point of education gives +10% military score
             float educationMult = 1f + (__instance.education * MILITARY_MULT_PER_EDUCATION_LEVEL);
 
             // Reduces the miltech increase per investment for each existing army or navy in nation
             // Modifier has no effect for 0 armies, then grows asymptotically to 1
-            float armiesNumberMult = 5 / (5 + __instance.numStandardArmies + __instance.numNavies);
+            float armiesNumberMult = FORCES_NUMBER_MULT_GROWTH_FACTOR / (FORCES_NUMBER_MULT_GROWTH_FACTOR + __instance.numStandardArmies + __instance.numNavies);
 
             // Add a catch-up multiplier dependent on how far behind the max miltech level the country is
             // A bonus 50% tech gain per full miltech level behind the global max
