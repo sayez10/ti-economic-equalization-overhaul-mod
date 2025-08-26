@@ -1,7 +1,7 @@
 # Economic Equalization Overhaul
 This is a fan mod for the game Terra Invicta. It modifies the way national economies work, to better represent the way countries of different sizes compare.
 
-The project was originally started by [Verdiss] (https://github.com/Verdiss). Development was later taken over by [explodoboy] (https://github.com/explodoboy). For now I am maintaining a fork while it's unclear if any other fork is still being actively maintained.
+The project was originally started by [Verdiss](https://github.com/Verdiss). Development was later taken over by [explodoboy](https://github.com/explodoboy). For now I am maintaining a fork while it's unclear if any other fork is still being actively maintained.
 
 
 ### Philosophy
@@ -17,11 +17,7 @@ In short, the goal of the mod is to remove the unintuitive and unrealistic meta-
 ### Summary of Effects
 -National monthly investment points are equal to 1 per 100 Billion GDP.
 
--Countries with a per capita GDP less than $15,000 receive up to a 30% penalty to investment points.
-
--The control cap cost of a nation is equal to its investment points, which is then split across each control point. Control cost  of a nation is no longer dependent on the number of control points, as in vanilla.
-
--Arrival International Relations, Unity Movements, Great Nations, Arrival Governance, and Accelerando each reduce the control cost of a nation to be to the power of 0.98, 0.95, 0.90, 0.85, or 0.80, depending on how many of these techs are researched. Larger nations benefit significantly more.
+-The formula to calculate the control point cost of a nation uses a power function again, like vanilla, and unlike older versions of this mod. However, the parameters have been changed compared to vanilla. Nations with high GDP now require far fewer CPs per generated IP than nations with low GDP. Arrival International Relations, Unity Movements, Great Nations, Arrival Governance, and Accelerando no longer reduce the control cost of a nation (unlike in previous versions of this mod).
 
 -Economy investments gives an amount of GDP, as opposed to an amount of GDP per capita (though the tooltip shows the distributed GDP per capita). This makes all economies grow at the same % rate, disregarding modifiers.
 
@@ -31,17 +27,23 @@ In short, the goal of the mod is to remove the unintuitive and unrealistic meta-
 
 -Education increases at a faster rate at lower education levels, and a slower rate at higher levels. This is an exponential decay function that gives 4 times the gain rate at 0 education compared to 10 education, and 50% of the gain at 15 education compared to 10.
 
--Military tech gain is increased by a factor depending on how far the nation is behind the global maximum tech level, a linear bonus of 50% extra gain per 1 tech level behind the current maximum.
+-Military tech gain no longer depends on the population of a nation. Instead a military tech has a fixed cost per level, so large and wealthy nations can increase their military tech much faster than small and poor nations. Exsisting armies and navies increase the cost and thus slow down miltech progess. A 10% bonus to the military priority per level of education has been added. Nations which are far behind the global maximum tech level gain a linear bonus of 50% extra gain per 1 tech level behind the current maximum.
+
+-The algorithm used to calculate the military technology level of a merged nation after absorbing another nation has been changed. Instead of weighing the military tech levels of both nations with their number of owned regions, the larger military technology value is used as starting point. If both miltech values are within 0.5 points, the merged nation's miltech value will be increased by up to 0.5 to represent the often different capabilities of military forces with a roughly comparable technological level and the synergy of combining them. Existing armies and navies might give a malus to the merged nation's miltech value to represent the need to possibly replace or upgrade equipment and to train personnel. Yard1 and his mod "Unification Pop Based Miltech Calculation" provided inspiration for this change and I copied the postfix patch from his mod, although I chose a completely different approach for the prefix patch and the actual formula to calculate the merged nation's military tech level. Thank you!
 
 -Small adjustments to the relationships between things such as education and GDP growth, broadly maintaining vanilla levels of impact.
 
--Other changes to investment effects such as spoils and funding amount to flatten out the amount gained per investment to be constant regardless of country size.
+-Other changes to investment effects such as spoils and funding amount to flatten out the amount gained per investment to be constant regardless of country size and to attempt to rebalance the money income from nations. The goal has been to make funding the best option to invest in for sustained income and to keep spoils useful to gain a large amount of money in a short time, but incurring significant damage to that nation.
 
--Adjusted costs of many investments to reflect the greatly increased investment points available to most nations, or to simplify calculations.
+-The maximum annual income from funding in a nation has been increased by a factor of 10 to match the faster increase of the funding priority and to compensate for the nerf to spoils.
 
--Adjusted upkeep cost of armies to be dependent on the host country's tech level. Armies cost a base upkeep of 1 IP, plus 2 IP per national tech level above 3.
+-Adjusted costs of many investments to reflect the greatly increased investment points available to most nations and the increased frequency of priority completions, or to simplify calculations.
 
--Research output of a nation rebalanced. A nation no longer receives a flat 7.5 + education monthly research, however its research also increases linearly with population, not at a ^1.1 rate as vanilla.
+-Adjusted upkeep cost of armies to be dependent on the host country's tech level. Armies have an upkeep of 2 IP per national tech level.
+
+-Research output of a nation rebalanced. A nation no longer receives a flat 7.5 + education monthly research, however its research also increases linearly with population, not at a ^1.1 rate as vanilla. The limit of the quadratic scaling with education > 12 (introduced with vanilla pre-0.4.1) has been removed. Low democracy (below 5) now reduces research output and the bonus of democracry above 5 on research output has been slightly increased).
+
+-A few variables have been made configurable in the UMM settings menu: IP output, research production, and control point cost.
 
 
 ### Issues & the State of the Mod
@@ -75,7 +77,7 @@ OR 2B: Open the Unity Mod Manager executable, select Terra Invicta, go to the Mo
 
 4: Now open the game and start a new game. If the investment point cost of the lower half investments appears unchanged (I.e. boost costs a vanilla 2 investment points, not 4), the game must be restarted until these values change (typically once).
 
-UPDATING: When updating this mod, completely remove the old version of the mod and replace it with the new.
+UPDATING: When updating this mod, completely remove the old version of the mod and replace it with the new one.
 
 
 ### Links
