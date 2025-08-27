@@ -22,7 +22,7 @@ namespace TIEconomyMod
     /// VERY powerful for totalitarian nations... especially if they're rich
     /// However, at full democracy, oppression does nothing to unrest
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "OppressionPriorityUnrestChange", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.OppressionPriorityUnrestChange), MethodType.Getter)]
     public static class OppressionUnrestEffectPatch
     {
         [HarmonyPrefix]

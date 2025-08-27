@@ -20,7 +20,7 @@ namespace TIEconomyMod
     /// <summary>
     /// Patch changes the sustainability effect of an environment investment to scale inversely with population size
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "environmentPrioritySustainabilityChange", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.environmentPrioritySustainabilityChange), MethodType.Getter)]
     public static class EnvironmentSustainabilityEffectPatch
     {
         [HarmonyPrefix]

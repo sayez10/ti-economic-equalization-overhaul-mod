@@ -24,7 +24,7 @@ namespace TIEconomyMod
     /// Unifying nations is now required to reduce the CP cost
     /// And the global techs to reduce CP cost aren't critical anymore
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "ControlPointMaintenanceCost", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.ControlPointMaintenanceCost), MethodType.Getter)]
     public static class ControlPointCostPatch
     {
         [HarmonyPostfix]

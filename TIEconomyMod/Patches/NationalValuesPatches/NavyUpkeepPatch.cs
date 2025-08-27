@@ -20,7 +20,7 @@ namespace TIEconomyMod.InvestmentPointPatches
     /// <summary>
     /// Patch changes the IP upkeep of navies to be dependent on miltech level of the owning nation
     /// </summary>
-    [HarmonyPatch(typeof(TIArmyState), "investmentNavyFactor", MethodType.Getter)]
+    [HarmonyPatch(typeof(TIArmyState), nameof(TIArmyState.investmentNavyFactor), MethodType.Getter)]
     public static class NavyInvestmentUpkeepPatch
     {
         [HarmonyPrefix]

@@ -20,7 +20,7 @@ namespace TIEconomyMod
     /// <summary>
     /// Patch changes the cohesion effect of a knowledge investment to scale inversely with population size
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "knowledgePriorityCohesionChange", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.knowledgePriorityCohesionChange), MethodType.Getter)]
     public static class KnowledgeCohesionEffectPatch
     {
         [HarmonyPrefix]

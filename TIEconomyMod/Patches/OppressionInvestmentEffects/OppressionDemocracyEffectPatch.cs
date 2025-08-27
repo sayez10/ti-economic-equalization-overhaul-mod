@@ -19,7 +19,7 @@ namespace TIEconomyMod
     /// <summary>
     /// Patch changes the democracy effect of an oppression investment to scale inversely with population size
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "OppressionPriorityDemocracyChange", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.OppressionPriorityDemocracyChange), MethodType.Getter)]
     public static class OppressionDemocracyEffectPatch
     {
         [HarmonyPrefix]

@@ -21,7 +21,7 @@ namespace TIEconomyMod
     /// Patch overwrites the vanilla greenhouse gas emissions values for completing a spoils investment
     /// Removes the scaling to emissions added in the vanilla function that does not work with this mod
     /// </summary>
-    [HarmonyPatch(typeof(TIGlobalValuesState), "AddSpoilsPriorityEnvEffect")]
+    [HarmonyPatch(typeof(TIGlobalValuesState), nameof(TIGlobalValuesState.AddSpoilsPriorityEnvEffect))]
     public static class SpoilsEnvironmentEffectPatch
     {
         [HarmonyPrefix]

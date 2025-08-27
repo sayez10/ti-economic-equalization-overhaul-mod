@@ -22,7 +22,7 @@ namespace TIEconomyMod
     /// Population size doesn't affect the result
     /// It also adds a catch-up boost to gain based on how far behind the global maximum tech level the country is
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "militaryPriorityTechLevelChange", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.militaryPriorityTechLevelChange), MethodType.Getter)]
     public static class MilitaryTechEffectPatch
     {
         [HarmonyPrefix]

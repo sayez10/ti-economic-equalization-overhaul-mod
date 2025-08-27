@@ -20,7 +20,7 @@ namespace TIEconomyMod
     /// <summary>
     /// Patch changes the inequality effect of an economy investment to scale inversely with population size
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "economyPriorityInequalityChange", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.economyPriorityInequalityChange), MethodType.Getter)]
     public static class EconomyInequalityEffectPatch
     {
         [HarmonyPrefix]

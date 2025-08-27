@@ -21,7 +21,7 @@ namespace TIEconomyMod
     /// Patch substantially reduces the increase to metal and noble metal price that is triggered by every economy investment completion
     /// This is necessary to avoid breaking the game due to the massively increased number of economy priority completions
     /// </summary>
-    [HarmonyPatch(typeof(TIGlobalValuesState), "ModifyMarketValuesForEconomyPriority")]
+    [HarmonyPatch(typeof(TIGlobalValuesState), nameof(TIGlobalValuesState.ModifyMarketValuesForEconomyPriority))]
     public static class EconomyMarketEffectPatch
     {
         [HarmonyPrefix]

@@ -23,7 +23,7 @@ namespace TIEconomyMod
     /// This overwrite is necessary to fix the propoganda effect, which would otherwise be far too powerful
     /// Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "OnUnityPriorityComplete")]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.OnUnityPriorityComplete))]
     public static class UnityEffectsPatch
     {
         [HarmonyPrefix]

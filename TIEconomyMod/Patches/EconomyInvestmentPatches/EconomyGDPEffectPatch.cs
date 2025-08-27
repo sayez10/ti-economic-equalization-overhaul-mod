@@ -28,7 +28,7 @@ namespace TIEconomyMod
     /// The most significant change is that GDP growth is dependent on an exponential decay function off of per capita GDP
     /// This makes developing poor countries much more effective than developing rich ones, accounting for all factors
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "economyPriorityPerCapitaIncomeChange", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.economyPriorityPerCapitaIncomeChange), MethodType.Getter)]
     public static class EconomyGDPEffectPatch
     {
         [HarmonyPrefix]

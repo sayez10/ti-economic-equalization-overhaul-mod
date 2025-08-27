@@ -22,7 +22,7 @@ namespace TIEconomyMod
     /// Patch the default amount of mission difficulty from national economy size for certain missions like control nation
     /// Amount of difficulty for a given nation with a given GDP is to be identical in vanilla and this mod
     /// </summary>
-    [HarmonyPatch(typeof(TIMissionModifier_TargetNationGDP), "GetModifier")]
+    [HarmonyPatch(typeof(TIMissionModifier_TargetNationGDP), nameof(TIMissionModifier_TargetNationGDP.GetModifier))]
     public static class MissionGDPDifficultyPatch
     {
         // Grab the reflection info for ObjectToNation(TIFactionState, TIGameState)

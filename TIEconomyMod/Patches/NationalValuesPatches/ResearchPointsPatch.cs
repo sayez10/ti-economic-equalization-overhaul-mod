@@ -24,7 +24,7 @@ namespace TIEconomyMod
     /// Quadratic scaling with knowledge is no longer capped at knowledge == 12
     /// Added a research malus for nations with democracy below 5 and simplified formula
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "research_month", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.research_month), MethodType.Getter)]
     public static class ResearchPointsPatch
     {
         [HarmonyPrefix]

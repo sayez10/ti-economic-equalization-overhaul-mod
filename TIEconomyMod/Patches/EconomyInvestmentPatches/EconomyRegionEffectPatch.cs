@@ -24,7 +24,7 @@ namespace TIEconomyMod
     /// This does NOT change the tooltip localization's reported threshold to add a special region, which has to be done separately by
     /// patching priorityTipStr() in PriorityTooltipPatch.cs
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "OnEconomyPriorityComplete")]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.OnEconomyPriorityComplete))]
     public static class EconomyRegionEffectPatch
     {
         // Rather than using a property variable, whose value is basically refreshed each time it's called,

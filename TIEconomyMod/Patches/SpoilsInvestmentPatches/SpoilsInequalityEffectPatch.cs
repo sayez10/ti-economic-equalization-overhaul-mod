@@ -20,7 +20,7 @@ namespace TIEconomyMod
     /// <summary>
     /// Patch changes the inequality effect of a spoils completion to scale inversely with population size
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "spoilsPriorityInequalityChange", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.spoilsPriorityInequalityChange), MethodType.Getter)]
     public static class SpoilsInequalityEffectPatch
     {
         [HarmonyPrefix]

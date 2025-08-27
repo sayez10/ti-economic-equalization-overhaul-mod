@@ -20,7 +20,7 @@ namespace TIEconomyMod
     /// <summary>
     /// Patch changes the instant money effect of a spoils completion to be a flat value, not scaled by nation size
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "spoilsPriorityMoney", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.spoilsPriorityMoney), MethodType.Getter)]
     public static class SpoilsMoneyEffectPatch
     {
         [HarmonyPrefix]

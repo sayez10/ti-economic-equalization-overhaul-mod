@@ -20,7 +20,7 @@ namespace TIEconomyMod
     /// <summary>
     /// Patch changes the education effect of a knowledge investment to scale inversely with population size
     /// </summary>
-    [HarmonyPatch(typeof(TINationState), "knowledgePriorityEducationChange", MethodType.Getter)]
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.knowledgePriorityEducationChange), MethodType.Getter)]
     public static class KnowledgeEducationEffectPatch
     {
         [HarmonyPrefix]

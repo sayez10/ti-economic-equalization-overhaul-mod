@@ -19,7 +19,7 @@ namespace TIEconomyMod.AIPatches
     /// <summary>
     /// Patch changes AI evaluation of a nation's value/importance to account for the higher IP amount in large modded nations
     /// </summary>
-    [HarmonyPatch(typeof(AIEvaluators), "EvaluateNation")]
+    [HarmonyPatch(typeof(AIEvaluators), nameof(AIEvaluators.EvaluateNation))]
     public static class AIEvaluateNationPatch
     {
         [HarmonyPrefix]

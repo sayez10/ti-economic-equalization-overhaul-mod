@@ -20,7 +20,7 @@ namespace TIEconomyMod.AIPatches
     /// <summary>
     /// Patch changes AI evaluation of a control point's value/importance to account for the higher IP amount in large modded nations
     /// </summary>
-    [HarmonyPatch(typeof(AIEvaluators), "EvaluateControlPoint")]
+    [HarmonyPatch(typeof(AIEvaluators), nameof(AIEvaluators.EvaluateControlPoint))]
     public static class AIEvaluateControlPointPatch
     {
         [HarmonyPrefix]
