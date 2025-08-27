@@ -2,16 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 
 
@@ -41,7 +34,7 @@ namespace TIEconomyMod
 
             // Vanilla code explicitly disallows a value that'd go under 0
             // So better play it safe
-            __result = Mathf.Max(-__instance.unrest, adjustedEffect);
+            __result = Math.Max(-__instance.unrest, adjustedEffect);
 
 
             return false; // Skip original method

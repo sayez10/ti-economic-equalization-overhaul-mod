@@ -2,16 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+
 
 
 
@@ -37,7 +31,7 @@ namespace TIEconomyMod
 
             // Democracy and Education incurs a 2.5% malus per point, up to -50%
             // A combined score of 20 causes the max effect
-            float penaltyMult = Mathf.Min(MALUS_LIMIT, 1f - ((__instance.education + __instance.democracy) * COHESION_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL));
+            float penaltyMult = Math.Min(MALUS_LIMIT, 1f - ((__instance.education + __instance.democracy) * COHESION_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL));
 
             __result = baseEffect * penaltyMult;
 

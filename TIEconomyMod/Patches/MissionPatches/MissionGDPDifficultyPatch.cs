@@ -2,16 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+
 using System.Reflection;
 
 
@@ -44,7 +38,7 @@ namespace TIEconomyMod
             if (nation != null)
             {
                 // This is the vanilla economyScore the country would have
-                float vanillaEcoScore = Mathf.Pow(nation.economyScore * 100f, 0.33f);
+                float vanillaEcoScore = (float)Math.Pow(nation.economyScore * 100f, 0.33f);
                 __result = vanillaEcoScore * TemplateManager.global.TIMissionModifier_TargetNationGDP_Multiplier;
             }
 

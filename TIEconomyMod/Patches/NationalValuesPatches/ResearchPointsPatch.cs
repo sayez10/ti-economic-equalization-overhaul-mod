@@ -2,16 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 
 
@@ -52,7 +45,7 @@ namespace TIEconomyMod
             float democracyEffect = 0.5f + (__instance.democracy * 0.1f);;
 
             // As vanilla, get 25% research bonus at 5 cohesion, 25% penalty at 0 or 10 cohesion
-            float cohesionEffect = 1.25f - (Mathf.Abs(__instance.cohesion - 5f) * 0.1f);
+            float cohesionEffect = 1.25f - (Math.Abs(__instance.cohesion - 5f) * 0.1f);
 
             // As vanilla, get 100% research at 0 unrest, increasing quadratically to 0% at 10 unrest
             float unrestEffect = 1f - (__instance.unrest * __instance.unrest * 0.01f);

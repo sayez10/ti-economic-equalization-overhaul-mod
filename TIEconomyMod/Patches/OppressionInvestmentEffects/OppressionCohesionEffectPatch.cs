@@ -2,16 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 
 
@@ -37,7 +30,7 @@ namespace TIEconomyMod
             float baseEffect = Tools.EffectStrength(BASE_COHESION, __instance.population);
 
             // Effect ramps up the higher Democracy is: 0% at/under 5, 100% at 10
-            float democracyMult = Mathf.Max(0f, COHESION_RAMPUP_PER_DEMOCRACY_LEVEL * (__instance.democracy - MIN_DEMOCRACY_FOR_COHESION_CHANGE));
+            float democracyMult = Math.Max(0f, COHESION_RAMPUP_PER_DEMOCRACY_LEVEL * (__instance.democracy - MIN_DEMOCRACY_FOR_COHESION_CHANGE));
 
             __result = baseEffect * democracyMult;
 

@@ -2,16 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
+
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 
 
@@ -44,7 +39,7 @@ namespace TIEconomyMod
 
             // Each nuked region causes a sustainability generation malus of -5%, up to -50%
             float nukedCounter = __instance.regions.Sum((TIRegionState x) => x.nuclearDetonations);
-            float nukedMult = Mathf.Max(MAX_PENALTY_FROM_NUKED_REGIONS, 1f - (nukedCounter * PENALTY_PER_NUKED_REGION));
+            float nukedMult = Math.Max(MAX_PENALTY_FROM_NUKED_REGIONS, 1f - (nukedCounter * PENALTY_PER_NUKED_REGION));
 
             __result = baseEffect * nukedMult * sustainabilityMult;
 

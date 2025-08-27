@@ -2,16 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 
 
@@ -39,7 +32,7 @@ namespace TIEconomyMod
             // With a multiplier of 4, and a base of 0.87, we get:
             // 400% education gain at 0 education, 200% at 5 education, 100% at 10 education, 50% at 15 education, etc...
             // Basically, the effectiveness of the knowledge priority halves every 5 education
-            float decayMult = MAX_SCALE_FACTOR * Mathf.Pow(DECAY_FACTOR, __instance.education);
+            float decayMult = MAX_SCALE_FACTOR * (float)Math.Pow(DECAY_FACTOR, __instance.education);
 
             __result = baseChange * decayMult;
 

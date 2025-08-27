@@ -2,16 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 
 
@@ -46,7 +39,7 @@ namespace TIEconomyMod
                 const float COST_DECAY_EXPONENT = 0.7f;
 
                 // Total cost is split across the control points
-                __result = Mathf.Pow(baseControlCost, COST_DECAY_EXPONENT) * controlPointCostMult / __instance.numControlPoints;
+                __result = (float)Math.Pow(baseControlCost, COST_DECAY_EXPONENT) * controlPointCostMult / __instance.numControlPoints;
             }
         }
     }

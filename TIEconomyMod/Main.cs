@@ -2,14 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-
+using HarmonyLib;
+using UnityModManagerNet;
 
 using System.Reflection;
-using System.Reflection.Emit;
-using HarmonyLib;
-using UnityEngine;
-using UnityModManagerNet;
-using static UnityModManagerNet.UnityModManager;
 
 
 
@@ -72,9 +68,6 @@ namespace TIEconomyMod
             settings.Save(modEntry);
         }
 
-        /// <summary>
-        ///
-        /// </summary>
         public class Settings : UnityModManager.ModSettings, IDrawable
         {
             [Draw("GDP in billions per IP, lower = more IPs: (default: 100.0)", Min = 1.0, Precision = 1)] public double GDPBillionsPerIP = 100f;

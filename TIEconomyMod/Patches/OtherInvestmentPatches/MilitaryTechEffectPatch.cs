@@ -2,16 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 
 
@@ -48,7 +41,7 @@ namespace TIEconomyMod
             // Add a catch-up multiplier dependent on how far behind the max miltech level the country is
             // A bonus 50% tech gain per full miltech level behind the global max
             // Max to 1 is to prevent weirdness if somehow current miltech is above max miltech
-            float catchUpMult = Mathf.Max(1f, 1f + (MILITARY_PER_MILITARY_LEVEL_BEHIND * (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel)));
+            float catchUpMult = Math.Max(1f, 1f + (MILITARY_PER_MILITARY_LEVEL_BEHIND * (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel)));
 
             __result = BASE_MILITARY * armiesNumberMult * educationMult * catchUpMult;
 

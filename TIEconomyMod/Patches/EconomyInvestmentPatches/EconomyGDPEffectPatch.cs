@@ -2,22 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
-// SPDX-FileCopyrightText: Copyright © 2022 - 2025 Verdiss, explodoboy, sayez10
-//
-// SPDX-License-Identifier: MIT
-
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 
 
@@ -81,7 +68,7 @@ namespace TIEconomyMod
              *
              * The main takeaway from this is that poor nations get a strong bonus, which drops off relatively quickly. Rich ones get diminishing - but (hopefully) manageable - returns.
              */
-            float scalingMult = MAX_SCALING_MULT * Mathf.Pow(DECAY_FACTOR, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
+            float scalingMult = MAX_SCALING_MULT * (float)Math.Pow(DECAY_FACTOR, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
 
             float modifiedGDPChange = BASE_GDP_CHANGE * specialRegionMult * democracyMult * educationMult * bonusPCGDPMult + scalingMult;
 

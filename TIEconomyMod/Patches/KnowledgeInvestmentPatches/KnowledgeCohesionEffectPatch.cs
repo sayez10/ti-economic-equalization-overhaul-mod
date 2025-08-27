@@ -2,16 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-
-
+using System;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 
 
@@ -33,7 +26,7 @@ namespace TIEconomyMod
 
             // Cohesion change is a centering effect, drawing it towards 5; additional logic is needed for that
             // Calculate the amount of change and prevent overshooting 5
-            float cohesionChangeAmount = Math.Min(Mathf.Abs(__instance.cohesion - 5f), (Tools.EffectStrength(BASE_COHESION, __instance.population)));
+            float cohesionChangeAmount = Math.Min(Math.Abs(__instance.cohesion - 5f), (Tools.EffectStrength(BASE_COHESION, __instance.population)));
             if (__instance.cohesion > 5f)
             {
                 // Reduce cohesion instead if it's currently above 5
