@@ -9,24 +9,24 @@ using System.Runtime.CompilerServices;
 namespace TIEconomyMod
 {
     // This is a helper class used to streamline things, and centralize important variables
-    public static class Tools
+    internal static class Tools
     {
         // The base thresholds are stored as their own variables to allow quick fixing if the devs change the hardcoded requirement
-        public const int BASE_OIL_THRESHOLD = 500;
-        public const int BASE_MINING_THRESHOLD = 750;
-        public const int BASE_ECONOMIC_THRESHOLD = 1200;
-        public const int BASE_DECOLONIZE_THRESHOLD = 1000;
-        public const int BASE_CLEANUP_THRESHOLD = 100;
+        internal const int BASE_OIL_THRESHOLD = 500;
+        internal const int BASE_MINING_THRESHOLD = 750;
+        internal const int BASE_ECONOMIC_THRESHOLD = 1200;
+        internal const int BASE_DECOLONIZE_THRESHOLD = 1000;
+        internal const int BASE_CLEANUP_THRESHOLD = 100;
 
-        public const int REGION_UPGRADE_THRESHOLD_MULT = 5;
+        internal const int REGION_UPGRADE_THRESHOLD_MULT = 5;
 
         // These values are dynamically calculated inside a function
         // They're first calculated after the mod loads, and then whenever settings are changed
-        public static double GDPPerIP;
+        internal static double GDPPerIP;
         private static float theoreticalPopulation;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float EffectStrength(float idealGainPerMonth, float population)
+        internal static float EffectStrength(float idealGainPerMonth, float population)
         {
             /*
              * Calculates the effect strength for inverse population scaling.
@@ -57,7 +57,7 @@ namespace TIEconomyMod
             return effectStrength / population;
         }
 
-        public static void Recalculate()
+        internal static void Recalculate()
         {
             // 1 billion * settings value
             GDPPerIP = 1000000000 * Main.settings.GDPBillionsPerIP;
