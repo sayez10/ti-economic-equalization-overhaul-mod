@@ -69,7 +69,7 @@ namespace TIEconomyMod
             if (!Main.enabled) { return; }
 
             Traverse traverse = Traverse.Create(__instance);
-            FileLog.Log(string.Format("[PopBasedMiltechCalculation] Game set {0}, replaced with {1}", __instance.militaryTechLevel, __state));
+            FileLog.Log(string.Format("[TIEconomyMod] Nation merger for {0}: Game set Miltech {1}, replaced by Mod with {2}", __instance.displayName, __instance.militaryTechLevel, __state));
             traverse.Property("militaryTechLevel", null).SetValue(__state);
             __instance.SetDataDirty();
         }
