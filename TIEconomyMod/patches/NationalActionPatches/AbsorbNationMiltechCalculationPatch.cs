@@ -41,16 +41,17 @@ namespace TIEconomyMod
 
             float maxMilitaryLevel = Math.Max(__instance.militaryTechLevel, joiningNationState.militaryTechLevel);
             float deltaMilitaryLevel = Math.Abs(__instance.militaryTechLevel - joiningNationState.militaryTechLevel);
-            float bonusMilitaryLevel = Math.Max(MAX_BONUS_MILITARY_LEVEL, (0.5f - deltaMilitaryLevel));
+            float bonusMilitaryLevel = Math.Max(0f, (MAX_BONUS_MILITARY_LEVEL - deltaMilitaryLevel));
             float orgMilitaryLevel = maxMilitaryLevel + bonusMilitaryLevel;
 
             // Higher = lower weighing of number of existing armies
             const float WEIGHT_NUM_FORCES_GROWTH_FACTOR = 5f;
+            const float WEIGHT_NUM_FORCES_MULT = 0.5f;
 
             int numNationForces = __instance.numStandardArmies + __instance.numNavies;
             int numJoinerForces = joiningNationState.numStandardArmies + joiningNationState.numNavies;
-            float weightNumNationForces = 0.5f * WEIGHT_NUM_FORCES_GROWTH_FACTOR / (WEIGHT_NUM_FORCES_GROWTH_FACTOR + numNationForces);
-            float weightNumJoinerForces = 0.5f * WEIGHT_NUM_FORCES_GROWTH_FACTOR / (WEIGHT_NUM_FORCES_GROWTH_FACTOR + numJoinerForces);
+            float weightNumNationForces = WEIGHT_NUM_FORCES_MULT * (((WEIGHT_NUM_FORCES_GROWTH_FACTOR + numNationForces) / WEIGHT_NUM_FORCES_GROWTH_FACTOR) - 1f);
+            float weightNumJoinerForces = WEIGHT_NUM_FORCES_MULT * (((WEIGHT_NUM_FORCES_GROWTH_FACTOR + numJoinerForces) / WEIGHT_NUM_FORCES_GROWTH_FACTOR) - 1f);
             float weightOrgMilitaryLevel = 1f - weightNumNationForces - numJoinerForces;
 
             // Calculate the merged nation's military tech value, weigh the individual summands with their respective weights
