@@ -18,7 +18,7 @@ namespace TIEconomyMod
     /// And the global techs to reduce CP cost aren't critical anymore
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.ControlPointMaintenanceCost), MethodType.Getter)]
-    public static class ControlPointCostPatch
+    internal static class ControlPointCostPatch
     {
         [HarmonyPostfix]
         private static void GetControlPointMaintenanceCostPostfix(ref float __result, TINationState __instance)

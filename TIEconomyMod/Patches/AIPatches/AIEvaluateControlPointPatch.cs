@@ -16,7 +16,7 @@ namespace TIEconomyMod.AIPatches
     /// Patch changes AI evaluation of a control point's value/importance to account for the higher IP amount in large modded nations
     /// </summary>
     [HarmonyPatch(typeof(AIEvaluators), nameof(AIEvaluators.EvaluateControlPoint))]
-    public static class AIEvaluateControlPointPatch
+    internal static class AIEvaluateControlPointPatch
     {
         [HarmonyPrefix]
         private static bool EvaluateControlPointOverwrite(TIFactionState faction, TIControlPoint controlPoint, ref float __result)

@@ -14,7 +14,7 @@ namespace TIEconomyMod
     /// Patch changes the knowledge effect of a unity investment to scale inversely with population size
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.unityPriorityEducationChange), MethodType.Getter)]
-    public static class UnityEducationEffectPatch
+    internal static class UnityEducationEffectPatch
     {
         [HarmonyPrefix]
         private static bool GetUnityPriorityEducationChangeOverwrite(ref float __result, TINationState __instance)

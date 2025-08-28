@@ -14,7 +14,7 @@ namespace TIEconomyMod
     /// Patch changes the cohesion effect of an oppression investment to scale inversely with population size
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.OppressionPriorityCohesionChange), MethodType.Getter)]
-    public static class OppressionCohesionEffectPatch
+    internal static class OppressionCohesionEffectPatch
     {
         [HarmonyPrefix]
         private static bool GetOppressionPriorityCohesionChangeOverwrite(ref float __result, TINationState __instance)

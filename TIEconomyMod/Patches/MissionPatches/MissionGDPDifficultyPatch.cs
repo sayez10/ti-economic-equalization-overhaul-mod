@@ -17,7 +17,7 @@ namespace TIEconomyMod
     /// Amount of difficulty for a given nation with a given GDP is to be identical in vanilla and this mod
     /// </summary>
     [HarmonyPatch(typeof(TIMissionModifier_TargetNationGDP), nameof(TIMissionModifier_TargetNationGDP.GetModifier))]
-    public static class MissionGDPDifficultyPatch
+    internal static class MissionGDPDifficultyPatch
     {
         // Grab the reflection info for ObjectToNation(TIFactionState, TIGameState)
         // The function is protected, so it can't be run directly

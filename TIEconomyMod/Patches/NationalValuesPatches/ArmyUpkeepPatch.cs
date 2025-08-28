@@ -15,7 +15,7 @@ namespace TIEconomyMod.InvestmentPointPatches
     /// Patch changes the IP upkeep of armies to be dependent on mil tech level of the owning nation
     /// </summary>
     [HarmonyPatch(typeof(TIArmyState), nameof(TIArmyState.investmentArmyFactor), MethodType.Getter)]
-    public static class ArmyInvestmentUpkeepPatch
+    internal static class ArmyInvestmentUpkeepPatch
     {
         [HarmonyPrefix]
         private static bool GetInvestmentArmyFactorOverwrite(ref float __result, TIArmyState __instance)

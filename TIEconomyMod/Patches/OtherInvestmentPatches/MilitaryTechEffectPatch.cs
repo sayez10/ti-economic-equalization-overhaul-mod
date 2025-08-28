@@ -16,7 +16,7 @@ namespace TIEconomyMod
     /// It also adds a catch-up boost to gain based on how far behind the global maximum tech level the country is
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.militaryPriorityTechLevelChange), MethodType.Getter)]
-    public static class MilitaryTechEffectPatch
+    internal static class MilitaryTechEffectPatch
     {
         [HarmonyPrefix]
         private static bool GetMilitaryPriorityTechLevelChangeOverwrite(ref float __result, TINationState __instance)

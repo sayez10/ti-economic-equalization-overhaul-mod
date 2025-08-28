@@ -20,7 +20,7 @@ namespace TIEconomyMod
     /// patching priorityTipStr() in PriorityTooltipPatch.cs
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.OnWelfarePriorityComplete))]
-    public static class WelfareRegionEffectPatch
+    internal static class WelfareRegionEffectPatch
     {
         // Rather than using a property variable, whose value is basically refreshed each time it's called,
         // it's instead refreshed only when mod settings are changed. In other words, they're cached.

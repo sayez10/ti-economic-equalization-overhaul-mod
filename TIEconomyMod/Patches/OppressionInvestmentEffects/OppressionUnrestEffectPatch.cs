@@ -16,7 +16,7 @@ namespace TIEconomyMod
     /// However, at full democracy, oppression does nothing to unrest
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.OppressionPriorityUnrestChange), MethodType.Getter)]
-    public static class OppressionUnrestEffectPatch
+    internal static class OppressionUnrestEffectPatch
     {
         [HarmonyPrefix]
         private static bool GetOppressionPriorityUnrestChangeOverwrite(ref float __result, TINationState __instance)

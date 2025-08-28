@@ -14,7 +14,7 @@ namespace TIEconomyMod
     /// Patch changes the amount of investment points available to a nation to scale linearly with GDP
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.economyScore), MethodType.Getter)]
-    public static class BaseInvestmentPointPatch
+    internal static class BaseInvestmentPointPatch
     {
         [HarmonyPrefix]
         private static bool GetEconomyScoreOverwrite(ref float __result, TINationState __instance)

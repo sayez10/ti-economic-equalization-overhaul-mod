@@ -14,7 +14,7 @@ namespace TIEconomyMod
     /// Patch changes the sustainability effect of a spoils completion to scale inversely with population size
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.spoilsSustainabilityChange), MethodType.Getter)]
-    public static class SpoilsSustainabilityEffectPatch
+    internal static class SpoilsSustainabilityEffectPatch
     {
         [HarmonyPrefix]
         private static bool GetSpoilsSustainabilityChangeOverwrite(ref float __result, TINationState __instance)

@@ -18,7 +18,7 @@ namespace TIEconomyMod
     /// Added a research malus for nations with democracy below 5 and simplified formula
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.research_month), MethodType.Getter)]
-    public static class ResearchPointsPatch
+    internal static class ResearchPointsPatch
     {
         [HarmonyPrefix]
         private static bool GetResearchMonthOverwrite(ref float __result, TINationState __instance)

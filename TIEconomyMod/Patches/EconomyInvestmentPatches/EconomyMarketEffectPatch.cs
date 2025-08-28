@@ -15,7 +15,7 @@ namespace TIEconomyMod
     /// This is necessary to avoid breaking the game due to the massively increased number of economy priority completions
     /// </summary>
     [HarmonyPatch(typeof(TIGlobalValuesState), nameof(TIGlobalValuesState.ModifyMarketValuesForEconomyPriority))]
-    public static class EconomyMarketEffectPatch
+    internal static class EconomyMarketEffectPatch
     {
         [HarmonyPrefix]
         private static bool ModifyMarketValuesForEconomyPriorityOverwrite(TIGlobalValuesState __instance)

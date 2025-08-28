@@ -14,7 +14,7 @@ namespace TIEconomyMod
     /// Patch changes the democracy effect of a spoils completion to scale inversely with population size
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.spoilsPriorityDemocracyChange), MethodType.Getter)]
-    public static class SpoilsDemocracyEffectPatch
+    internal static class SpoilsDemocracyEffectPatch
     {
         [HarmonyPrefix]
         private static bool GetSpoilsPriorityDemocracyChangeOverwrite(ref float __result, TINationState __instance)

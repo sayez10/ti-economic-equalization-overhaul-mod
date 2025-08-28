@@ -14,7 +14,7 @@ namespace TIEconomyMod
     /// Patch changes the amount of investment points available to a nation to scale linearly with GDP
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.maxFunding_year), MethodType.Getter)]
-    public static class FundingLimitPatch
+    internal static class FundingLimitPatch
     {
         [HarmonyPrefix]
         private static bool MaxFundingYearOverwrite(ref float __result, TINationState __instance)

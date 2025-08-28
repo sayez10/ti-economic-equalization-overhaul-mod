@@ -14,7 +14,7 @@ namespace TIEconomyMod.AIPatches
     /// Patch changes AI evaluation of a nation's value/importance to account for the higher IP amount in large modded nations
     /// </summary>
     [HarmonyPatch(typeof(AIEvaluators), nameof(AIEvaluators.EvaluateNation))]
-    public static class AIEvaluateNationPatch
+    internal static class AIEvaluateNationPatch
     {
         [HarmonyPrefix]
         private static bool EvaluateNationOverwrite(TIFactionState faction, TINationState nation, ref float __result)

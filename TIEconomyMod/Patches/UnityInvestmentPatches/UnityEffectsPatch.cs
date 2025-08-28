@@ -18,7 +18,7 @@ namespace TIEconomyMod
     /// Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.OnUnityPriorityComplete))]
-    public static class UnityEffectsPatch
+    internal static class UnityEffectsPatch
     {
         [HarmonyPrefix]
         private static bool OnUnityPriorityCompleteOverwrite(TINationState __instance)

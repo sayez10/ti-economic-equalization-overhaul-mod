@@ -16,7 +16,7 @@ namespace TIEconomyMod
     /// Patch changes the sustainability effect of an environment investment to scale inversely with population size
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.environmentPrioritySustainabilityChange), MethodType.Getter)]
-    public static class EnvironmentSustainabilityEffectPatch
+    internal static class EnvironmentSustainabilityEffectPatch
     {
         [HarmonyPrefix]
         private static bool GetEnvironmentPrioritySustainabilityChangeOverwrite(ref float __result, TINationState __instance)

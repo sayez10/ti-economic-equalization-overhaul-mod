@@ -26,7 +26,7 @@ namespace TIEconomyMod
     /// which might need to be replaced or upgraded, and personnel (including factors like doctrine, tactics and organization) which might need to be re-trained.
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.AbsorbNation))]
-    public static class AbsorbNationMiltechCalculationPatch
+    internal static class AbsorbNationMiltechCalculationPatch
     {
         [HarmonyPrefix]
         private static bool AbsorbNationPrefix(out float __state, TINationState __instance, TIFactionState actingFaction, TINationState joiningNationState)

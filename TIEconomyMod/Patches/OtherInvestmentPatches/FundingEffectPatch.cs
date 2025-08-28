@@ -14,7 +14,7 @@ namespace TIEconomyMod
     /// Patch changes the monthly funding gain from completing a funding investment
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.spaceFundingPriorityIncomeChange), MethodType.Getter)]
-    public static class FundingEffectPatch
+    internal static class FundingEffectPatch
     {
         [HarmonyPrefix]
         private static bool GetSpaceFundingPriorityIncomeChangeOverwrite(ref float __result, TINationState __instance)

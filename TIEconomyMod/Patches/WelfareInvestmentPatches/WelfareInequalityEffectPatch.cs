@@ -14,7 +14,7 @@ namespace TIEconomyMod
     /// Patch changes the inequality effect of a welfare investment to scale inversely with population size
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.welfarePriorityInequalityChange), MethodType.Getter)]
-    public static class WelfareInequalityEffectPatch
+    internal static class WelfareInequalityEffectPatch
     {
         [HarmonyPrefix]
         private static bool GetWelfarePriorityInequalityChangeOverwrite(ref float __result, TINationState __instance)

@@ -18,7 +18,7 @@ namespace TIEconomyMod
     /// Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
     /// </summary>
     [HarmonyPatch(typeof(TINationState), "OnSpoilsPriorityComplete")]
-    public static class SpoilsEffectsPatch
+    internal static class SpoilsEffectsPatch
     {
         [HarmonyPrefix]
         private static bool OnSpoilsPriorityCompleteOverwrite(TINationState __instance)

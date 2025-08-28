@@ -14,7 +14,7 @@ using System.Text;
 namespace TIEconomyMod
 {
     [HarmonyPatch(typeof(NationInfoController), "BuildInvestmentTooltip")]
-    public static class IPTooltipPatch
+    internal static class IPTooltipPatch
     {
         [HarmonyPrefix]
         private static bool BuildInvestmentTooltipOverwrite(ref string __result, TINationState nation)
