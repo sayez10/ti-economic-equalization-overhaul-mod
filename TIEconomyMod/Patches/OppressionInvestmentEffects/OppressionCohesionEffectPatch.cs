@@ -17,7 +17,7 @@ namespace TIEconomyMod
     public static class OppressionCohesionEffectPatch
     {
         [HarmonyPrefix]
-        public static bool GetOppressionPriorityCohesionChangeOverwrite(ref float __result, TINationState __instance)
+        private static bool GetOppressionPriorityCohesionChangeOverwrite(ref float __result, TINationState __instance)
         {
 
             // If mod has been disabled, abort patch and use original method

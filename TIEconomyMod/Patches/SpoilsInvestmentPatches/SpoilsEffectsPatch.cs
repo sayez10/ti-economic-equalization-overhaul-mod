@@ -21,7 +21,7 @@ namespace TIEconomyMod
     public static class SpoilsEffectsPatch
     {
         [HarmonyPrefix]
-        public static bool OnSpoilsPriorityCompleteOverwrite(TINationState __instance)
+        private static bool OnSpoilsPriorityCompleteOverwrite(TINationState __instance)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

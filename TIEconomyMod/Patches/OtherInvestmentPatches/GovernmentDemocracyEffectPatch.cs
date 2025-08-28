@@ -17,7 +17,7 @@ namespace TIEconomyMod
     public static class KnowledgeDemocracyEffectPatch
     {
         [HarmonyPrefix]
-        public static bool GetGovernmentPriorityDemocracyChangeOverwrite(ref float __result, TINationState __instance)
+        private static bool GetGovernmentPriorityDemocracyChangeOverwrite(ref float __result, TINationState __instance)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

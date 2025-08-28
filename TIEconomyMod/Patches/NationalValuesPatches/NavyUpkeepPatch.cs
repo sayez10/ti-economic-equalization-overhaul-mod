@@ -17,7 +17,7 @@ namespace TIEconomyMod.InvestmentPointPatches
     public static class NavyInvestmentUpkeepPatch
     {
         [HarmonyPrefix]
-        public static bool GetInvestmentNavyFactorOverwrite(ref float __result, TIArmyState __instance)
+        private static bool GetInvestmentNavyFactorOverwrite(ref float __result, TIArmyState __instance)
         {
             // Multiply maintenance cost by miltech level
             __result = TemplateManager.global.nationalInvestmentNavyFactor * __instance.homeNation.militaryTechLevel;

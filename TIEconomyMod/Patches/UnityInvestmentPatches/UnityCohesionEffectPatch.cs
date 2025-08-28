@@ -18,7 +18,7 @@ namespace TIEconomyMod
     public static class UnityCohesionEffectPatch
     {
         [HarmonyPrefix]
-        public static bool GetUnityPriorityCohesionChangeOverwrite(ref float __result, TINationState __instance)
+        private static bool GetUnityPriorityCohesionChangeOverwrite(ref float __result, TINationState __instance)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

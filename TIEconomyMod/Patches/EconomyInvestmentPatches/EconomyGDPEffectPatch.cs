@@ -19,7 +19,7 @@ namespace TIEconomyMod
     public static class EconomyGDPEffectPatch
     {
         [HarmonyPrefix]
-        public static bool GetEconomyPriorityPerCapitaIncomeChangeOverwrite(ref float __result, TINationState __instance)
+        private static bool GetEconomyPriorityPerCapitaIncomeChangeOverwrite(ref float __result, TINationState __instance)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

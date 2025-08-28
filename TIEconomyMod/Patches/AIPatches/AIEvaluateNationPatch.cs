@@ -17,7 +17,7 @@ namespace TIEconomyMod.AIPatches
     public static class AIEvaluateNationPatch
     {
         [HarmonyPrefix]
-        public static bool EvaluateNationOverwrite(TIFactionState faction, TINationState nation, ref float __result)
+        private static bool EvaluateNationOverwrite(TIFactionState faction, TINationState nation, ref float __result)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

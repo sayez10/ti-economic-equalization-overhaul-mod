@@ -19,7 +19,7 @@ namespace TIEconomyMod
     public static class OppressionUnrestEffectPatch
     {
         [HarmonyPrefix]
-        public static bool GetOppressionPriorityUnrestChangeOverwrite(ref float __result, TINationState __instance)
+        private static bool GetOppressionPriorityUnrestChangeOverwrite(ref float __result, TINationState __instance)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

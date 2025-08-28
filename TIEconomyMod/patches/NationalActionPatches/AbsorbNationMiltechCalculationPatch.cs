@@ -29,7 +29,7 @@ namespace TIEconomyMod
     public static class AbsorbNationMiltechCalculationPatch
     {
         [HarmonyPrefix]
-        public static bool AbsorbNationPrefix(out float __state, TINationState __instance, TIFactionState actingFaction, TINationState joiningNationState)
+        private static bool AbsorbNationPrefix(out float __state, TINationState __instance, TIFactionState actingFaction, TINationState joiningNationState)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) {
@@ -63,7 +63,7 @@ namespace TIEconomyMod
 
 
         [HarmonyPostfix]
-        public static void AbsorbNationPostfix(float __state, TINationState __instance)
+        private static void AbsorbNationPostfix(float __state, TINationState __instance)
         {
             // If mod has been disabled, abort patch
             if (!Main.enabled) { return; }

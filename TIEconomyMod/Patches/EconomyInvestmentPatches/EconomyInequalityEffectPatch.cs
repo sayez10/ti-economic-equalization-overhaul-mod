@@ -17,7 +17,7 @@ namespace TIEconomyMod
     public static class EconomyInequalityEffectPatch
     {
         [HarmonyPrefix]
-        public static bool GetEconomyPriorityInequalityChangeOverwrite(ref float __result, TINationState __instance)
+        private static bool GetEconomyPriorityInequalityChangeOverwrite(ref float __result, TINationState __instance)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

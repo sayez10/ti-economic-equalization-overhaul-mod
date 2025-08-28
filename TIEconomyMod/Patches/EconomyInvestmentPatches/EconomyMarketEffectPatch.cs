@@ -18,7 +18,7 @@ namespace TIEconomyMod
     public static class EconomyMarketEffectPatch
     {
         [HarmonyPrefix]
-        public static bool ModifyMarketValuesForEconomyPriorityOverwrite(TIGlobalValuesState __instance)
+        private static bool ModifyMarketValuesForEconomyPriorityOverwrite(TIGlobalValuesState __instance)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

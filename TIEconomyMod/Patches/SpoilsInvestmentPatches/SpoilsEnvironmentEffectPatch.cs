@@ -18,7 +18,7 @@ namespace TIEconomyMod
     public static class SpoilsEnvironmentEffectPatch
     {
         [HarmonyPrefix]
-        public static bool AddSpoilsPriorityEnvEffectOverwrite(TINationState nation, TIGlobalValuesState __instance)
+        private static bool AddSpoilsPriorityEnvEffectOverwrite(TINationState nation, TIGlobalValuesState __instance)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
