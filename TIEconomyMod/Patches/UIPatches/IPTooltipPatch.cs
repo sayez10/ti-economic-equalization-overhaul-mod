@@ -13,7 +13,7 @@ using System.Text;
 
 namespace TIEconomyMod
 {
-    [HarmonyPatch(typeof(NationInfoController), "BuildInvestmentTooltip")]
+    [HarmonyPatch(typeof(NationInfoController),  nameof(NationInfoController.BuildInvestmentTooltip))]
     internal static class IPTooltipPatch
     {
         [HarmonyPrefix]

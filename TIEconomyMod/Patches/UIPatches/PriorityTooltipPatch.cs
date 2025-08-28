@@ -13,7 +13,7 @@ using System.Reflection.Emit;
 
 namespace TIEconomyMod
 {
-    [HarmonyPatch(typeof(PriorityListItemController), "priorityTipStr")]
+    [HarmonyPatch(typeof(PriorityListItemController),  nameof(PriorityListItemController.priorityTipStr))]
     internal static class PriorityPatches
     {
         // This ensures that tooltip readouts of region upgrade IP requirements accurately reflect what the mod sets
