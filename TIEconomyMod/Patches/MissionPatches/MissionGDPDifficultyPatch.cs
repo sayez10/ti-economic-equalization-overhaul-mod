@@ -24,7 +24,7 @@ namespace TIEconomyMod
         private static readonly MethodInfo objectToNationMethod = AccessTools.Method(typeof(TIMissionModifier), "ObjectToNation", new Type[] { typeof(TIFactionState), typeof(TIGameState) });
 
         [HarmonyPrefix]
-        public static bool GetModifierOverwrite(ref float __result, TICouncilorState attackingCouncilor, TIGameState target = null, float resourcesSpent = 0f, FactionResource resource = FactionResource.None)
+        private static bool GetModifierOverwrite(ref float __result, TICouncilorState attackingCouncilor, TIGameState target = null, float resourcesSpent = 0f, FactionResource resource = FactionResource.None)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
@@ -48,7 +48,7 @@ namespace TIEconomyMod
 
 
 
-        public static TINationState YoinkObjectToNation(TIFactionState faction, TIGameState target)
+        private static TINationState YoinkObjectToNation(TIFactionState faction, TIGameState target)
         {
             // In case the developers decide to change ObjectToNation()'s name or parameters, a check is done to confirm the method was actually acquired
             if (objectToNationMethod == null)

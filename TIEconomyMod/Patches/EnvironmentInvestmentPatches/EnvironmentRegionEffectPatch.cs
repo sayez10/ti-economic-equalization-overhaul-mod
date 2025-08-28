@@ -24,12 +24,12 @@ namespace TIEconomyMod
     {
         // Rather than using a property variable, whose value is basically refreshed each time it's called,
         // it's instead refreshed only when mod settings are changed. In other words, they're cached.
-        public static int cleanupThreshold;
+        internal static int cleanupThreshold;
 
         // This basically is a reference to the final threshold variables, which the post-transpiler code can call on
-        public static readonly FieldInfo getCleanupThreshold = AccessTools.Field(typeof(EnvironmentRegionEffectPatch), nameof(cleanupThreshold));
+        internal static readonly FieldInfo getCleanupThreshold = AccessTools.Field(typeof(EnvironmentRegionEffectPatch), nameof(cleanupThreshold));
 
-        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             foreach (var instruction in instructions)
             {
@@ -46,7 +46,7 @@ namespace TIEconomyMod
 
 
 
-        public static void Recalculate()
+        internal static void Recalculate()
         {
             // If the mod is disabled, the vanilla value is inserted instead
             // This allows for the mod to be fully disabled during runtime

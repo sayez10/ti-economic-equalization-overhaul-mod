@@ -24,16 +24,16 @@ namespace TIEconomyMod
     {
         // Rather than using a property variable, whose value is basically refreshed each time it's called,
         // it's instead refreshed only when mod settings are changed. In other words, they're cached.
-        public static int oilThreshold;
-        public static int miningThreshold;
-        public static int economicThreshold;
+        internal static int oilThreshold;
+        internal static int miningThreshold;
+        internal static int economicThreshold;
 
         // This basically is a reference to the final threshold variables, which the post-transpiler code can call on
-        public static readonly FieldInfo getOilThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(oilThreshold));
-        public static readonly FieldInfo getMiningThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(miningThreshold));
-        public static readonly FieldInfo getEconomicThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(economicThreshold));
+        internal static readonly FieldInfo getOilThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(oilThreshold));
+        internal static readonly FieldInfo getMiningThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(miningThreshold));
+        internal static readonly FieldInfo getEconomicThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(economicThreshold));
 
-        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             foreach (var instruction in instructions)
             {
@@ -58,7 +58,7 @@ namespace TIEconomyMod
 
 
 
-        public static void Recalculate()
+        internal static void Recalculate()
         {
             // If the mod is disabled, the vanilla value is inserted instead
             // This allows for the mod to be fully disabled during runtime
