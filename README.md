@@ -1,7 +1,7 @@
 # Economic Equalization Overhaul
-This is a fan mod for the game Terra Invicta. It modifies the way national economies work, to better represent the way countries of different sizes compare.
+This is a fan mod for the game *Terra Invicta*. It modifies the way national economies work, to better represent the way countries of different sizes compare.
 
-The project was originally started by [Verdiss](https://github.com/Verdiss). Development was later taken over by [explodoboy](https://github.com/explodoboy). For now I am maintaining a fork while it's unclear if any other fork is still being actively maintained.
+The project was originally started by [Verdiss](https://github.com/Verdiss/TI-Economic-Equalization-Overhaul). Development was later taken over by [explodoboy](https://github.com/explodoboy/Economic-Equalization-Overhaul). For now I am maintaining a fork while it's unclear if any other fork is still being actively maintained.
 
 
 ### Philosophy
@@ -11,29 +11,31 @@ The primary cause of these bad relationships has to do with the cube-root relati
 
 As such, the primary function of this mod is to remove both of those issues. Investment points is a linear function of GDP, as is the control cost of a nation. Surrounding these core changes are a huge number of adjustments to the way national investments work, to account for this change and to otherwise even out the rate that a country's utility changes with its size. In this mod, a country that is twice as large is twice as good, but twice as expensive to control.
 
-In short, the goal of the mod is to remove the unintuitive and unrealistic meta-strategizing that surrounds all choices regarding country management, country unifications, and country prioritization.
+In short, the goal of the mod is to remove the unintuitive and unrealistic meta-strategizing that surrounds all choices regarding country management, country unification, and country prioritization.
 
 
 ### Summary of Effects
 -National monthly investment points are equal to 1 per 100 Billion GDP.
 
--The formula to calculate the control point cost of a nation uses a power function again, like vanilla, and unlike older versions of this mod. However, the parameters have been changed compared to vanilla. Nations with high GDP now require far fewer CPs per generated IP than nations with low GDP. Arrival International Relations, Unity Movements, Great Nations, Arrival Governance, and Accelerando no longer reduce the control cost of a nation (unlike in previous versions of this mod).
+-The formula to calculate the control point cost of a nation uses a power function again, like vanilla, and unlike older versions of this mod. However, the parameters have been changed compared to vanilla. Nations with high GDP now require far fewer control points per generated IP than nations with low GDP.
+
+-Arrival International Relations, Unity Movements, Great Nations, Arrival Governance, and Accelerando no longer reduce the control cost of a nation (unlike in previous versions of this mod).
 
 -Economy investments gives an amount of GDP, as opposed to an amount of GDP per capita (though the tooltip shows the distributed GDP per capita). This makes all economies grow at the same % rate, disregarding modifiers.
 
--GDP growth from economy investments has diminishing returns based on current GDP per capita. It is based on an exponential decay function of the country's GDP per capita, which gives a nation with 1000 gdp per capita nearly 6 times the growth as a country with 45000.
+-GDP growth from economy investments has diminishing returns based on current GDP per capita. It is based on an exponential decay function of the country's GDP per capita, which gives a nation with 1,000 GDP per capita nearly 6 times the growth as a country with 45,000.
 
--Investment effects that impact demographic stats such as education, inequality, or cohesion are scaled inversely based on population size. You need 1000 times as many knowledge investments to increase education by 0.1 in a country with 1 billion people compared to a country with 1 million population.
+-Investment effects that impact demographic stats such as education, inequality, or cohesion are scaled inversely based on population size. You need 1,000 times as many knowledge investments to increase education by 0.1 in a country with 1 billion people compared to a country with 1 million population.
 
 -Education increases at a faster rate at lower education levels, and a slower rate at higher levels. This is an exponential decay function that gives 4 times the gain rate at 0 education compared to 10 education, and 50% of the gain at 15 education compared to 10.
 
--Military tech gain no longer depends on the population of a nation. Instead a military tech has a fixed cost per level, so large and wealthy nations can increase their military tech much faster than small and poor nations. Exsisting armies and navies increase the cost and thus slow down miltech progess. A 10% bonus to the military priority per level of education has been added. Nations which are far behind the global maximum tech level gain a linear bonus of 50% extra gain per 1 tech level behind the current maximum.
+-Military tech gain no longer depends on the population of a nation. Instead a military tech has a fixed cost per level, so large and wealthy nations can increase their military tech much faster than small and poor nations. Existing armies and navies increase the cost and thus slow down military technology progress. A 10% bonus to the military priority per level of education has been added. Nations which are far behind the global maximum tech level gain a linear bonus of 50% extra gain per 1 tech level behind the current maximum.
 
--The algorithm used to calculate the military technology level of a merged nation after absorbing another nation has been changed. Instead of weighing the military tech levels of both nations with their number of owned regions, the larger military technology value is used as starting point. If both miltech values are within 0.5 points, the merged nation's miltech value will be increased by up to 0.5 to represent the often different capabilities of military forces with a roughly comparable technological level and the synergy of combining them. Existing armies and navies might give a malus to the merged nation's miltech value to represent the need to possibly replace or upgrade equipment and to train personnel. Yard1 and his mod "Unification Pop Based Miltech Calculation" provided inspiration for this change and I copied the postfix patch from his mod, although I chose a completely different approach for the prefix patch and the actual formula to calculate the merged nation's military tech level. Thank you!
+-The algorithm used to calculate the military technology level of a merged nation after absorbing another nation has been changed. Instead of weighing the military tech levels of both nations with their number of owned regions, the larger military technology value is used as starting point. If both military technology values are within 0.5 points, the merged nation's value will be increased by up to 0.5 to represent the often different capabilities of military forces with a roughly comparable technological level and the synergy of combining them. Existing armies and navies might give a malus to the merged nation's military technology value to represent the need to possibly replace or upgrade equipment and to train personnel. [Yard1](https://github.com/Yard1) and his mod [Unification Pop Based Miltech Calculation](https://github.com/Yard1/TerraInvicta-PopBasedMiltechCalculation) provided inspiration for this change and I copied the postfix patch from his mod, although I chose a completely different approach for the prefix patch and the actual formula to calculate the merged nation's military tech level. Thank you!
 
 -Small adjustments to the relationships between things such as education and GDP growth, broadly maintaining vanilla levels of impact.
 
--Other changes to investment effects such as spoils and funding amount to flatten out the amount gained per investment to be constant regardless of country size and to attempt to rebalance the money income from nations. The goal has been to make funding the best option to invest in for sustained income and to keep spoils useful to gain a large amount of money in a short time, but incurring significant damage to that nation.
+-Other changes to investment effects such as spoils and funding amount to flatten out the amount gained per investment to be constant regardless of country size and to attempt to re-balance the money income from nations. The goal has been to make funding the best option to invest in for sustained income and to keep spoils useful to gain a large amount of money in a short time, but incurring significant damage to that nation.
 
 -The maximum annual income from funding in a nation has been increased by a factor of 10 to match the faster increase of the funding priority and to compensate for the nerf to spoils.
 
@@ -41,13 +43,13 @@ In short, the goal of the mod is to remove the unintuitive and unrealistic meta-
 
 -Adjusted upkeep cost of armies to be dependent on the host country's tech level. Armies have an upkeep of 2 IP per national tech level.
 
--Research output of a nation rebalanced. A nation no longer receives a flat 7.5 + education monthly research, however its research also increases linearly with population, not at a ^1.1 rate as vanilla. The limit of the quadratic scaling with education > 12 (introduced with vanilla pre-0.4.1) has been removed. Low democracy (below 5) now reduces research output and the bonus of democracry above 5 on research output has been slightly increased).
+-Research output of a nation re-balanced. A nation no longer receives a flat 7.5 + education monthly research, however its research also increases linearly with population, not at a ^1.1 rate as vanilla. The limit of the quadratic scaling with education > 12 (introduced with vanilla 0.4.1) has been removed. Low democracy (below 5) now reduces research output and the bonus of democracy above 5 on research output has been slightly increased).
 
--A few variables have been made configurable in the UMM settings menu: IP output, research production, and control point cost.
+-A few variables have been made configurable in the Unity Mod Manager settings menu: IP output, research production, and control point cost.
 
 
 ### Issues & the State of the Mod
-This mod is sill in an early stage, and bugs, unintended behavior, and imbalances are all but guaranteed. If you encounter a bug, or feel strongly that something should be adjusted, either open an issue in this github repo or leave a comment on one of the mirror sites.
+This mod is sill in an early stage, and bugs, unintended behavior, and imbalances are all but guaranteed. If you encounter a bug, or feel strongly that something should be adjusted, either open an issue in this GitHub repository or leave a comment on one of the mirror sites.
 
 Current focuses for future updates are:
 
