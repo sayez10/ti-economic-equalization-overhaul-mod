@@ -21,7 +21,7 @@ In short, the goal of the mod is to remove the unintuitive and unrealistic meta-
 
 -Arrival International Relations, Unity Movements, Great Nations, Arrival Governance, and Accelerando no longer reduce the control cost of a nation (unlike in previous versions of this mod).
 
--Economy investments gives an amount of GDP, as opposed to an amount of GDP per capita (though the tooltip shows the distributed GDP per capita). This makes all economies grow at the same % rate, disregarding modifiers.
+-Economy investments give an amount of GDP, as opposed to an amount of GDP per capita (though the tooltip shows the distributed GDP per capita). This makes all economies grow at the same % rate, disregarding modifiers.
 
 -GDP growth from economy investments has diminishing returns based on current GDP per capita. It is based on an exponential decay function of the country's GDP per capita, which gives a nation with 1,000 GDP per capita nearly 6 times the growth as a country with 45,000.
 

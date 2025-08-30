@@ -20,7 +20,8 @@ namespace TIEconomyMod
     internal static class MissionGDPDifficultyPatch
     {
         // Grab the reflection info for ObjectToNation(TIFactionState, TIGameState)
-        // The function is protected, so it can't be run directly
+        // The function is protected in vanilla, so it can't be run directly
+        // nameof() can't be used either for the same reason
         private static readonly MethodInfo objectToNationMethod = AccessTools.Method(typeof(TIMissionModifier), "ObjectToNation", new Type[] { typeof(TIFactionState), typeof(TIGameState) });
 
         [HarmonyPrefix]
