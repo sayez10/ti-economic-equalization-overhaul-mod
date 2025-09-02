@@ -19,7 +19,7 @@ namespace TIEconomyMod
     internal static class EnvironmentSustainabilityEffectPatch
     {
         [HarmonyPrefix]
-        private static bool GetEnvironmentPrioritySustainabilityChangeOverwrite(ref float __result, TINationState __instance)
+        private static bool GetEnvironmentPrioritySustainabilityChangeOverwrite(ref float __result, in TINationState __instance)
         {
             // FIXME: Overall, the scaling should have lesser extremes. Might need tweaking.
 

@@ -21,7 +21,7 @@ namespace TIEconomyMod
     internal static class ResearchPointsPatch
     {
         [HarmonyPrefix]
-        private static bool GetResearchMonthOverwrite(ref float __result, TINationState __instance)
+        private static bool GetResearchMonthOverwrite(ref float __result, in TINationState __instance)
         {
 
             // If mod has been disabled, abort patch and use original method

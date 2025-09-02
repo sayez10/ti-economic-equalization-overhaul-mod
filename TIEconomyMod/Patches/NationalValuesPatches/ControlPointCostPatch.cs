@@ -21,7 +21,7 @@ namespace TIEconomyMod
     internal static class ControlPointCostPatch
     {
         [HarmonyPostfix]
-        private static void GetControlPointMaintenanceCostPostfix(ref float __result, TINationState __instance)
+        private static void GetControlPointMaintenanceCostPostfix(ref float __result, in TINationState __instance)
         {
             // If mod has been disabled, abort patch
             if (!Main.enabled) { return; }

@@ -17,7 +17,7 @@ namespace TIEconomyMod
     internal static class IPTooltipPatch
     {
         [HarmonyPrefix]
-        private static bool BuildInvestmentTooltipOverwrite(ref string __result, TINationState nation)
+        private static bool BuildInvestmentTooltipOverwrite(ref string __result, in TINationState nation)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

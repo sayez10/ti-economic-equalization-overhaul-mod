@@ -18,7 +18,7 @@ namespace TIEconomyMod.InvestmentPointPatches
     internal static class ArmyInvestmentUpkeepPatch
     {
         [HarmonyPrefix]
-        private static bool GetInvestmentArmyFactorOverwrite(ref float __result, TIArmyState __instance)
+        private static bool GetInvestmentArmyFactorOverwrite(ref float __result, in TIArmyState __instance)
         {
             // Multiply maintenance cost by miltech level
             if (!__instance.useHomeInvestmentFactor)

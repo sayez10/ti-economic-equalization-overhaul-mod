@@ -17,7 +17,7 @@ namespace TIEconomyMod
     internal static class BaseInvestmentPointPatch
     {
         [HarmonyPrefix]
-        private static bool GetEconomyScoreOverwrite(ref float __result, TINationState __instance)
+        private static bool GetEconomyScoreOverwrite(ref float __result, in TINationState __instance)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

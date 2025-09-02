@@ -17,7 +17,7 @@ namespace TIEconomyMod
     internal static class SpoilsSustainabilityEffectPatch
     {
         [HarmonyPrefix]
-        private static bool GetSpoilsSustainabilityChangeOverwrite(ref float __result, TINationState __instance)
+        private static bool GetSpoilsSustainabilityChangeOverwrite(ref float __result, in TINationState __instance)
         {
             // FIXME: Overall, the scaling should have lesser extremes. Might need tweaking.
 

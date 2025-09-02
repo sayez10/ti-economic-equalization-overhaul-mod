@@ -19,7 +19,7 @@ namespace TIEconomyMod.AIPatches
     internal static class AIEvaluateControlPointPatch
     {
         [HarmonyPrefix]
-        private static bool EvaluateControlPointOverwrite(TIFactionState faction, TIControlPoint controlPoint, ref float __result)
+        private static bool EvaluateControlPointOverwrite(in TIFactionState faction, in TIControlPoint controlPoint, ref float __result)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
