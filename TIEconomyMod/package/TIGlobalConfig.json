@@ -1,16 +1,16 @@
 [
-  {
-    "dataName": "globalConfig",
-    "nationalInvestmentArmyFactorHome": 1,
-    "nationalInvestmentArmyFactorAway": 2,
-    "nationalInvestmentNavyFactor": 2,
-    "priority_UNI": 1,
-    "priority_FLI": 100,
-    "priority_BOO": 4,
-    "priority_MC": 50,
-    "priority_ARM": 180,
-    "priority_NAV": 300,
-    "priority_NUC": 240,
-    "priority_NUK": 75
-  }
+	{
+		"dataName": "globalConfig",
+		"nationalInvestmentArmyFactorHome": 1,
+		"nationalInvestmentArmyFactorAway": 2,
+		"nationalInvestmentNavyFactor": 2,
+		"priority_UNI": 1,
+		"priority_FLI": 100,
+		"priority_BOO": 4,
+		"priority_MC": 50,
+		"priority_ARM": 180,
+		"priority_NAV": 300,
+		"priority_NUC": 240,
+		"priority_NUK": 75
+	}
 ]
