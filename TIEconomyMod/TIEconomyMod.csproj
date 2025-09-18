@@ -97,6 +97,7 @@
     <Compile Include="Patches\EconomyInvestmentPatches\EconomyRegionEffectPatch.cs" />
     <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentRegionEffectPatch.cs" />
     <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentSustainabilityEffectPatch.cs" />
+    <Compile Include="Patches\GovernmentInvestmentPatches\GovernmentDemocracyEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeCohesionEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeEducationEffectPatch.cs" />
     <Compile Include="Patches\MissionPatches\MissionGDPDifficultyPatch.cs" />
@@ -111,7 +112,6 @@
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionDemocracyEffectPatch.cs" />
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionUnrestEffectPatch.cs" />
     <Compile Include="Patches\OtherInvestmentPatches\FundingEffectPatch.cs" />
-    <Compile Include="Patches\OtherInvestmentPatches\GovernmentDemocracyEffectPatch.cs" />
     <Compile Include="Patches\OtherInvestmentPatches\MilitaryTechEffectPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsDemocracyEffectPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsEffectsPatch.cs" />
