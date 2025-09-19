@@ -18,7 +18,6 @@ namespace TIEconomyMod
         internal const int VANILLA_DECOLONIZE_THRESHOLD = 1000;
         internal const int VANILLA_CLEANUP_THRESHOLD = 100;
         // Shared by both GovernmentRegionEffectPatch and UnityRegionEffectPatch
-        // Beware that the vanilla constant used to initialize this isn't actually used by vanilla code and might become outdated in the future
         internal const int VANILLA_LEGITIMIZE_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numPrioritiesForLegitimize;
 
         // Multiplier to increase the number of investment completions required for region upgrades

@@ -98,6 +98,7 @@
     <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentRegionEffectPatch.cs" />
     <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentSustainabilityEffectPatch.cs" />
     <Compile Include="Patches\GovernmentInvestmentPatches\GovernmentDemocracyEffectPatch.cs" />
+    <Compile Include="Patches\GovernmentInvestmentPatches\GovernmentRegionEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeCohesionEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeEducationEffectPatch.cs" />
     <Compile Include="Patches\MissionPatches\MissionGDPDifficultyPatch.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Patches\UnityInvestmentPatches\UnityEducationEffectPatch.cs" />
     <Compile Include="Patches\UnityInvestmentPatches\UnityCohesionEffectPatch.cs" />
     <Compile Include="Patches\UnityInvestmentPatches\UnityEffectsPatch.cs" />
+    <Compile Include="Patches\UnityInvestmentPatches\UnityRegionEffectPatch.cs" />
     <Compile Include="Patches\WelfareInvestmentPatches\WelfareInequalityEffectPatch.cs" />
     <Compile Include="Patches\WelfareInvestmentPatches\WelfareRegionEffectPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

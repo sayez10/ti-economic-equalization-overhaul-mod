@@ -21,7 +21,6 @@ namespace TIEconomyMod
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             // Refer to EconomyRegionEffectPatch.cs for specifics on what's happening here
-
             foreach (var instruction in instructions)
             {
                 if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_OIL_THRESHOLD)
@@ -43,6 +42,10 @@ namespace TIEconomyMod
                 else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_CLEANUP_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, EnvironmentRegionEffectPatch.getCleanupThreshold);
+                }
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_LEGITIMIZE_THRESHOLD)
+                {
+                    yield return new CodeInstruction(OpCodes.Ldsfld, GovernmentRegionEffectPatch.getLegitimizeThreshold);
                 }
                 else
                 {

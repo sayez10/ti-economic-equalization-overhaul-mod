@@ -86,6 +86,8 @@ namespace TIEconomyMod
                 Tools.Recalculate();
                 EconomyRegionEffectPatch.Recalculate();
                 EnvironmentRegionEffectPatch.Recalculate();
+                GovernmentRegionEffectPatch.Recalculate();
+                UnityRegionEffectPatch.Recalculate();
                 WelfareRegionEffectPatch.Recalculate();
             }
         }
