@@ -11,13 +11,18 @@ namespace TIEconomyMod
     // This is a helper class used to streamline things, and centralize important variables
     internal static class Tools
     {
-        // The base thresholds are stored as their own variables to allow quick fixing if the devs change the hardcoded requirement
-        internal const int BASE_OIL_THRESHOLD = 500;
-        internal const int BASE_MINING_THRESHOLD = 750;
-        internal const int BASE_ECONOMIC_THRESHOLD = 1200;
-        internal const int BASE_DECOLONIZE_THRESHOLD = 1000;
-        internal const int BASE_CLEANUP_THRESHOLD = 100;
+        // The vanilla thresholds are stored as their own variables to allow quick fixing if the devs change the hardcoded requirement
+        internal const int VANILLA_OIL_THRESHOLD = 500;
+        internal const int VANILLA_MINING_THRESHOLD = 750;
+        internal const int VANILLA_ECONOMIC_THRESHOLD = 1200;
+        internal const int VANILLA_DECOLONIZE_THRESHOLD = 1000;
+        internal const int VANILLA_CLEANUP_THRESHOLD = 100;
+        // Shared by both GovernmentRegionEffectPatch and UnityRegionEffectPatch
+        // Beware that the vanilla constant used to initialize this isn't actually used by vanilla code and might become outdated in the future
+        internal const int VANILLA_LEGITIMIZE_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numPrioritiesForLegitimize;
 
+        // Multiplier to increase the number of investment completions required for region upgrades
+        // Compensation for the significantly higher number of investment completions with this mod
         internal const int REGION_UPGRADE_THRESHOLD_MULT = 5;
 
         // These values are dynamically calculated inside a function

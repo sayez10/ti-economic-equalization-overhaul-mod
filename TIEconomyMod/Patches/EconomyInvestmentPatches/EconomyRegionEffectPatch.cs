@@ -37,15 +37,15 @@ namespace TIEconomyMod
         {
             foreach (var instruction in instructions)
             {
-                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_OIL_THRESHOLD)
+                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_OIL_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getOilThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_MINING_THRESHOLD)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_MINING_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getMiningThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.BASE_ECONOMIC_THRESHOLD)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_ECONOMIC_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getEconomicThreshold);
                 }
@@ -62,9 +62,9 @@ namespace TIEconomyMod
         {
             // If the mod is disabled, the vanilla value is inserted instead
             // This allows for the mod to be fully disabled during runtime
-            oilThreshold = (Main.enabled) ? Tools.BASE_OIL_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.BASE_OIL_THRESHOLD;
-            miningThreshold = (Main.enabled) ? Tools.BASE_MINING_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.BASE_MINING_THRESHOLD;
-            economicThreshold = (Main.enabled) ? Tools.BASE_ECONOMIC_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.BASE_ECONOMIC_THRESHOLD;
+            oilThreshold = (Main.enabled) ? Tools.VANILLA_OIL_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_OIL_THRESHOLD;
+            miningThreshold = (Main.enabled) ? Tools.VANILLA_MINING_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_MINING_THRESHOLD;
+            economicThreshold = (Main.enabled) ? Tools.VANILLA_ECONOMIC_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_ECONOMIC_THRESHOLD;
         }
     }
 }
