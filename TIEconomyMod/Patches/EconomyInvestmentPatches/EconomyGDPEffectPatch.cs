@@ -75,7 +75,7 @@ namespace TIEconomyMod
             __result = modifiedGDPChange / __instance.population;
 
             // FIXME: Verify that the changed formula actually works as intended. Might require a full-length game.
-//            FileLog.Log(string.Format("[TIEconomyMod] Economy for {0}: BASE_GDP_CHANGE: {1}, specialRegionMult: {2}, democracyMult: {3}, educationMult: {4}, bonusPCGDPMult: {5}, scalingMult: {6}", __instance.displayName, BASE_GDP_CHANGE, specialRegionMult, democracyMult, educationMult, bonusPCGDPMult, scalingMult));
+//            FileLog.Log(string.Format($"[TIEconomyMod] Economy for {__instance.displayName}: BASE_GDP_CHANGE: {BASE_GDP_CHANGE}, specialRegionMult: {specialRegionMult}, democracyMult: {democracyMult}, educationMult: {educationMult}, bonusPCGDPMult: {bonusPCGDPMult}, scalingMult: {scalingMult}"));
 
 
             return false; // Skip original method
