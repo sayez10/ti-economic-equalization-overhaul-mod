@@ -24,7 +24,7 @@ namespace TIEconomyMod
     {
         // Rather than using a property variable, whose value is basically refreshed each time it's called,
         // it's instead refreshed only when mod settings are changed. In other words, they're cached.
-        internal static int decolonizeThreshold;
+        private static int decolonizeThreshold;
 
         // This basically is a reference to the final threshold variables, which the post-transpiler code can call on
         internal static readonly FieldInfo getDecolonizeThreshold = AccessTools.Field(typeof(WelfareRegionEffectPatch), nameof(decolonizeThreshold));

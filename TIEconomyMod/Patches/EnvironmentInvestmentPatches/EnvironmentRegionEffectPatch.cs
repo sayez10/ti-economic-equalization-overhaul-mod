@@ -24,7 +24,7 @@ namespace TIEconomyMod
     {
         // Rather than using a property variable, whose value is basically refreshed each time it's called,
         // it's instead refreshed only when mod settings are changed. In other words, they're cached.
-        internal static int cleanupThreshold;
+        private static int cleanupThreshold;
 
         // This basically is a reference to the final threshold variables, which the post-transpiler code can call on
         internal static readonly FieldInfo getCleanupThreshold = AccessTools.Field(typeof(EnvironmentRegionEffectPatch), nameof(cleanupThreshold));

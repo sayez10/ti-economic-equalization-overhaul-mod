@@ -24,9 +24,9 @@ namespace TIEconomyMod
     {
         // Rather than using a property variable, whose value is basically refreshed each time it's called,
         // it's instead refreshed only when mod settings are changed. In other words, they're cached.
-        internal static int oilThreshold;
-        internal static int miningThreshold;
-        internal static int economicThreshold;
+        private static int oilThreshold;
+        private static int miningThreshold;
+        private static int economicThreshold;
 
         // This basically is a reference to the final threshold variables, which the post-transpiler code can call on
         internal static readonly FieldInfo getOilThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(oilThreshold));
