@@ -39,9 +39,9 @@ namespace TIEconomyMod
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, WelfareRegionEffectPatch.getDecolonizeThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_CLEANUP_THRESHOLD)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_DECONTAMINATE_THRESHOLD)
                 {
-                    yield return new CodeInstruction(OpCodes.Ldsfld, EnvironmentRegionEffectPatch.getCleanupThreshold);
+                    yield return new CodeInstruction(OpCodes.Ldsfld, EnvironmentRegionEffectPatch.getDecontaminateThreshold);
                 }
                 else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_LEGITIMIZE_THRESHOLD)
                 {

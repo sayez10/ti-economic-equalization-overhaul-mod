@@ -17,7 +17,7 @@ namespace TIEconomyMod
         internal const int VANILLA_MINING_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEcosForCoreMiningRegion;
         internal const int VANILLA_ECONOMIC_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEcosForCoreEcoRegion;
         internal const int VANILLA_DECOLONIZE_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numWelfaresForDecolonizeTriggers;
-        internal const int VANILLA_CLEANUP_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEnvironmentsToTriggerDecontaminate;
+        internal const int VANILLA_DECONTAMINATE_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEnvironmentsToTriggerDecontaminate;
         // Shared by both GovernmentRegionEffectPatch and UnityRegionEffectPatch
         internal const int VANILLA_LEGITIMIZE_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numPrioritiesForLegitimize;
 
