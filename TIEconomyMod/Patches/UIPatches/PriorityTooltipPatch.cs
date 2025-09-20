@@ -31,9 +31,9 @@ namespace TIEconomyMod
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, EconomyRegionEffectPatch.getMiningThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_ECONOMIC_THRESHOLD)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_CORE_ECO_THRESHOLD)
                 {
-                    yield return new CodeInstruction(OpCodes.Ldsfld, EconomyRegionEffectPatch.getEconomicThreshold);
+                    yield return new CodeInstruction(OpCodes.Ldsfld, EconomyRegionEffectPatch.getCoreEcoThreshold);
                 }
                 else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_DECOLONIZE_THRESHOLD)
                 {

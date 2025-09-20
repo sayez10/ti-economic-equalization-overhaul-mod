@@ -15,7 +15,7 @@ namespace TIEconomyMod
         // Also a single point of change if the vanilla devs ever make intrusive changes to the region upgrade costs
         internal const int VANILLA_OIL_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEcosForCoreOilRegion;
         internal const int VANILLA_MINING_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEcosForCoreMiningRegion;
-        internal const int VANILLA_ECONOMIC_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEcosForCoreEcoRegion;
+        internal const int VANILLA_CORE_ECO_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEcosForCoreEcoRegion;
         internal const int VANILLA_DECOLONIZE_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numWelfaresForDecolonizeTriggers;
         internal const int VANILLA_DECONTAMINATE_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEnvironmentsToTriggerDecontaminate;
         // Shared by both GovernmentRegionEffectPatch and UnityRegionEffectPatch

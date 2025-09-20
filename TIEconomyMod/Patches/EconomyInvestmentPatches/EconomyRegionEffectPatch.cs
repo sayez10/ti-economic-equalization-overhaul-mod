@@ -26,12 +26,12 @@ namespace TIEconomyMod
         // it's instead refreshed only when mod settings are changed. In other words, they're cached.
         private static int oilThreshold;
         private static int miningThreshold;
-        private static int economicThreshold;
+        private static int coreEcoThreshold;
 
         // This basically is a reference to the final threshold variables, which the post-transpiler code can call on
         internal static readonly FieldInfo getOilThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(oilThreshold));
         internal static readonly FieldInfo getMiningThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(miningThreshold));
-        internal static readonly FieldInfo getEconomicThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(economicThreshold));
+        internal static readonly FieldInfo getCoreEcoThreshold = AccessTools.Field(typeof(EconomyRegionEffectPatch), nameof(coreEcoThreshold));
 
         private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
@@ -45,9 +45,9 @@ namespace TIEconomyMod
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getMiningThreshold);
                 }
-                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_ECONOMIC_THRESHOLD)
+                else if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_CORE_ECO_THRESHOLD)
                 {
-                    yield return new CodeInstruction(OpCodes.Ldsfld, getEconomicThreshold);
+                    yield return new CodeInstruction(OpCodes.Ldsfld, getCoreEcoThreshold);
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace TIEconomyMod
             // This allows for the mod to be fully disabled during runtime
             oilThreshold = (Main.enabled) ? Tools.VANILLA_OIL_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_OIL_THRESHOLD;
             miningThreshold = (Main.enabled) ? Tools.VANILLA_MINING_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_MINING_THRESHOLD;
-            economicThreshold = (Main.enabled) ? Tools.VANILLA_ECONOMIC_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_ECONOMIC_THRESHOLD;
+            coreEcoThreshold = (Main.enabled) ? Tools.VANILLA_CORE_ECO_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_CORE_ECO_THRESHOLD;
         }
     }
 }
