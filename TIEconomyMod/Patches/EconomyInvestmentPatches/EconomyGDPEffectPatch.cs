@@ -25,8 +25,8 @@ namespace TIEconomyMod
             if (!Main.enabled) { return true; }
 
             // Base GDP change in billions, written this way because it's easier to modify
-            const float BASE_GDP_CHANGE_BILLIONS = 0.25f;
-            const float BASE_GDP_CHANGE = BASE_GDP_CHANGE_BILLIONS * 1000000000f;
+            const float BASE_GDP_EFFECT_BILLIONS = 0.25f;
+            const float BASE_GDP_EFFECT = BASE_GDP_EFFECT_BILLIONS * 1000000000f;
 
             const float GROWTH_MULT_PER_SPECIAL_REGION = 0.1f;
             const float GROWTH_MULT_PER_DEMOCRACY_LEVEL = 0.05f;
@@ -36,7 +36,7 @@ namespace TIEconomyMod
             const float MAX_SCALING_MULT = 2f;
 
             // Base GDP growth diminishment rate, as multiplier
-            const float DECAY_FACTOR = 0.98f;
+            const float DECAY_BASE = 0.98f;
 
             // Per-capita GDP increments for applying diminishment
             const float DECAY_INCREMENT_PER_CAPITA_GDP = 1500f;
@@ -68,11 +68,11 @@ namespace TIEconomyMod
              *
              * The main takeaway from this is that poor nations get a strong bonus, which drops off relatively quickly. Rich ones get diminishing - but (hopefully) manageable - returns.
              */
-            float scalingMult = MAX_SCALING_MULT * (float)Math.Pow(DECAY_FACTOR, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
+            float scalingMult = MAX_SCALING_MULT * (float)Math.Pow(DECAY_BASE, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
 
-            float modifiedGDPChange = BASE_GDP_CHANGE * specialRegionMult * democracyMult * educationMult * bonusPCGDPMult + scalingMult;
+            float gdpGain = BASE_GDP_EFFECT * specialRegionMult * democracyMult * educationMult * bonusPCGDPMult + scalingMult;
 
-            __result = modifiedGDPChange / __instance.population;
+            __result = gdpGain / __instance.population;
 
             // FIXME: Verify that the changed formula actually works as intended. Might require a full-length game.
 //            FileLog.Log(string.Format($"[TIEconomyMod] Economy for {__instance.displayName}: BASE_GDP_CHANGE: {BASE_GDP_CHANGE}, specialRegionMult: {specialRegionMult}, democracyMult: {democracyMult}, educationMult: {educationMult}, bonusPCGDPMult: {bonusPCGDPMult}, scalingMult: {scalingMult}"));

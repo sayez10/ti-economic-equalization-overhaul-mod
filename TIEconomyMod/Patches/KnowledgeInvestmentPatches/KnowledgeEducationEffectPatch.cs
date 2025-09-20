@@ -22,11 +22,11 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_EDUCATION = 0.1f;
+            const float BASE_EDUCATION_EFFECT = 0.1f;
             const float MAX_SCALE_FACTOR = 4f;
             const float DECAY_FACTOR = 0.87f;
 
-            float baseChange = Tools.EffectStrength(BASE_EDUCATION, __instance.population);
+            float baseEducationGain = Tools.EffectStrength(BASE_EDUCATION_EFFECT, __instance.population);
 
             // Additionally, scale the education change based on current education, using an exponential decay relationship
             // With a multiplier of 4, and a base of 0.87, we get:
@@ -34,7 +34,7 @@ namespace TIEconomyMod
             // Basically, the effectiveness of the knowledge priority halves every 5 education
             float decayMult = MAX_SCALE_FACTOR * (float)Math.Pow(DECAY_FACTOR, __instance.education);
 
-            __result = baseChange * decayMult;
+            __result = baseEducationGain * decayMult;
 
 
             return false; // Skip original method

@@ -22,10 +22,10 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_EDUCATION = -0.01f;
+            const float BASE_EDUCATION_EFFECT = -0.01f;
 
             // 1/10 effect of Knowledge priority
-            __result = Tools.EffectStrength(BASE_EDUCATION, __instance.population);
+            __result = Tools.EffectStrength(BASE_EDUCATION_EFFECT, __instance.population);
 
 
             return false; // Skip original method

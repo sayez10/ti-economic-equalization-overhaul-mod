@@ -25,15 +25,15 @@ namespace TIEconomyMod
             if (!Main.enabled) { return true; }
 
             // BASE_SUSTAINABILITY is inverted, because for whatever reason sustainability increases with negative change, and decreases with positive change
-            const float BASE_SUSTAINABILITY = 0.2f;
+            const float BASE_SUSTAINABILITY_EFFECT = 0.2f;
             const float SUSTAINABILITY_MULT_PER_RESOURCE_REGION = 1f;
 
-            float baseEffect = Tools.EffectStrength(BASE_SUSTAINABILITY, __instance.population);
+            float baseSustainabilityLoss = Tools.EffectStrength(BASE_SUSTAINABILITY_EFFECT, __instance.population);
 
             // Scaling is more aggressive than in Environment
             float resourceRegionsMult = 1f + (__instance.currentResourceRegions * SUSTAINABILITY_MULT_PER_RESOURCE_REGION);
 
-            __result = baseEffect * resourceRegionsMult;
+            __result = baseSustainabilityLoss * resourceRegionsMult;
 
 
             return false; // Skip original method

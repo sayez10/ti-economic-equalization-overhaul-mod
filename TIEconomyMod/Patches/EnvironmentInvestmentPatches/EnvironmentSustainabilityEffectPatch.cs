@@ -27,21 +27,21 @@ namespace TIEconomyMod
             if (!Main.enabled) { return true; }
 
             // For whatever reason, sustainability is increased with negative values
-            const float BASE_SUSTAINABILITY = -0.1f;
+            const float BASE_SUSTAINABILITY_EFFECT = -0.1f;
             const float SUSTAINABILITY_MULT_PER_SUSTAINABILITY_LEVEL = 0.1f;
             const float PENALTY_PER_NUKED_REGION = 0.05f;
             const float MAX_PENALTY_FROM_NUKED_REGIONS = 0.5f;
 
-            float baseEffect = Tools.EffectStrength(BASE_SUSTAINABILITY, __instance.population);
+            float baseSustainabilityGain = Tools.EffectStrength(BASE_SUSTAINABILITY_EFFECT, __instance.population);
 
-            // Each full point of sustainability give a +10% bonus, up to +100%
+            // Each full point of sustainability gives a +10% bonus, up to +100%
             float sustainabilityMult = 1f + (__instance.sustainability * SUSTAINABILITY_MULT_PER_SUSTAINABILITY_LEVEL);
 
-            // Each nuked region causes a sustainability generation malus of -5%, up to -50%
+            // Each nuked region causes a sustainability generation penalty of -5%, up to -50%
             float nukedCounter = __instance.regions.Sum((TIRegionState x) => x.nuclearDetonations);
             float nukedMult = Math.Max(MAX_PENALTY_FROM_NUKED_REGIONS, 1f - (nukedCounter * PENALTY_PER_NUKED_REGION));
 
-            __result = baseEffect * nukedMult * sustainabilityMult;
+            __result = baseSustainabilityGain * sustainabilityMult * nukedMult;
 
 
             return false; // Skip original method

@@ -22,9 +22,9 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_INEQUALITY = -0.1f;
+            const float BASE_INEQUALITY_EFFECT = -0.1f;
 
-            __result = Tools.EffectStrength(BASE_INEQUALITY, __instance.population);
+            __result = Tools.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population);
 
 
             return false; // Skip original method

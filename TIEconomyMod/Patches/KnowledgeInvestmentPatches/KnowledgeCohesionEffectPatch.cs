@@ -22,18 +22,18 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_COHESION = 0.1f;
+            const float BASE_COHESION_EFFECT = 0.1f;
 
             // Cohesion change is a centering effect, drawing it towards 5; additional logic is needed for that
             // Calculate the amount of change and prevent overshooting 5
-            float cohesionChangeAmount = Math.Min(Math.Abs(__instance.cohesion - 5f), (Tools.EffectStrength(BASE_COHESION, __instance.population)));
+            float cohesionChangeEffect = Math.Min(Math.Abs(__instance.cohesion - 5f), (Tools.EffectStrength(BASE_COHESION_EFFECT, __instance.population)));
             if (__instance.cohesion > 5f)
             {
                 // Reduce cohesion instead if it's currently above 5
-                cohesionChangeAmount *= -1f;
+                cohesionChangeEffect *= -1f;
             }
 
-            __result = cohesionChangeAmount;
+            __result = cohesionChangeEffect;
 
 
             return false; // Skip original method

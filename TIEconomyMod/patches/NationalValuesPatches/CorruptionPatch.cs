@@ -29,16 +29,16 @@ namespace TIEconomyMod.InvestmentPointPatches
                 __result = 0f;
             }
 
-            const float BASE_CORRUPTION = 0.5f;
-            const float CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL = -0.0265515f;
-            const float CORRUPTION_REDUCTION_PER_COHESION_LEVEL =  -0.0057342f;
-            const float CORRUPTION_REDUCTION_PER_GDPPC = -0.00000275f;
+            const float BASE_CORRUPTION_EFFECT = 0.5f;
+            const float CORRUPTION_LOSS_PER_DEMOCRACY_LEVEL = -0.0265515f;
+            const float CORRUPTION_LOSS_PER_COHESION_LEVEL =  -0.0057342f;
+            const float CORRUPTION_LOSS_PER_GDPPC = -0.00000275f;
 
-            float democracyAddend = __instance.democracy * CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL;
-            float cohesionAddend = __instance.cohesion * CORRUPTION_REDUCTION_PER_COHESION_LEVEL;
-            float gdppcAddend = __instance.perCapitaGDP * CORRUPTION_REDUCTION_PER_GDPPC;
+            float democracyAddend = __instance.democracy * CORRUPTION_LOSS_PER_DEMOCRACY_LEVEL;
+            float cohesionAddend = __instance.cohesion * CORRUPTION_LOSS_PER_COHESION_LEVEL;
+            float gdppcAddend = __instance.perCapitaGDP * CORRUPTION_LOSS_PER_GDPPC;
 
-            float corruption = BASE_CORRUPTION + democracyAddend + cohesionAddend + gdppcAddend;
+            float corruption = BASE_CORRUPTION_EFFECT + democracyAddend + cohesionAddend + gdppcAddend;
             corruption += TIEffectsState.SumEffectsModifiers(Context.Corruption, __instance.executiveFaction, corruption);
 
             const float BASE_MAX_CORRUPTION = 0.95f;

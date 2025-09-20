@@ -22,10 +22,10 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_INEQUALITY = 0.2f;
+            const float BASE_INEQUALITY_EFFECT = 0.2f;
             const float INEQUALITY_MULT_PER_RESOURCE_REGION = 1f;
 
-            float baseInequalityGain = Tools.EffectStrength(BASE_INEQUALITY, __instance.population);
+            float baseInequalityGain = Tools.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population);
             float resourceRegionsMult = 1f + (__instance.currentResourceRegions * INEQUALITY_MULT_PER_RESOURCE_REGION);
 
             __result = baseInequalityGain * resourceRegionsMult;

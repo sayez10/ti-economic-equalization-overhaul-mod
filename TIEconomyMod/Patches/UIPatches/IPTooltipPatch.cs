@@ -22,7 +22,7 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            // Improved breakdown of IP bonuses and penalties
+            // Improved breakdown of IP boni and penalties
             StringBuilder stringBuilder = new StringBuilder(Loc.T("UI.Nation.InvestmentPoints")).AppendLine();
             bool penaltyMilitary = false;
             bool penaltyUnrest = false;
@@ -36,10 +36,10 @@ namespace TIEconomyMod
             }
             stringBuilder.AppendLine();
 
-            float adviserAdministrationBonus = nation.adviserAdministrationBonus;
-            if (adviserAdministrationBonus > 0f)
+            float adviserAdministrationMult = nation.adviserAdministrationBonus;
+            if (adviserAdministrationMult > 0f)
             {
-                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.AdviserBonus", adviserAdministrationBonus.ToPercent("P0"), TIUtilities.FormatSmallNumber(economyScore * adviserAdministrationBonus)));
+                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.AdviserBonus", adviserAdministrationMult.ToPercent("P0"), TIUtilities.FormatSmallNumber(economyScore * adviserAdministrationMult)));
             }
 
             float investmentPoints_unrestPenalty_frac = nation.investmentPoints_unrestPenalty_frac;

@@ -24,7 +24,7 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_MILITARY = 0.001f;
+            const float BASE_MILITARY_EFFECT = 0.001f;
             const float MILITARY_PER_MILITARY_LEVEL_BEHIND = 0.5f;
             const float MILITARY_MULT_PER_EDUCATION_LEVEL = 0.1f;
 
@@ -39,11 +39,11 @@ namespace TIEconomyMod
             float armiesNumberMult = FORCES_NUMBER_MULT_GROWTH_FACTOR / (FORCES_NUMBER_MULT_GROWTH_FACTOR + __instance.numStandardArmies + __instance.numNavies);
 
             // Add a catch-up multiplier dependent on how far behind the max miltech level the country is
-            // A bonus 50% tech gain per full miltech level behind the global max
+            // +50% miltech gain per full miltech level behind the global max
             // Max to 1 is to prevent weirdness if somehow current miltech is above max miltech
             float catchUpMult = Math.Max(1f, 1f + (MILITARY_PER_MILITARY_LEVEL_BEHIND * (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel)));
 
-            __result = BASE_MILITARY * armiesNumberMult * educationMult * catchUpMult;
+            __result = BASE_MILITARY_EFFECT * educationMult * armiesNumberMult * catchUpMult;
 
 
             return false; // Skip original method

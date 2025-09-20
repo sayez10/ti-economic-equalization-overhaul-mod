@@ -22,15 +22,15 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_DEMOCRACY = 0.05f;
+            const float BASE_DEMOCRACY_EFFECT = 0.05f;
             const float DEMOCRACY_MULT_PER_EDUCATION_LEVEL = 0.1f;
 
-            float baseEffect = Tools.EffectStrength(BASE_DEMOCRACY, __instance.population);
+            float baseDemocracyGain = Tools.EffectStrength(BASE_DEMOCRACY_EFFECT, __instance.population);
 
             // Each full point of Education gives +10% Democracy score
             float educationMult = 1f + (__instance.education * DEMOCRACY_MULT_PER_EDUCATION_LEVEL);
 
-            __result = baseEffect * educationMult;
+            __result = baseDemocracyGain * educationMult;
 
 
             return false; // Skip original method

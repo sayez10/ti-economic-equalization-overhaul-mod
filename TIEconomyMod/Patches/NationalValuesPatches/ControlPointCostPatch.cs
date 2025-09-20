@@ -29,17 +29,17 @@ namespace TIEconomyMod
             // Will be 0 and should stay 0 if the nation's controller is the aliens
             if (__result != 0)
             {
-                // Settings values cached for readability
-                float controlPointCostMult = Main.settings.controlPointCostMult;
+                // Reverted the change from a power function to a flat multiplicative control point cost reduction
+                const float COST_DECAY_EXPONENT = 0.7f;
 
                 // Total cost to control the entire nation. 1 cost per 1 IP
                 float baseControlCost = __instance.economyScore;
 
-                // Reverted the change from a power function to a flat multiplicative control point cost reduction
-                const float COST_DECAY_EXPONENT = 0.7f;
+                // Settings values cached for readability
+                float settingsMult = Main.settings.controlPointCostMult;
 
                 // Total cost is split across the control points
-                __result = (float)Math.Pow(baseControlCost, COST_DECAY_EXPONENT) * controlPointCostMult / __instance.numControlPoints;
+                __result = (float)Math.Pow(baseControlCost, COST_DECAY_EXPONENT) * settingsMult / __instance.numControlPoints;
             }
         }
     }

@@ -26,8 +26,8 @@ namespace TIEconomyMod
 
             // FIXME: Propaganda effect might need to be re-balanced. Scaling with population?
             // Strength is multiplied by 0.2 for now, to account for much higher IP and more priority completions
-            const float BASE_PROPAGANDA = 0.2f;
-            float propagandaEffect = TemplateManager.global.unityPublicOpinionBaseStrength * __instance.priorityEffectPopScaling * BASE_PROPAGANDA;
+            const float BASE_PROPAGANDA_EFFECT = 0.2f;
+            float propagandaEffect = TemplateManager.global.unityPublicOpinionBaseStrength * __instance.priorityEffectPopScaling * BASE_PROPAGANDA_EFFECT;
             TIFactionState religionCPOwner = __instance.GetControlPointOfTypeFaction(ControlPointType.Religion);
 
             foreach (TIFactionState iFaction in __instance.FactionsWithControlPoint)
