@@ -8,7 +8,6 @@ using PavonisInteractive.TerraInvicta;
 
 
 
-
 namespace TIEconomyMod.InvestmentPointPatches
 {
     /// <summary>
