@@ -28,7 +28,7 @@ namespace TIEconomyMod
         // These values are dynamically calculated inside a function
         // They're first calculated after the mod loads, and then whenever settings are changed
         internal static double GDPPerIP;
-        private static float theoreticalPopulation;
+        private static float _theoreticalPopulation;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static float EffectStrength(float idealGainPerMonth, float population)
@@ -57,7 +57,7 @@ namespace TIEconomyMod
              * TLDR: If a nation has 30k GDP per capita, a stat will be changed by [idealGainPerMonth] a month.
              */
 
-            float effectStrength = idealGainPerMonth * theoreticalPopulation;
+            float effectStrength = idealGainPerMonth * _theoreticalPopulation;
 
             return effectStrength / population;
         }
@@ -69,7 +69,7 @@ namespace TIEconomyMod
 
             // Declared outside of EffectStrength() because that function will be called VERY often
             // For an explanation as to why I did this, check the comments inside the function
-            theoreticalPopulation = (float)GDPPerIP / 30000f;
+            _theoreticalPopulation = (float)GDPPerIP / 30000f;
         }
     }
 }

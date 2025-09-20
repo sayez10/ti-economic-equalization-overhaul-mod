@@ -24,10 +24,10 @@ namespace TIEconomyMod
     {
         // Rather than using a property variable, whose value is basically refreshed each time it's called,
         // it's instead refreshed only when mod settings are changed. In other words, they're cached.
-        private static int legitimizeThreshold;
+        private static int _legitimizeThreshold;
 
         // This basically is a reference to the final threshold variables, which the post-transpiler code can call on
-        internal static readonly FieldInfo getLegitimizeThreshold = AccessTools.Field(typeof(UnityRegionEffectPatch), nameof(legitimizeThreshold));
+        internal static readonly FieldInfo getLegitimizeThreshold = AccessTools.Field(typeof(UnityRegionEffectPatch), nameof(_legitimizeThreshold));
 
         private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
@@ -50,7 +50,7 @@ namespace TIEconomyMod
         {
             // If the mod is disabled, the vanilla value is inserted instead
             // This allows for the mod to be fully disabled during runtime
-            legitimizeThreshold = (Main.enabled) ? Tools.VANILLA_LEGITIMIZE_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_LEGITIMIZE_THRESHOLD;
+            _legitimizeThreshold = (Main.enabled) ? Tools.VANILLA_LEGITIMIZE_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_LEGITIMIZE_THRESHOLD;
         }
     }
 }

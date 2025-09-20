@@ -24,10 +24,10 @@ namespace TIEconomyMod
     {
         // Rather than using a property variable, whose value is basically refreshed each time it's called,
         // it's instead refreshed only when mod settings are changed. In other words, they're cached.
-        private static int decontaminateThreshold;
+        private static int _decontaminateThreshold;
 
         // This basically is a reference to the final threshold variables, which the post-transpiler code can call on
-        internal static readonly FieldInfo getDecontaminateThreshold = AccessTools.Field(typeof(EnvironmentRegionEffectPatch), nameof(decontaminateThreshold));
+        internal static readonly FieldInfo getDecontaminateThreshold = AccessTools.Field(typeof(EnvironmentRegionEffectPatch), nameof(_decontaminateThreshold));
 
         private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
@@ -50,7 +50,7 @@ namespace TIEconomyMod
         {
             // If the mod is disabled, the vanilla value is inserted instead
             // This allows for the mod to be fully disabled during runtime
-            decontaminateThreshold = (Main.enabled) ? Tools.VANILLA_DECONTAMINATE_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_DECONTAMINATE_THRESHOLD;
+            _decontaminateThreshold = (Main.enabled) ? Tools.VANILLA_DECONTAMINATE_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_DECONTAMINATE_THRESHOLD;
         }
     }
 }
