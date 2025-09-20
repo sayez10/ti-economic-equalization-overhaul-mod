@@ -106,6 +106,7 @@
     <Compile Include="Patches\NationalValuesPatches\ArmyUpkeepPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\BaseInvestmentPointPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\ControlPointCostPatch.cs" />
+    <Compile Include="Patches\NationalValuesPatches\CorruptionPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\FundingLimitPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\NavyUpkeepPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\ResearchPointsPatch.cs" />

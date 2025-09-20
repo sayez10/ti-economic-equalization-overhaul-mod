@@ -1,0 +1,56 @@
+﻿// SPDX-FileCopyrightText: Copyright © 2025 sayez10
+//
+// SPDX-License-Identifier: MIT
+
+using System;
+using HarmonyLib;
+using PavonisInteractive.TerraInvicta;
+
+using UnityEngine;
+
+
+
+namespace TIEconomyMod.InvestmentPointPatches
+{
+    /// <summary>
+    /// Patch changes the IP upkeep of armies to be dependent on mil tech level of the owning nation
+    /// </summary>
+    [HarmonyPatch(typeof(TINationState), nameof(TINationState.corruption), MethodType.Getter)]
+    internal static class CorruptionPatch
+    {
+        [HarmonyPrefix]
+        private static bool GetCorruptionOverwrite(ref float __result, in TINationState __instance)
+        {
+            // If mod has been disabled, abort patch and use original method
+            if (!Main.enabled) { return true; }
+
+            if (__instance.alienNation)
+            {
+                __result = 0f;
+            }
+
+            const float BASE_CORRUPTION = 0.5f;
+            const float CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL = -0.0265515f;
+            const float CORRUPTION_REDUCTION_PER_COHESION_LEVEL =  -0.0057342f;
+            const float CORRUPTION_REDUCTION_PER_GDPPC = -0.00000275f;
+
+            float democracyAddend = __instance.democracy * CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL;
+            float cohesionAddend = __instance.cohesion * CORRUPTION_REDUCTION_PER_COHESION_LEVEL;
+            float gdppcAddend = __instance.perCapitaGDP * CORRUPTION_REDUCTION_PER_GDPPC;
+
+            float corruption = BASE_CORRUPTION + democracyAddend + cohesionAddend + gdppcAddend;
+            corruption += TIEffectsState.SumEffectsModifiers(Context.Corruption, __instance.executiveFaction, corruption);
+
+            const float BASE_MAX_CORRUPTION = 0.95f;
+            const float BASE_MIN_CORRUPTION = 0.05f;
+            const float MIN_CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL = -0.0051f;
+
+            float minCorruption = Math.Max(0, (BASE_MIN_CORRUPTION + (__instance.democracy * MIN_CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL)));
+
+            __result = Mathf.Clamp(corruption, minCorruption, BASE_MAX_CORRUPTION);
+
+
+            return false; // Skip original method
+        }
+    }
+}
