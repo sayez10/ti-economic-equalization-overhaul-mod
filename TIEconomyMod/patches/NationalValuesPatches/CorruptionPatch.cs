@@ -29,6 +29,7 @@ namespace TIEconomyMod.InvestmentPointPatches
                 __result = 0f;
             }
 
+            // Those are vanilla numbers, some of them rounded down
             const float BASE_CORRUPTION_EFFECT = 0.5f;
             const float CORRUPTION_LOSS_PER_DEMOCRACY_LEVEL = -0.0265515f;
             const float CORRUPTION_LOSS_PER_COHESION_LEVEL =  -0.0057342f;
@@ -43,7 +44,9 @@ namespace TIEconomyMod.InvestmentPointPatches
 
             const float BASE_MAX_CORRUPTION = 0.95f;
             const float BASE_MIN_CORRUPTION = 0.05f;
-            const float MIN_CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL = -0.0051f;
+            // Needs to be slightly smaller than -0.005 to avoid rounding up at some point during the calculations, which would result in a minimum corruption value above 0 even at 10 democracy
+            // Unfortunately there's no Math.NextAfter() in .NET
+            const float MIN_CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL = -0.005000001f;
 
             float minCorruption = Math.Max(0, (BASE_MIN_CORRUPTION + (__instance.democracy * MIN_CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL)));
 
