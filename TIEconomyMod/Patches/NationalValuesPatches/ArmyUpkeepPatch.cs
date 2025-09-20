@@ -20,6 +20,9 @@ namespace TIEconomyMod.InvestmentPointPatches
         [HarmonyPrefix]
         private static bool GetInvestmentArmyFactorOverwrite(ref float __result, in TIArmyState __instance)
         {
+            // If mod has been disabled, abort patch and use original method
+            if (!Main.enabled) { return true; }
+
             // Multiply maintenance cost by miltech level
             if (!__instance.useHomeInvestmentFactor)
             {

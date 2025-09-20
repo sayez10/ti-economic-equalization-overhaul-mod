@@ -19,6 +19,9 @@ namespace TIEconomyMod.InvestmentPointPatches
         [HarmonyPrefix]
         private static bool GetInvestmentNavyFactorOverwrite(ref float __result, in TIArmyState __instance)
         {
+            // If mod has been disabled, abort patch and use original method
+            if (!Main.enabled) { return true; }
+
             // Multiply maintenance cost by miltech level
             __result = TemplateManager.global.nationalInvestmentNavyFactor * __instance.homeNation.militaryTechLevel;
 
