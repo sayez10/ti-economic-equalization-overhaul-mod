@@ -27,7 +27,7 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_RESEARCH_EFFECT = 0.0000002f;
+            const float BASE_RESEARCH_EFFECT = 0.000_000_2f;
 
             // Settings values cached for readability
             float settingsMult = Main.settings.researchMult;

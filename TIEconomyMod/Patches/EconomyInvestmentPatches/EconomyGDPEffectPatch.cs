@@ -24,9 +24,7 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            // Base GDP change in billions, written this way because it's easier to modify
-            const float BASE_GDP_EFFECT_BILLIONS = 0.25f;
-            const float BASE_GDP_EFFECT = BASE_GDP_EFFECT_BILLIONS * 1000000000f;
+            const float BASE_GDP_EFFECT = 250_000_000f;
 
             const float GROWTH_MULT_PER_SPECIAL_REGION = 0.1f;
             const float GROWTH_MULT_PER_DEMOCRACY_LEVEL = 0.05f;
@@ -39,7 +37,7 @@ namespace TIEconomyMod
             const float DECAY_BASE = 0.98f;
 
             // Per-capita GDP increments for applying diminishment
-            const float DECAY_INCREMENT_PER_CAPITA_GDP = 1500f;
+            const float DECAY_INCREMENT_PER_CAPITA_GDP = 1_500f;
 
             float numSpecialRegions = __instance.currentResourceRegions + __instance.numCoreEconomicRegions_dailyCache;
             float specialRegionMult = 1f + (numSpecialRegions * GROWTH_MULT_PER_SPECIAL_REGION);

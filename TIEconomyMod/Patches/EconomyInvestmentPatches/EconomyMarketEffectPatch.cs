@@ -23,7 +23,7 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float RESOURCE_MARKET_VALUE_MULT = 1.000001f;
+            const float RESOURCE_MARKET_VALUE_MULT = 1.000_001f;
 
             __instance.resourceMarketValues[FactionResource.Metals] *= RESOURCE_MARKET_VALUE_MULT;
             __instance.resourceMarketValues[FactionResource.NobleMetals] *= RESOURCE_MARKET_VALUE_MULT;
