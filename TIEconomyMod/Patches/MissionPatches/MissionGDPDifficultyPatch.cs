@@ -22,7 +22,7 @@ namespace TIEconomyMod
         // Grab the reflection info for ObjectToNation(TIFactionState, TIGameState)
         // The function is protected in vanilla, so it can't be run directly
         // nameof() can't be used either for the same reason
-        private static readonly MethodInfo objectToNationMethod = AccessTools.Method(typeof(TIMissionModifier), "ObjectToNation", new Type[] { typeof(TIFactionState), typeof(TIGameState) });
+        private static readonly MethodInfo _objectToNationMethod = AccessTools.Method(typeof(TIMissionModifier), "ObjectToNation", new Type[] { typeof(TIFactionState), typeof(TIGameState) });
 
         [HarmonyPrefix]
         private static bool GetModifierOverwrite(ref float __result, in TICouncilorState attackingCouncilor, in TIGameState target = null, float resourcesSpent = 0f, FactionResource resource = FactionResource.None)
@@ -52,13 +52,13 @@ namespace TIEconomyMod
         private static TINationState YoinkObjectToNation(TIFactionState faction, TIGameState target)
         {
             // In case the developers decide to change ObjectToNation()'s name or parameters, a check is done to confirm the method was actually acquired
-            if (objectToNationMethod == null)
+            if (_objectToNationMethod == null)
             {
                 throw new MissingMethodException("Could not find method ObjectToNation");
             }
 
             // Call the method; note that since it is static, pass null as the instance
-            object result = objectToNationMethod.Invoke(null, new object[] { faction, target });
+            object result = _objectToNationMethod.Invoke(null, new object[] { faction, target });
             return result as TINationState;
         }
     }
