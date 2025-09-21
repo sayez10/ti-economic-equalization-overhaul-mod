@@ -70,12 +70,12 @@ namespace TIEconomyMod
              */
             float scalingMult = MAX_SCALING_MULT * (float)Math.Pow(DECAY_BASE, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
 
-            float gdpGain = BASE_GDP_EFFECT * specialRegionMult * democracyMult * educationMult * bonusPCGDPMult + scalingMult;
+            float gdpGain = BASE_GDP_EFFECT * specialRegionMult * democracyMult * educationMult * bonusPCGDPMult * scalingMult;
 
             __result = gdpGain / __instance.population;
 
             // FIXME: Verify that the changed formula actually works as intended. Might require a full-length game.
-//            FileLog.Log(string.Format($"[TIEconomyMod] Economy for {__instance.displayName}: BASE_GDP_CHANGE: {BASE_GDP_CHANGE}, specialRegionMult: {specialRegionMult}, democracyMult: {democracyMult}, educationMult: {educationMult}, bonusPCGDPMult: {bonusPCGDPMult}, scalingMult: {scalingMult}"));
+//            FileLog.Log(string.Format($"[TIEconomyMod] Economy for {__instance.displayName}: BASE_GDP_EFFECT: {BASE_GDP_EFFECT}, specialRegionMult: {specialRegionMult}, democracyMult: {democracyMult}, educationMult: {educationMult}, bonusPCGDPMult: {bonusPCGDPMult}, scalingMult: {scalingMult}"));
 
 
             return false; // Skip original method
