@@ -68,12 +68,14 @@ namespace TIEconomyMod
 
         internal static void Recalculate()
         {
+            const double IDEAL_POPULATION = 30_000d;
+
             // 1 billion * settings value
-            GDPPerIP = 1000000000 * Main.settings.GDPBillionsPerIP;
+            GDPPerIP = 1_000_000_000 * Main.settings.GDPBillionsPerIP;
 
             // Declared outside of EffectStrength() because that function will be called VERY often
             // For an explanation as to why I did this, check the comments inside the function
-            _theoreticalPopulation = (float)GDPPerIP / 30000f;
+            _theoreticalPopulation = (float)(GDPPerIP / IDEAL_POPULATION);
         }
     }
 }
