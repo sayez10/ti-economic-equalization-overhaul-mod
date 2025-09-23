@@ -71,7 +71,7 @@ namespace TIEconomyMod
             const double IDEAL_POPULATION = 30_000d;
 
             // 1 billion * settings value
-            GDPPerIP = 1_000_000_000 * Main.settings.GDPBillionsPerIP;
+            GDPPerIP = 1_000_000_000d * Main.settings.GDPBillionsPerIP;
 
             // Declared outside of EffectStrength() because that function will be called VERY often
             // For an explanation as to why I did this, check the comments inside the function
