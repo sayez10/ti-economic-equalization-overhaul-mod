@@ -49,7 +49,7 @@ namespace TIEconomyMod
             // Unfortunately there's no Math.NextAfter() in .NET
             const float MIN_CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL = -0.005_000_001f;
 
-            float minCorruption = Math.Max(0, (BASE_MIN_CORRUPTION + (__instance.democracy * MIN_CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL)));
+            float minCorruption = Math.Max(0f, (BASE_MIN_CORRUPTION + (__instance.democracy * MIN_CORRUPTION_REDUCTION_PER_DEMOCRACY_LEVEL)));
 
             __result = Mathf.Clamp(corruption, minCorruption, BASE_MAX_CORRUPTION);
 
