@@ -13,7 +13,8 @@ using UnityEngine;
 namespace TIEconomyMod
 {
     /// <summary>
-    /// Patch changes the IP upkeep of armies to be dependent on mil tech level of the owning nation
+    /// Patch changes the calculation of a nation's corruption
+    /// The lower bound of corruption now depends on the nation's democracy value and can reach 0 at 10 democracy
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.corruption), MethodType.Getter)]
     internal static class CorruptionPatch
@@ -29,7 +30,7 @@ namespace TIEconomyMod
                 __result = 0f;
             }
 
-            // Those are vanilla numbers, some of them rounded down
+            // Those are vanilla numbers, some of them rounded
             const float BASE_CORRUPTION_EFFECT = 0.5f;
             const float CORRUPTION_LOSS_PER_DEMOCRACY_LEVEL = -0.026_551_5f;
             const float CORRUPTION_LOSS_PER_COHESION_LEVEL =  -0.005_734_2f;
