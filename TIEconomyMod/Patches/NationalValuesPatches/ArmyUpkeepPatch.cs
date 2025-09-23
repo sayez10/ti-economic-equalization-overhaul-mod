@@ -8,7 +8,7 @@ using PavonisInteractive.TerraInvicta;
 
 
 
-namespace TIEconomyMod.InvestmentPointPatches
+namespace TIEconomyMod
 {
     /// <summary>
     /// Patch changes the IP upkeep of armies to be dependent on mil tech level of the owning nation

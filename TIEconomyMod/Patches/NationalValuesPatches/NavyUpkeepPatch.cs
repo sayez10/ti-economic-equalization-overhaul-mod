@@ -8,7 +8,7 @@ using PavonisInteractive.TerraInvicta;
 
 
 
-namespace TIEconomyMod.InvestmentPointPatches
+namespace TIEconomyMod
 {
     /// <summary>
     /// Patch changes the IP upkeep of navies to be dependent on miltech level of the owning nation
