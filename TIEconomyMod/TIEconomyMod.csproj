@@ -115,6 +115,7 @@
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionUnrestEffectPatch.cs" />
     <Compile Include="Patches\OtherInvestmentPatches\FundingEffectPatch.cs" />
     <Compile Include="Patches\OtherInvestmentPatches\MilitaryTechEffectPatch.cs" />
+    <Compile Include="Patches\RegionalValuesPatches\PopulationGrowthAnnualPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsDemocracyEffectPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsEffectsPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsEnvironmentEffectPatch.cs" />
