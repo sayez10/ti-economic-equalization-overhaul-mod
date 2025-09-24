@@ -69,10 +69,9 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch
             if (!Main.enabled) { return; }
 
-            Traverse traverse = Traverse.Create(__instance);
-
             FileLog.Log(string.Format($"[TIEconomyMod::AbsorbNationMiltechCalculationPatch] Nation merger for {__instance.displayName}: Game set Miltech to {__instance.militaryTechLevel}, replaced by Mod with {__state}"));
 
+            Traverse traverse = Traverse.Create(__instance);
             traverse.Property("militaryTechLevel", null).SetValue(__state);
             __instance.SetDataDirty();
         }
