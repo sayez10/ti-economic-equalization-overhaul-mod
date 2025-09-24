@@ -101,7 +101,6 @@
     <Compile Include="Patches\GovernmentInvestmentPatches\GovernmentRegionEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeCohesionEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeEducationEffectPatch.cs" />
-    <Compile Include="Patches\MissionPatches\MissionGDPDifficultyPatch.cs" />
     <Compile Include="Patches\NationalActionPatches\AbsorbNationMiltechCalculationPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\ArmyUpkeepPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\BaseInvestmentPointPatch.cs" />
