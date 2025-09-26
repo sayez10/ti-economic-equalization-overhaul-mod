@@ -18,19 +18,30 @@ namespace TIEconomyMod.AIPatches
     [HarmonyPatch(typeof(AIEvaluators), nameof(AIEvaluators.EvaluateControlPoint))]
     internal static class AIEvaluateControlPointPatch
     {
+        // FIXME on vanilla update: This patch copies large parts of the overwritten vanilla function. Checking that vanilla function for changes
+        // and updating this patch after every vanilla update is required.
+        // I very briefly considered replacing it with a postfix patch which would have calculated the delta between the valuation of a nation's
+        // economy in vanilla and this mod, then would have multiplied with the same terms as in vanilla, and finally would have added the result
+        // to the function's return value. However, this of course would still require checks of the vanilla function after every vanilla update.
+        // Updating the function wouldn't be a simple copy-and-past job anymore. And the result would be more brittle (at least the current patch
+        // has a good chance to give reasonable results even if we miss some vanilla changes).
         [HarmonyPrefix]
         private static bool EvaluateControlPointOverwrite(ref float __result, in TIFactionState faction, in TIControlPoint controlPoint)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            // As vanilla
+            // Same as vanilla
             float num = 0f;
             TINationState nation = controlPoint.nation;
 
-            // This line adjusted from economyScore^3, which was vanilla GDP in billions, to this, which is modded GDP in billions
-            // Vanilla and modded control points will be evaluated the same given a certain GDP
-            num += nation.economyScore * 100f;
+            // Changed from GDP in billions ^1.05 in vanilla, to GDP in billions
+            // Evaluation of nations' economy will be generally lower and the AI will no longer valuate richer nations higher
+            num += nation.economyScore * (float)Main.settings.GDPBillionsPerIP;
+
+//            float vanillaEconomyScore = (float)Math.Pow(nation.GDP / 1_000_000_000d, (double)TIGlobalConfig.globalConfig.controlPointIPScaling);
+//            float vanillaEconomyScoreAI = vanillaEconomyScore * vanillaEconomyScore * vanillaEconomyScore;
+//            FileLog.Log(string.Format($"[TIEconomyMod::AIEvaluateControlPointPatch] {controlPoint.displayName}: GDP Evaluation in Vanilla: {vanillaEconomyScoreAI}, GDP Evaluation in Mod: {num}"));
 
             // Same as vanilla
             num += (nation.spaceFlightProgram ? (100f * faction.aiValues.wantSpaceFacilities * faction.aiValues.wantSpaceWarCapability) : 0f);
