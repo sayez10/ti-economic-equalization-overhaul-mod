@@ -32,7 +32,7 @@ namespace TIEconomyMod.AIPatches
             if (!Main.enabled) { return true; }
 
             // Changed from GDP in billions ^1.05 in vanilla, to GDP in billions
-            // Evaluation of nations' economy will be generally lower and the AI will no longer valuate richer nations higher
+            // Evaluation of nations' economy will be generally lower and the AI will no longer valuate richer nations disproportionally higher
             float num = nation.economyScore * (float)Main.settings.GDPBillionsPerIP;
 
 //            float vanillaEconomyScore = (float)Math.Pow(nation.GDP / 1_000_000_000d, (double)TIGlobalConfig.globalConfig.controlPointIPScaling);
