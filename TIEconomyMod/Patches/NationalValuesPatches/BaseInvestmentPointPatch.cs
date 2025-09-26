@@ -23,7 +23,7 @@ namespace TIEconomyMod
             if (!Main.enabled) { return true; }
 
             // Linear scaling: E.g. 500 billion GDP / 100 billion = 5 IP/month
-            __result = (float)(__instance.GDP / Tools.GDPPerIP);
+            __result = (float)(__instance.GDP * Tools.IPPerGDP);
 
 
             return false; // Skip original method

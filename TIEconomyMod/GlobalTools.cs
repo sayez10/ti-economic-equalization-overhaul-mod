@@ -28,7 +28,7 @@ namespace TIEconomyMod
         // These values are dynamically calculated inside a function
         // They're first calculated after the mod loads, and then whenever settings are changed
         private static float _theoreticalPopulation;
-        internal static double GDPPerIP
+        internal static double IPPerGDP
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get;
@@ -70,11 +70,11 @@ namespace TIEconomyMod
         {
             const double IDEAL_POPULATION = 30_000d;
 
-            // 1 billion * settings value
-            GDPPerIP = 1_000_000_000d * Main.settings.GDPBillionsPerIP;
+            IPPerGDP = 0.000_000_001d / Main.settings.GDPBillionsPerIP;
 
             // Declared outside of EffectStrength() because that function will be called VERY often
             // For an explanation as to why I did this, check the comments inside the function
+            double GDPPerIP = 1_000_000_000d * Main.settings.GDPBillionsPerIP;
             _theoreticalPopulation = (float)(GDPPerIP / IDEAL_POPULATION);
         }
     }
