@@ -43,10 +43,10 @@ namespace TIEconomyMod
             float specialRegionMult = 1f + (numSpecialRegions * GROWTH_MULT_PER_SPECIAL_REGION);
             float democracyMult = 1f + (__instance.democracy * GROWTH_MULT_PER_DEMOCRACY_LEVEL);
             float educationMult = 1f + (__instance.education * GROWTH_MULT_PER_EDUCATION_LEVEL);
-            float bonusPCGDPMult = 1f + TIEffectsState.SumEffectsModifiers(Context.Economy_BasePCGDPIncrease, __instance, 1f);
+            float bonusGDPPCMult = 1f + TIEffectsState.SumEffectsModifiers(Context.Economy_BasePCGDPIncrease, __instance, 1f);
 
             /*
-             * Exponential decay function that gives low-PCGDP countries a considerable boost to growth. Heavily modified from the original mod author's vision.
+             * Exponential decay function that gives low-GDPPC countries a considerable boost to growth. Heavily modified from the original mod author's vision.
              *
              * This was done because growth simply didn't make sense in the original mod. Poor countries grew WAY too fast, and rich countries were practically stagnant.
              * Take China and the US (the main countries I balanced this mod around) for example. In the real world, China's GDP 2022-2023 growth percentage was about 66% quicker than in the US.
@@ -57,23 +57,23 @@ namespace TIEconomyMod
              * Democracy and education have a strong effect on GDP growth, so the US' raw multiplier (at game start) is about half of China's, but after other factors it's ~60%.
              *
              * Anyways, the big numbers, at default values:
-             * 200% growth rate at 0 PCGDP
-             * 150% growth rate at 21k PCGDP
-             * 125% growth rate at 35k PCGDP
-             * 100% growth rate at 51k PCGDP
-             *  75% growth rate at 73k PCGDP
-             *  50% growth rate at 102k PCGDP
+             * 200% growth rate at 0 GDPPC
+             * 150% growth rate at 21k GDPPC
+             * 125% growth rate at 35k GDPPC
+             * 100% growth rate at 51k GDPPC
+             *  75% growth rate at 73k GDPPC
+             *  50% growth rate at 102k GDPPC
              *
              * The main takeaway from this is that poor nations get a strong bonus, which drops off relatively quickly. Rich ones get diminishing - but (hopefully) manageable - returns.
              */
             float scalingMult = MAX_SCALING_MULT * (float)Math.Pow(DECAY_BASE, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
 
-            float gdpGain = BASE_GDP_EFFECT * specialRegionMult * democracyMult * educationMult * bonusPCGDPMult * scalingMult;
+            float gdpGain = BASE_GDP_EFFECT * specialRegionMult * democracyMult * educationMult * bonusGDPPCMult * scalingMult;
 
             __result = gdpGain / __instance.population;
 
             // FIXME: Verify that the changed formula actually works as intended. Might require a full-length game.
-//            FileLog.Log(string.Format($"[TIEconomyMod] Economy for {__instance.displayName}: BASE_GDP_EFFECT: {BASE_GDP_EFFECT}, specialRegionMult: {specialRegionMult}, democracyMult: {democracyMult}, educationMult: {educationMult}, bonusPCGDPMult: {bonusPCGDPMult}, scalingMult: {scalingMult}"));
+//            FileLog.Log(string.Format($"[TIEconomyMod::EconomyGDPEffectPatch] {__instance.displayName}: specialRegionMult: {specialRegionMult}, democracyMult: {democracyMult}, educationMult: {educationMult}, bonusGDPPCMult: {bonusGDPPCMult}, scalingMult: {scalingMult}"));
 
 
             return false; // Skip original method
