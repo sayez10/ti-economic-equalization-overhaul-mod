@@ -25,7 +25,7 @@ namespace TIEconomyMod
     {
         // FIXME: Replace this conventional prefix patch with a transpiler patch?
         [HarmonyPrefix]
-        private static bool GrowPopulationByMonthOverwrite(in TIRegionState __instance)
+        private static bool GrowPopulationByMonthOverwrite(TIRegionState __instance)
         {
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }

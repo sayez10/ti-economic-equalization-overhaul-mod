@@ -64,7 +64,7 @@ namespace TIEconomyMod
 
 
         [HarmonyPostfix]
-        private static void AbsorbNationPostfix(float __state, in TINationState __instance)
+        private static void AbsorbNationPostfix(float __state, TINationState __instance)
         {
             // If mod has been disabled, abort patch
             if (!Main.enabled) { return; }
