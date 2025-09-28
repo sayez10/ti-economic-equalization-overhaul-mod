@@ -94,11 +94,8 @@
     <Compile Include="Patches\EconomyInvestmentPatches\EconomyGDPEffectPatch.cs" />
     <Compile Include="Patches\EconomyInvestmentPatches\EconomyInequalityEffectPatch.cs" />
     <Compile Include="Patches\EconomyInvestmentPatches\EconomyMarketEffectPatch.cs" />
-    <Compile Include="Patches\EconomyInvestmentPatches\EconomyRegionEffectPatch.cs" />
-    <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentRegionEffectPatch.cs" />
     <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentSustainabilityEffectPatch.cs" />
     <Compile Include="Patches\GovernmentInvestmentPatches\GovernmentDemocracyEffectPatch.cs" />
-    <Compile Include="Patches\GovernmentInvestmentPatches\GovernmentRegionEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeCohesionEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeEducationEffectPatch.cs" />
     <Compile Include="Patches\NationalActionsPatches\AbsorbNationMiltechCalculationPatch.cs" />
@@ -114,6 +111,11 @@
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionUnrestEffectPatch.cs" />
     <Compile Include="Patches\OtherInvestmentPatches\FundingEffectPatch.cs" />
     <Compile Include="Patches\OtherInvestmentPatches\MilitaryTechEffectPatch.cs" />
+    <Compile Include="Patches\RegionalUpgradePatches\EconomyRegionEffectPatch.cs" />
+    <Compile Include="Patches\RegionalUpgradePatches\EnvironmentRegionEffectPatch.cs" />
+    <Compile Include="Patches\RegionalUpgradePatches\GovernmentRegionEffectPatch.cs" />
+    <Compile Include="Patches\RegionalUpgradePatches\UnityRegionEffectPatch.cs" />
+    <Compile Include="Patches\RegionalUpgradePatches\WelfareRegionEffectPatch.cs" />
     <Compile Include="Patches\RegionalValuesPatches\PopulationGrowthAnnualPatch.cs" />
     <Compile Include="Patches\RegionalValuesPatches\PopulationGrowthMonthPatch.cs" />
     <Compile Include="Patches\SpoilsInvestmentPatches\SpoilsDemocracyEffectPatch.cs" />
@@ -127,9 +129,7 @@
     <Compile Include="Patches\UnityInvestmentPatches\UnityEducationEffectPatch.cs" />
     <Compile Include="Patches\UnityInvestmentPatches\UnityCohesionEffectPatch.cs" />
     <Compile Include="Patches\UnityInvestmentPatches\UnityEffectsPatch.cs" />
-    <Compile Include="Patches\UnityInvestmentPatches\UnityRegionEffectPatch.cs" />
     <Compile Include="Patches\WelfareInvestmentPatches\WelfareInequalityEffectPatch.cs" />
-    <Compile Include="Patches\WelfareInvestmentPatches\WelfareRegionEffectPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
