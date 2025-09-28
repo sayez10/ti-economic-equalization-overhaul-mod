@@ -22,7 +22,7 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            // Linear scaling: E.g. 500 billion GDP / 100 billion = 5 IP/month
+            // Linear scaling: E.g. 500 billion GDP * 0.000_000_000_01 = 5 IP/month
             __result = (float)(__instance.GDP * Tools.IPPerGDP);
 
 
