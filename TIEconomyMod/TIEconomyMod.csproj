@@ -95,9 +95,11 @@
     <Compile Include="Patches\EconomyInvestmentPatches\EconomyInequalityEffectPatch.cs" />
     <Compile Include="Patches\EconomyInvestmentPatches\EconomyMarketEffectPatch.cs" />
     <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentSustainabilityEffectPatch.cs" />
+    <Compile Include="Patches\FundingInvestmentPatches\FundingEffectPatch.cs" />
     <Compile Include="Patches\GovernmentInvestmentPatches\GovernmentDemocracyEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeCohesionEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeEducationEffectPatch.cs" />
+    <Compile Include="Patches\MilitaryInvestmentEffects\MilitaryTechEffectPatch.cs" />
     <Compile Include="Patches\NationalActionsPatches\AbsorbNationMiltechCalculationPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\ArmyUpkeepPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\BaseInvestmentPointPatch.cs" />
@@ -109,8 +111,6 @@
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionCohesionEffectPatch.cs" />
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionDemocracyEffectPatch.cs" />
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionUnrestEffectPatch.cs" />
-    <Compile Include="Patches\OtherInvestmentPatches\FundingEffectPatch.cs" />
-    <Compile Include="Patches\OtherInvestmentPatches\MilitaryTechEffectPatch.cs" />
     <Compile Include="Patches\RegionalUpgradePatches\EconomyRegionEffectPatch.cs" />
     <Compile Include="Patches\RegionalUpgradePatches\EnvironmentRegionEffectPatch.cs" />
     <Compile Include="Patches\RegionalUpgradePatches\GovernmentRegionEffectPatch.cs" />
