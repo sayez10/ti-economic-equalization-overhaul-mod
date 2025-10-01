@@ -96,6 +96,7 @@
     <Compile Include="Patches\EconomyInvestmentPatches\EconomyMarketEffectPatch.cs" />
     <Compile Include="Patches\EnvironmentInvestmentPatches\EnvironmentSustainabilityEffectPatch.cs" />
     <Compile Include="Patches\FundingInvestmentPatches\FundingEffectPatch.cs" />
+    <Compile Include="Patches\FundingInvestmentPatches\FundingLimitPatch.cs" />
     <Compile Include="Patches\GovernmentInvestmentPatches\GovernmentDemocracyEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeCohesionEffectPatch.cs" />
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeEducationEffectPatch.cs" />
@@ -105,7 +106,6 @@
     <Compile Include="Patches\NationalValuesPatches\ControlPointCostPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\CorruptionPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\EconomyScorePatch.cs" />
-    <Compile Include="Patches\NationalValuesPatches\FundingLimitPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\NavyUpkeepPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\ResearchPointsPatch.cs" />
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionCohesionEffectPatch.cs" />
