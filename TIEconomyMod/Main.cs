@@ -7,6 +7,8 @@ using UnityModManagerNet;
 
 using System.Reflection;
 
+using static UnityModManagerNet.UnityModManager;
+
 
 
 namespace TIEconomyMod
@@ -17,7 +19,7 @@ namespace TIEconomyMod
     public class Main
     {
         public static bool enabled;
-        public static UnityModManager.ModEntry mod;
+        public static ModEntry mod;
         public static Settings settings;
 
         /// <summary>
@@ -25,10 +27,10 @@ namespace TIEconomyMod
         /// </summary>
         /// <param name="modEntry"></param>
         /// <returns></returns>
-        static bool Load(UnityModManager.ModEntry modEntry)
+        static bool Load(ModEntry modEntry)
         {
             var harmony = new Harmony(modEntry.Info.Id);
-            settings = UnityModManager.ModSettings.Load<Settings>(modEntry);
+            settings = ModSettings.Load<Settings>(modEntry);
             mod = modEntry;
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
@@ -48,7 +50,7 @@ namespace TIEconomyMod
         /// <param name="modEntry"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        static bool OnToggle(UnityModManager.ModEntry modEntry, bool value)
+        static bool OnToggle(ModEntry modEntry, bool value)
         {
             enabled = value;
 
@@ -58,23 +60,23 @@ namespace TIEconomyMod
             return true;
         }
 
-        static void OnGUI(UnityModManager.ModEntry modEntry)
+        static void OnGUI(ModEntry modEntry)
         {
             settings.Draw(modEntry);
         }
 
-        static void OnSaveGUI(UnityModManager.ModEntry modEntry)
+        static void OnSaveGUI(ModEntry modEntry)
         {
             settings.Save(modEntry);
         }
 
-        public class Settings : UnityModManager.ModSettings, IDrawable
+        public class Settings : ModSettings, IDrawable
         {
             [Draw("GDP in billions per IP, lower = more IPs: (default: 100.0)", Min = 1.0, Precision = 1)] public double GDPBillionsPerIP = 100d;
             [Draw("Multiplier for nations' research production: (default: 1.00)", Min = 0.01, Precision = 2)] public float researchMult = 1f;
             [Draw("Multiplier for control points cost: (default: 4.00)", Min = 0.01, Precision = 2)] public float controlPointCostMult = 4f;
 
-            public override void Save(UnityModManager.ModEntry modEntry)
+            public override void Save(ModEntry modEntry)
             {
                 Save(this, modEntry);
             }
