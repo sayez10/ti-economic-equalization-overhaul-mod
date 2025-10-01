@@ -14,8 +14,9 @@ namespace TIEconomyMod
     /// Patches the getter for control cost of a single control point for a nation
     /// Formula now uses a power function again
     /// The effect of five global technologies to reduce the control point cost of CPs by up to 75% was removed
+    /// The CP cost of nations with low GDP has been increased relative to vanilla, that of rich nations has been decreased
     /// Unifying nations is now required to reduce the CP cost
-    /// And the global techs to reduce CP cost aren't critical anymore
+    /// The global techs, which had reduced CP cost in previous versions of this mod, aren't critical anymore
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.ControlPointMaintenanceCost), MethodType.Getter)]
     internal static class ControlPointCostPatch
