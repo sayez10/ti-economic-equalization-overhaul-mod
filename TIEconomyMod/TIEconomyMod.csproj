@@ -101,12 +101,12 @@
     <Compile Include="Patches\KnowledgeInvestmentPatches\KnowledgeEducationEffectPatch.cs" />
     <Compile Include="Patches\MilitaryInvestmentEffects\MilitaryTechEffectPatch.cs" />
     <Compile Include="Patches\NationalActionsPatches\AbsorbNationMiltechCalculationPatch.cs" />
-    <Compile Include="Patches\NationalValuesPatches\ArmyInvestmentUpkeepPatch.cs" />
+    <Compile Include="Patches\NationalValuesPatches\ArmyUpkeepPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\ControlPointCostPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\CorruptionPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\EconomyScorePatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\FundingLimitPatch.cs" />
-    <Compile Include="Patches\NationalValuesPatches\NavyInvestmentUpkeepPatch.cs" />
+    <Compile Include="Patches\NationalValuesPatches\NavyUpkeepPatch.cs" />
     <Compile Include="Patches\NationalValuesPatches\ResearchPointsPatch.cs" />
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionCohesionEffectPatch.cs" />
     <Compile Include="Patches\OppressionInvestmentEffects\OppressionDemocracyEffectPatch.cs" />
