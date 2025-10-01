@@ -40,8 +40,8 @@ namespace TIEconomyMod
                 // Total cost is split across the control points
                 __result = (baseControlPointCost * settingsMult) / __instance.numControlPoints;
 
-                float vanillaResult = (float)(Math.Pow(__instance.GDP / 1_000_000_000d, (double)TIGlobalConfig.globalConfig.controlPointCostScaling) / (double)(TemplateManager.global.controlPointMaintenanceDivisor * (float)__instance.numControlPoints));
-                FileLog.Log(string.Format($"[TIEconomyMod::ControlPointCostPatch] {__instance.displayName}: CP Cost in Vanilla: {vanillaResult}, CP Cost in Mod: {__result}"));
+//                float vanillaResult = (float)(Math.Pow(__instance.GDP / 1_000_000_000d, (double)TIGlobalConfig.globalConfig.controlPointCostScaling) / (double)(TemplateManager.global.controlPointMaintenanceDivisor * (float)__instance.numControlPoints));
+//                FileLog.Log(string.Format($"[TIEconomyMod::ControlPointCostPatch] {__instance.displayName}: CP Cost in Vanilla: {vanillaResult}, CP Cost in Mod: {__result}"));
             }
         }
     }
