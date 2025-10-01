@@ -24,10 +24,18 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            // FIXME: Propaganda effect might need to be re-balanced. Scaling with population?
-            // Strength is multiplied by 0.2 for now, to account for much higher IP and more priority completions
-            const float BASE_PROPAGANDA_EFFECT = 0.2f;
-            float propagandaEffect = TemplateManager.global.unityPublicOpinionBaseStrength * __instance.priorityEffectPopScaling * BASE_PROPAGANDA_EFFECT;
+            const float BASE_PROPAGANDA_MULT = 0.1f;
+            const float PROPAGANDA_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL = 0.02f;
+            const float EDUCATION_AND_DEMOCRACY_PENALTY_MAX = 0.9f;
+
+            float basePropaganda = TIGlobalConfig.globalConfig.unityPublicOpinionBaseStrength * BASE_PROPAGANDA_MULT;
+
+            // Democracy and Education incurs a 2% penalty per point, up to -90%
+            // A combined score of 45 causes the max effect
+            float educationDemocracyPenaltyMult = Math.Min(EDUCATION_AND_DEMOCRACY_PENALTY_MAX, 1f - ((__instance.education + __instance.democracy) * PROPAGANDA_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL));
+
+            float propagandaEffect = Tools.EffectStrength(basePropaganda, __instance.population) * educationDemocracyPenaltyMult;
+
             TIFactionState religionCPOwner = __instance.GetControlPointOfTypeFaction(ControlPointType.Religion);
 
             foreach (TIFactionState iFaction in __instance.FactionsWithControlPoint)
@@ -35,7 +43,7 @@ namespace TIEconomyMod
                 __instance.PropagandaOnPop_PerOwnedCP(iFaction.ideology, propagandaEffect, (religionCPOwner == iFaction) ? TemplateManager.global.religionUnityPublicOpinionBonusStrength : 0);
             }
 
-            // As vanilla
+            // As in vanilla
             __instance.AddToCohesion(__instance.unityPriorityCohesionChange, TINationState.CohesionChangeReason.CohesionReason_UnityPriority);
             __instance.AddToEducation(__instance.unityPriorityEducationChange, TINationState.EducationChangeReason.EducationReason_UnityPriority);
 
