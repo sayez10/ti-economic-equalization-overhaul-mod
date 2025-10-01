@@ -1,6 +1,7 @@
 [
 	{
 		"dataName": "globalConfig",
+//		"spoilsPriorityPublicOpinionScaling": -0.15,
 		"nationalInvestmentArmyFactorHome": 1,
 		"nationalInvestmentArmyFactorAway": 2,
 		"nationalInvestmentNavyFactor": 2,

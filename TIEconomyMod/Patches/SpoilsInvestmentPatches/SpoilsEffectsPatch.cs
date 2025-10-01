@@ -45,12 +45,13 @@ namespace TIEconomyMod
             }
 
             // Mod code!
-            const float BASE_PROPAGANDA = -0.2f;
+            const float BASE_PROPAGANDA_MULT = 2f;
             const float PROPAGANDA_MULT_PER_DEMOCRACY_OR_EDUCATION_LEVEL = 1.5f;
 
-            float basePropaganda = Tools.EffectStrength(BASE_PROPAGANDA, __instance.population);
+            float basePropaganda = TIGlobalConfig.globalConfig.spoilsPriorityPublicOpinionScaling * BASE_PROPAGANDA_MULT;
             float democracyEducationMult = (__instance.education + __instance.democracy) * PROPAGANDA_MULT_PER_DEMOCRACY_OR_EDUCATION_LEVEL;
-            float propagandaEffect = basePropaganda * democracyEducationMult;
+
+            float propagandaEffect = Tools.EffectStrength(basePropaganda, __instance.population) * democracyEducationMult;
 
             foreach (TIFactionState iFaction in __instance.FactionsWithControlPoint)
             {
