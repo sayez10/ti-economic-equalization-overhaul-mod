@@ -21,7 +21,7 @@ namespace TIEconomyMod
     /// Actually remove the education level reduction effect
     /// </summary>
     [HarmonyPatch(typeof(TIRegionState), nameof(TIRegionState.GrowPopulationByMonth))]
-    internal static class GrowPopulationByMonthPatch
+    internal static class PopulationGrowthMonthPatch
     {
         // FIXME: Replace this conventional prefix patch with a transpiler patch?
         [HarmonyPrefix]

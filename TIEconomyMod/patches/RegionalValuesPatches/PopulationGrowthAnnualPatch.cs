@@ -22,7 +22,7 @@ namespace TIEconomyMod
     /// Add a modifier to in increase population growth with lifespan extension technologies
     /// </summary>
     [HarmonyPatch(typeof(TIRegionState), nameof(TIRegionState.annualPopulationGrowth), MethodType.Getter)]
-    internal static class PopulationGrowthPatch
+    internal static class PopulationGrowthAnnualPatch
     {
             // Lookup table for the strength of the global warming malus for different environment types
             private static readonly float[] _environmentTypeEffects = new float[4] {
