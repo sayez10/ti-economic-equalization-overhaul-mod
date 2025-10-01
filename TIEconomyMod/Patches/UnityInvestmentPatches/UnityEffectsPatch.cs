@@ -47,6 +47,23 @@ namespace TIEconomyMod
             __instance.AddToCohesion(__instance.unityPriorityCohesionChange, TINationState.CohesionChangeReason.CohesionReason_UnityPriority);
             __instance.AddToEducation(__instance.unityPriorityEducationChange, TINationState.EducationChangeReason.EducationReason_UnityPriority);
 
+            if (__instance.canAccumulateLegitimizeClaimTriggers)
+            {
+                Traverse traverse = Traverse.Create(__instance);
+                Traverse accumulatedTriggersTraverse = traverse.Property("accumulatedLegitimizeClaimTriggers", null);
+
+                float accumulatedTriggers = __instance.accumulatedLegitimizeClaimTriggers;
+                accumulatedTriggersTraverse.SetValue(accumulatedTriggers + 1f);
+
+                const float LEGITIMIZE_THRESHOLD = (float)(Tools.VANILLA_LEGITIMIZE_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT);
+
+                if (accumulatedTriggers >= LEGITIMIZE_THRESHOLD && __instance.CandidateLegitimizeClaimRegions().Count > 0)
+                {
+                    __instance.OnLegitimizeClaimPriorityComplete();
+                    accumulatedTriggersTraverse.SetValue(0f);
+                }
+            }
+
 
             return false; // Skip original method
         }
