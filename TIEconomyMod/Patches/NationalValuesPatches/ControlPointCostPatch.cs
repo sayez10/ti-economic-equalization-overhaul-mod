@@ -29,17 +29,18 @@ namespace TIEconomyMod
             // Will be 0 and should stay 0 if the nation's controller is the aliens
             if (__result != 0)
             {
-                // Reverted the change from a power function to a flat multiplicative control point cost reduction
-                const float COST_DECAY_EXPONENT = 0.7f;
-
-                // Total cost to control the entire nation. 1 cost per 1 IP
-                float baseControlCost = __instance.economyScore;
+                // Re-using the nation's missionDifficultyEconomyScore to save one division and one Math.Pow() call
+//              float baseControlPointCost = (float)Math.Pow(__instance.GDP / 1_000_000_000d, 0.333_333_34d);
+                float baseControlPointCost = __instance.missionDifficultyEconomyScore;
 
                 // Settings values cached for readability
                 float settingsMult = Main.settings.controlPointCostMult;
 
                 // Total cost is split across the control points
-                __result = (float)Math.Pow(baseControlCost, COST_DECAY_EXPONENT) * settingsMult / __instance.numControlPoints;
+                __result = (baseControlPointCost * settingsMult) / __instance.numControlPoints;
+
+                float vanillaResult = (float)(Math.Pow(__instance.GDP / 1_000_000_000d, (double)TIGlobalConfig.globalConfig.controlPointCostScaling) / (double)(TemplateManager.global.controlPointMaintenanceDivisor * (float)__instance.numControlPoints));
+                FileLog.Log(string.Format($"[TIEconomyMod::ControlPointCostPatch] {__instance.displayName}: CP Cost in Vanilla: {vanillaResult}, CP Cost in Mod: {__result}"));
             }
         }
     }
