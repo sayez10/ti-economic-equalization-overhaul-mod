@@ -44,16 +44,20 @@ namespace TIEconomyMod
                 }
             }
 
-            // FIXME: Propaganda effect might need to be re-balanced. Scaling with population?
-            const float BASE_PROPAGANDA = -0.125f;
-            float propagandaEffect = (__instance.education + __instance.democracy) * BASE_PROPAGANDA;
+            // Mod code!
+            const float BASE_PROPAGANDA = -0.2f;
+            const float PROPAGANDA_MULT_PER_DEMOCRACY_OR_EDUCATION_LEVEL = 1.5f;
+
+            float basePropaganda = Tools.EffectStrength(BASE_PROPAGANDA, __instance.population);
+            float democracyEducationMult = (__instance.education + __instance.democracy) * PROPAGANDA_MULT_PER_DEMOCRACY_OR_EDUCATION_LEVEL;
+            float propagandaEffect = basePropaganda * democracyEducationMult;
 
             foreach (TIFactionState iFaction in __instance.FactionsWithControlPoint)
             {
                 __instance.PropagandaOnPop_PerOwnedCPFraction(iFaction.ideology, propagandaEffect);
             }
 
-            // Same as Vanilla, only replaced a now unused function argument (which contained a multiplication) with 0f as tiny micro-optimization
+            // Same as Vanilla again, only replaced a now unused function argument (which contained a multiplication) with 0f as tiny micro-optimization
             __instance.AddToSustainability(__instance.spoilsSustainabilityChange);
             TIGlobalValuesState.GlobalValues.AddSpoilsPriorityEnvEffect(__instance, 0f);
 
