@@ -114,7 +114,6 @@
     <Compile Include="Patches\RegionalUpgradePatches\EconomyRegionEffectPatch.cs" />
     <Compile Include="Patches\RegionalUpgradePatches\EnvironmentRegionEffectPatch.cs" />
     <Compile Include="Patches\RegionalUpgradePatches\GovernmentRegionEffectPatch.cs" />
-    <Compile Include="Patches\RegionalUpgradePatches\UnityRegionEffectPatch.cs" />
     <Compile Include="Patches\RegionalUpgradePatches\WelfareRegionEffectPatch.cs" />
     <Compile Include="Patches\RegionalValuesPatches\PopulationGrowthAnnualPatch.cs" />
     <Compile Include="Patches\RegionalValuesPatches\PopulationGrowthMonthPatch.cs" />

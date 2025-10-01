@@ -18,7 +18,6 @@ namespace TIEconomyMod
         internal const int VANILLA_CORE_ECO_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEcosForCoreEcoRegion;
         internal const int VANILLA_DECOLONIZE_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numWelfaresForDecolonizeTriggers;
         internal const int VANILLA_DECONTAMINATE_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numEnvironmentsToTriggerDecontaminate;
-        // Shared by both GovernmentRegionEffectPatch and UnityRegionEffectPatch
         internal const int VANILLA_LEGITIMIZE_THRESHOLD = PavonisInteractive.TerraInvicta.TINationState.numPrioritiesForLegitimize;
 
         // Multiplier to increase the number of investment completions required for region upgrades
