@@ -39,11 +39,23 @@ In short, the goal of the mod is to remove the unintuitive and unrealistic meta-
 
 -The maximum annual income from funding in a nation has been increased by a factor of 10 to match the faster increase of the funding priority and to compensate for the nerf to spoils.
 
+-The public opinion effect of unity priority investment completions now scales inversely with the nation's democracy and education levels.
+
+-Democracy now reduces the lower bound of a nation's corruption by 0.5% per level, down to 0% at 10 democracy
+
+-Existing inequality above 5 can now increase the further inequality gain from completing the economy priority, by up to 100% at inequality level 9. On the other hand, inequality below 5 now reduses the further inequality gain from completing the economy priority, by up to 100% (to 0) at inequality level 1.
+
 -Adjusted costs of many investments to reflect the greatly increased investment points available to most nations and the increased frequency of priority completions, or to simplify calculations.
 
--Adjusted upkeep cost of armies to be dependent on the host country's tech level. Armies have an upkeep of 2 IP per national tech level.
+-Adjusted upkeep cost of armies and navies to be dependent on the host country's tech level.
 
--Research output of a nation re-balanced. A nation no longer receives a flat 7.5 + education monthly research, however its research also increases linearly with population, not at a ^1.1 rate as vanilla. The limit of the quadratic scaling with education > 12 (introduced with vanilla 0.4.1) has been removed. Low democracy (below 5) now reduces research output and the bonus of democracy above 5 on research output has been slightly increased).
+-Some changes have been made to the calculation of regions' population growth: The bonus from GDP per capita is no longer capped at 180k. The minimum global temperature anomaly required for population growth to decline has been reduced from 8 K to 2 K. The starting population growth modifiers of nations now also expire over a duration of 25 years (not noticeable in vanilla because all nations have a modifier of 0; but mods might change these values). A cap has been added to the malus from education (at level 8). Cardinal_Z's mod "Population Growth Rework" provided inspiration for the latter change. Thank you!
+
+-Lifetime extension technologies of the faction controlling an executive CP in a nation now increase the population growth rate of all regions in that nation. This is supposed to model the initial population growth during times of quickly rising life expectancy.
+
+-A region's education is no longer reduced if its population declines due to natural causes during the monthly update.
+
+-Research output of nations has been re-balanced. A nation no longer receives a flat 7.5 + education monthly research, however its research also increases linearly with population, not at a ^1.1 rate as vanilla. The limit of the quadratic scaling with education > 12 (introduced with vanilla 0.4.1) has been removed. Low democracy (below 5) now reduces research output and the bonus of democracy above 5 on research output has been slightly increased).
 
 -A few variables have been made configurable in the Unity Mod Manager settings menu: IP output, research production, and control point cost.
 
