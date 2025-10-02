@@ -72,8 +72,7 @@ namespace TIEconomyMod
 
             __result = gdpGain / __instance.population;
 
-            // FIXME: Verify that the changed formula actually works as intended. Might require a full-length game.
-//            FileLog.Log(string.Format($"[TIEconomyMod::EconomyGDPEffectPatch] {__instance.displayName}: specialRegionMult: {specialRegionMult}, democracyMult: {democracyMult}, educationMult: {educationMult}, bonusGDPPCMult: {bonusGDPPCMult}, scalingMult: {scalingMult}"));
+//            FileLog.Log(string.Format($"[TIEconomyMod::EconomyGDPEffectPatch] {__instance.displayName}: specialRegionMult: {specialRegionMult}, democracyMult: {democracyMult}, educationMult: {educationMult}, bonusGDPPCMult: {bonusGDPPCMult}, scalingMult: {scalingMult}, gdpGain: {gdpGain}"));
 
 
             return false; // Skip original method
