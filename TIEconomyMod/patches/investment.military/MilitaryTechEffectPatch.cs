@@ -43,7 +43,10 @@ namespace TIEconomyMod
             // Max to 1 is to prevent weirdness if somehow current miltech is above max miltech
             float catchUpMult = Math.Max(1f, 1f + (MILITARY_PER_MILITARY_LEVEL_BEHIND * (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel)));
 
-            __result = BASE_MILITARY_EFFECT * educationMult * armiesNumberMult * catchUpMult;
+            // Corruption reduces investment
+            float corruptionMult = 1f - __instance.corruption;
+
+            __result = BASE_MILITARY_EFFECT * educationMult * armiesNumberMult * catchUpMult * corruptionMult;
 
 
             return false; // Skip original method

@@ -33,7 +33,10 @@ namespace TIEconomyMod
             // A combined score of 20 causes the max effect
             float educationDemocracyPenaltyMult = Math.Min(EDUCATION_AND_DEMOCRACY_PENALTY_MAX, 1f - ((__instance.education + __instance.democracy) * COHESION_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL));
 
-            __result = baseCohesionGain * educationDemocracyPenaltyMult;
+            // Corruption reduces investment
+            float corruptionMult = 1f - __instance.corruption;
+
+            __result = baseCohesionGain * educationDemocracyPenaltyMult * corruptionMult;
 
 
             return false; // Skip original method

@@ -34,7 +34,10 @@ namespace TIEconomyMod
             // Basically, the effectiveness of the knowledge priority halves every 5 education
             float decayMult = MAX_SCALE_FACTOR * (float)Math.Pow(DECAY_FACTOR, __instance.education);
 
-            __result = baseEducationGain * decayMult;
+            // Corruption reduces investment
+            float corruptionMult = 1f - __instance.corruption;
+
+            __result = baseEducationGain * decayMult * corruptionMult;
 
 
             return false; // Skip original method

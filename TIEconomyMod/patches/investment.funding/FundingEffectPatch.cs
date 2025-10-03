@@ -24,7 +24,7 @@ namespace TIEconomyMod
 
             const float FUNDING_AMOUNT = 100f;
 
-            // Corruption reduces income
+            // Corruption reduces investment
             float corruptionMult = 1f - __instance.corruption;
 
             // Spoils gives a instant funding of about 300-400 money, at the cost of a fair bit of greenhouse gas and half an investment of welfare in inequality

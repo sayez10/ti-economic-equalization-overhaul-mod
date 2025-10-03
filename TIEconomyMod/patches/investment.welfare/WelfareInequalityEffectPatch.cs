@@ -24,7 +24,10 @@ namespace TIEconomyMod
 
             const float BASE_INEQUALITY_EFFECT = -0.1f;
 
-            __result = Tools.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population);
+            // Corruption reduces investment
+            float corruptionMult = 1f - __instance.corruption;
+
+            __result = Tools.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population) * corruptionMult;
 
 
             return false; // Skip original method

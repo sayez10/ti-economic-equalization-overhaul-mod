@@ -68,11 +68,14 @@ namespace TIEconomyMod
              */
             float scalingMult = MAX_SCALING_MULT * (float)Math.Pow(DECAY_BASE, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
 
-            float gdpGain = BASE_GDP_EFFECT * specialRegionMult * democracyMult * educationMult * bonusGDPPCMult * scalingMult;
+            // Corruption reduces investment
+            float corruptionMult = 1f - __instance.corruption;
+
+            float gdpGain = BASE_GDP_EFFECT * specialRegionMult * democracyMult * educationMult * bonusGDPPCMult * scalingMult * corruptionMult;
 
             __result = gdpGain / __instance.population;
 
-//            FileLog.Log(string.Format($"[TIEconomyMod::EconomyGDPEffectPatch] {__instance.displayName}: specialRegionMult: {specialRegionMult}, democracyMult: {democracyMult}, educationMult: {educationMult}, bonusGDPPCMult: {bonusGDPPCMult}, scalingMult: {scalingMult}, gdpGain: {gdpGain}"));
+//            FileLog.Log(string.Format($"[TIEconomyMod::EconomyGDPEffectPatch] {__instance.displayName}: specialRegionMult: {specialRegionMult}, democracyMult: {democracyMult}, educationMult: {educationMult}, bonusGDPPCMult: {bonusGDPPCMult}, scalingMult: {scalingMult}, corruptionMult: {corruptionMult}, gdpGain: {gdpGain}"));
 
 
             return false; // Skip original method

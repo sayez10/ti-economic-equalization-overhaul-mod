@@ -41,7 +41,10 @@ namespace TIEconomyMod
             float nukedCounter = __instance.regions.Sum((TIRegionState x) => x.nuclearDetonations);
             float nukedMult = Math.Max(MAX_PENALTY_FROM_NUKED_REGIONS, 1f - (nukedCounter * PENALTY_PER_NUKED_REGION));
 
-            __result = baseSustainabilityGain * sustainabilityMult * nukedMult;
+            // Corruption reduces investment
+            float corruptionMult = 1f - __instance.corruption;
+
+            __result = baseSustainabilityGain * sustainabilityMult * nukedMult * corruptionMult;
 
 
             return false; // Skip original method

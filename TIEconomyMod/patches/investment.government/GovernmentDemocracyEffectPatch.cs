@@ -30,7 +30,10 @@ namespace TIEconomyMod
             // Each full point of Education gives +10% Democracy score
             float educationMult = 1f + (__instance.education * DEMOCRACY_MULT_PER_EDUCATION_LEVEL);
 
-            __result = baseDemocracyGain * educationMult;
+            // Corruption reduces investment
+            float corruptionMult = 1f - __instance.corruption;
+
+            __result = baseDemocracyGain * educationMult * corruptionMult;
 
 
             return false; // Skip original method

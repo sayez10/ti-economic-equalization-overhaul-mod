@@ -32,7 +32,10 @@ namespace TIEconomyMod
             // Effect ramps up the higher Democracy is: 0% at/under 5, 100% at 10
             float democracyMult = Math.Max(0f, COHESION_MULT_PER_DEMOCRACY_LEVEL * (__instance.democracy - MIN_DEMOCRACY_FOR_COHESION_CHANGE));
 
-            __result = baseCohesionLoss * democracyMult;
+            // Corruption reduces investment
+            float corruptionMult = 1f - __instance.corruption;
+
+            __result = baseCohesionLoss * democracyMult * corruptionMult;
 
 
             return false; // Skip original method
