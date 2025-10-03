@@ -37,8 +37,7 @@ namespace TIEconomyMod
             // Each full point of sustainability gives a +10% bonus, up to +100%
             float sustainabilityMult = 1f + (__instance.sustainability * SUSTAINABILITY_MULT_PER_SUSTAINABILITY_LEVEL);
 
-            // FIXME: Uncomment if this modifier is ever used in Vanilla and append it as factor to calculation for result
-//            float environmentSustainabilityChangeMult = 1f + TIEffectsState.SumEffectsModifiers(Context.Environment_SustainabilityChange, __instance, 1f);
+            float environmentSustainabilityChangeMult = 1f + TIEffectsState.SumEffectsModifiers(Context.Environment_SustainabilityChange, __instance, 1f);
 
             // Each nuked region causes a sustainability generation penalty of -5%, up to -50%
             float nukedCounter = __instance.regions.Sum((TIRegionState x) => x.nuclearDetonations);
@@ -47,7 +46,7 @@ namespace TIEconomyMod
             // Corruption reduces investment
             float corruptionMult = 1f - __instance.corruption;
 
-            __result = baseSustainabilityGain * sustainabilityMult * nukedMult * corruptionMult;
+            __result = baseSustainabilityGain * sustainabilityMult * environmentSustainabilityChangeMult * nukedMult * corruptionMult;
 
 
             return false; // Skip original method
