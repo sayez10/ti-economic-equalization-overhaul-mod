@@ -94,6 +94,9 @@
     <Compile Include="Patches\investment.economy\EconomyGDPEffectPatch.cs" />
     <Compile Include="Patches\investment.economy\EconomyInequalityEffectPatch.cs" />
     <Compile Include="Patches\investment.economy\EconomyMarketEffectPatch.cs" />
+    <Compile Include="Patches\investment.environment\EnvironmentCH4RemovalPatch.cs" />
+    <Compile Include="Patches\investment.environment\EnvironmentCO2RemovalPatch.cs" />
+    <Compile Include="Patches\investment.environment\EnvironmentN2ORemovalPatch.cs" />
     <Compile Include="Patches\investment.environment\EnvironmentSustainabilityEffectPatch.cs" />
     <Compile Include="Patches\investment.funding\FundingEffectPatch.cs" />
     <Compile Include="Patches\investment.funding\FundingLimitPatch.cs" />
