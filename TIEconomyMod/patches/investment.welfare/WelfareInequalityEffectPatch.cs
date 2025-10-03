@@ -27,7 +27,9 @@ namespace TIEconomyMod
             // Corruption reduces investment
             float corruptionMult = 1f - __instance.corruption;
 
-            __result = Tools.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population) * corruptionMult;
+            float welfareInequalityReductionBonusMult = 1f + TIEffectsState.SumEffectsModifiers(Context.WelfareInequalityReductionBonus, __instance, 1f);
+
+            __result = Tools.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population) * welfareInequalityReductionBonusMult * corruptionMult;
 
 
             return false; // Skip original method
