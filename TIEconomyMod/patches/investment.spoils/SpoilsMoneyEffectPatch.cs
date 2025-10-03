@@ -22,7 +22,7 @@ namespace TIEconomyMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_MONEY_EFFECT = 150;
+            const float BASE_MONEY_EFFECT = 150f;
             const float MONEY_MULT_PER_RESOURCE_REGION = 0.15f;
             const float MONEY_MULT_FROM_LOW_DEMOCRACY = 0.1f;
 
@@ -32,7 +32,10 @@ namespace TIEconomyMod
             // Up to 100% extra money at 0 democracy, 0% extra at 10 democracy
             float democracyMult = 1f + ((10f - __instance.democracy) * MONEY_MULT_FROM_LOW_DEMOCRACY);
 
-            __result = BASE_MONEY_EFFECT * resourceRegionsMult * democracyMult;
+            // Corruption reduces income
+            float corruptionMult = 1f - __instance.corruption;
+
+            __result = BASE_MONEY_EFFECT * resourceRegionsMult * democracyMult * corruptionMult;
 
 
             return false; // Skip original method
