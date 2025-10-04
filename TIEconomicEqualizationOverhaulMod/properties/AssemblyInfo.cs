@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("General rework of Terra Invicta's GDP-to-IP scaling")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("https://github.com/sayez10/ti-economic-equalization-overhaul")]
-[assembly: AssemblyProduct("TIEconomyMod")]
+[assembly: AssemblyProduct("TIEconomicEqualizationOverhaulMod")]
 [assembly: AssemblyCopyright("Copyright © 2025 sayez10")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

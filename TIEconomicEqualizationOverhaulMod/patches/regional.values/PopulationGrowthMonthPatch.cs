@@ -11,7 +11,7 @@ using UnityEngine;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
     /// Patch removes the education level reduction if the population of a region is reduced during the regular monthly update

@@ -8,7 +8,7 @@ using PavonisInteractive.TerraInvicta;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
     /// Patch changes the CH4 removal effect of an environment investment at 10 sustainment to not scale with population anymore

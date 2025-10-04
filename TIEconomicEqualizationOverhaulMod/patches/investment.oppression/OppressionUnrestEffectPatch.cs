@@ -8,7 +8,7 @@ using PavonisInteractive.TerraInvicta;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
     /// Patch changes the unrest-reducing effect of an oppression investment to scale inversely with population size

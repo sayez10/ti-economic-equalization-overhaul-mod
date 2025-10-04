@@ -8,7 +8,7 @@ using PavonisInteractive.TerraInvicta;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
     /// Patch changes the monthly funding gain from completing a funding investment

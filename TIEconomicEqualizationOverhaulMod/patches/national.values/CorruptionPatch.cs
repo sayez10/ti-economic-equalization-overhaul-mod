@@ -10,7 +10,7 @@ using UnityEngine;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
     /// Patch changes the calculation of a nation's corruption

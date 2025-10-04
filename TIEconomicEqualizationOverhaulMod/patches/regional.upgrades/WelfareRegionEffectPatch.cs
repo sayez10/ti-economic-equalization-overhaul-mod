@@ -12,7 +12,7 @@ using System.Reflection.Emit;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
     /// Patch replaces hardcoded integers in OnWelfarePriorityComplete(), to increase the requirements by 5x due to all the extra IP

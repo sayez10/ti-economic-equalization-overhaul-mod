@@ -8,7 +8,7 @@ using PavonisInteractive.TerraInvicta;
 
 
 
-namespace TIEconomyMod.AIPatches
+namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
     /// Patch changes AI evaluation of a nation's value/importance to account for the higher IP amount in large modded nations

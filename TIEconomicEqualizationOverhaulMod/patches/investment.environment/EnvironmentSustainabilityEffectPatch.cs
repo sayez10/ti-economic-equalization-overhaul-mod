@@ -10,7 +10,7 @@ using System.Linq;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
     /// Patch changes the sustainability effect of an environment investment to scale inversely with population size

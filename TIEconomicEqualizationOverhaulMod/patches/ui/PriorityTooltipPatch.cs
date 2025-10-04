@@ -11,7 +11,7 @@ using System.Reflection.Emit;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     [HarmonyPatch(typeof(PriorityListItemController), nameof(PriorityListItemController.priorityTipStr))]
     internal static class PriorityTooltipPatch

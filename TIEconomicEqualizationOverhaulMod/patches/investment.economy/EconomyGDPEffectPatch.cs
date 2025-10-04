@@ -8,7 +8,7 @@ using PavonisInteractive.TerraInvicta;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
     /// Patch changes the economy investment's GDP effect from increasing GDPPC by a flat(ish) amount, to increasing GDP by a flat(ish) amount and distributing that across the population as GDPPC

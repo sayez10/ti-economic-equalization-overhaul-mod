@@ -11,7 +11,7 @@ using static UnityModManagerNet.UnityModManager;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
     /// Controls loading and managing the mod

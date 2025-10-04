@@ -83,11 +83,11 @@ To install the mod:
 
 1: Find the [Releases](https://github.com/sayez10/ti-economic-equalization-overhaul) page on this repository and download the appropriate version's zip file (not source).
 
-EITHER 2A: Unpack the TIEconomyMod folder inside this zip into your Terra Invicta\Mods\Enabled folder.
+EITHER 2A: Unpack the TIEconomicEqualizationOverhaulMod folder inside this zip into your Terra Invicta\Mods\Enabled folder.
 
 OR 2B: Open the Unity Mod Manager executable, select Terra Invicta, go to the Mods tab, and drag the zip file into the directed box.
 
-3: You should now have a Terra Invicta\Mods\Enabled\TIEconomyMod folder containing a ModInfo.json file, among other things. If so, the mod is correctly installed.
+3: You should now have a Terra Invicta\Mods\Enabled\TIEconomicEqualizationOverhaulMod folder containing a ModInfo.json file, among other things. If so, the mod is correctly installed.
 
 4: Now open the game and start a new game. If the investment point cost of the lower half investments appears unchanged (I.e. boost costs a vanilla 2 investment points, not 4), the game must be restarted until these values change (typically once).
 

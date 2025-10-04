@@ -11,7 +11,7 @@ using System.Text;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     [HarmonyPatch(typeof(NationInfoController),  nameof(NationInfoController.BuildInvestmentTooltip))]
     internal static class IPTooltipPatch

@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 
 
-namespace TIEconomyMod
+namespace TIEconomicEqualizationOverhaulMod
 {
     // This is a helper class used to streamline things, and centralize important variables
     internal static class Tools
