@@ -24,8 +24,8 @@ namespace TIEconomicEqualizationOverhaulMod
     [HarmonyPatch(typeof(TIRegionState), nameof(TIRegionState.annualPopulationGrowth), MethodType.Getter)]
     internal static class PopulationGrowthAnnualPatch
     {
-            // Lookup table for the strength of the global warming malus for different environment types
-            private static readonly float[] _environmentTypeEffects = new float[4] {
+        // Lookup table for the strength of the global warming malus for different environment types
+        private static readonly float[] _environmentTypeEffects = new float[4] {
             0f,   // None
             0.5f, // Beneficiary
             1f,   // Standard
