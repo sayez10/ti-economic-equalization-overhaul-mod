@@ -21,8 +21,6 @@ namespace TIEconomicEqualizationOverhaulMod
         [HarmonyPrefix]
         private static bool GetEnvironmentPrioritySustainabilityChangeOverwrite(ref float __result, in TINationState __instance)
         {
-            // FIXME: Overall, the scaling should have lesser extremes. Might need tweaking.
-
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 

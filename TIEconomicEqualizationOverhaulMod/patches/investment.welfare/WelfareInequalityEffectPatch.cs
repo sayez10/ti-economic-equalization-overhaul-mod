@@ -24,10 +24,10 @@ namespace TIEconomicEqualizationOverhaulMod
 
             const float BASE_INEQUALITY_EFFECT = -0.1f;
 
+            float welfareInequalityReductionBonusMult = 1f + TIEffectsState.SumEffectsModifiers(Context.WelfareInequalityReductionBonus, __instance, 1f);
+
             // Corruption reduces investment
             float corruptionMult = 1f - __instance.corruption;
-
-            float welfareInequalityReductionBonusMult = 1f + TIEffectsState.SumEffectsModifiers(Context.WelfareInequalityReductionBonus, __instance, 1f);
 
             __result = Tools.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population) * welfareInequalityReductionBonusMult * corruptionMult;
 
