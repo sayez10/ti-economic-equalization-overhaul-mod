@@ -39,7 +39,7 @@ namespace TIEconomicEqualizationOverhaulMod
             // Evaluation of nations' economy will be generally lower and the AI will no longer valuate richer nations disproportionally higher
             num += nation.economyScore * (float)Main.settings.GDPBillionsPerIP;
 
-//            float vanillaEconomyScore = (float)Math.Pow(nation.GDP / 1_000_000_000d, (double)TIGlobalConfig.globalConfig.controlPointIPScaling);
+//            float vanillaEconomyScore = (float)Math.Pow(nation.GDP / 1_000_000_000d, (double)TemplateManager.global.controlPointIPScaling);
 //            float vanillaEconomyScoreAI = vanillaEconomyScore * vanillaEconomyScore * vanillaEconomyScore;
 //            FileLog.Log(string.Format($"[TIEconomyMod::AIEvaluateControlPointPatch] {controlPoint.displayName}: GDP Evaluation in Vanilla: {vanillaEconomyScoreAI}, GDP Evaluation in Mod: {num}"));
 

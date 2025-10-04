@@ -28,7 +28,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float PROPAGANDA_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL = 0.02f;
             const float EDUCATION_AND_DEMOCRACY_PENALTY_MAX = 0.9f;
 
-            float basePropaganda = TIGlobalConfig.globalConfig.unityPublicOpinionBaseStrength * BASE_PROPAGANDA_MULT;
+            float basePropaganda = TemplateManager.global.unityPublicOpinionBaseStrength * BASE_PROPAGANDA_MULT;
 
             // Democracy and Education incurs a 2% penalty per point, up to -90%
             // A combined score of 45 causes the max effect
