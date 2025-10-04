@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Economic Equalization Overhaul Mod")]
-[assembly: AssemblyDescription("General rework of Terra Invicta's GDP-to-IP scaling")]
+[assembly: AssemblyDescription("This mod modifies the way national economies work, to better represent the way countries of different sizes compare.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("https://github.com/sayez10/ti-economic-equalization-overhaul-mod")]
 [assembly: AssemblyProduct("TIEconomicEqualizationOverhaulMod")]
