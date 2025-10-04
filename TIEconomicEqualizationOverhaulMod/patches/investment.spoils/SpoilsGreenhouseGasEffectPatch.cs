@@ -15,7 +15,7 @@ namespace TIEconomicEqualizationOverhaulMod
     /// Removes the scaling to emissions added in the vanilla function that does not work with this mod
     /// </summary>
     [HarmonyPatch(typeof(TIGlobalValuesState), nameof(TIGlobalValuesState.AddSpoilsPriorityEnvEffect))]
-    internal static class SpoilsEnvironmentEffectPatch
+    internal static class SpoilsGreenhouseGasEffectPatch
     {
         [HarmonyPrefix]
         private static bool AddSpoilsPriorityEnvEffectOverwrite(in TINationState nation, TIGlobalValuesState __instance)
