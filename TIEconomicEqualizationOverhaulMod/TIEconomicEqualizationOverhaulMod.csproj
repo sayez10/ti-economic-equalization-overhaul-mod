@@ -109,7 +109,7 @@
     <Compile Include="Patches\investment.oppression\OppressionUnrestEffectPatch.cs" />
     <Compile Include="Patches\investment.spoils\SpoilsDemocracyEffectPatch.cs" />
     <Compile Include="Patches\investment.spoils\SpoilsEffectsPatch.cs" />
-    <Compile Include="Patches\investment.spoils\SpoilsEnvironmentEffectPatch.cs" />
+    <Compile Include="Patches\investment.spoils\SpoilsGreenhouseGasEffectPatch.cs" />
     <Compile Include="Patches\investment.spoils\SpoilsInequalityEffectPatch.cs" />
     <Compile Include="Patches\investment.spoils\SpoilsMoneyEffectPatch.cs" />
     <Compile Include="Patches\investment.spoils\SpoilsSustainabilityEffectPatch.cs" />
