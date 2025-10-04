@@ -39,7 +39,10 @@ namespace TIEconomicEqualizationOverhaulMod
             float adviserAdministrationMult = nation.adviserAdministrationBonus;
             if (adviserAdministrationMult > 0f)
             {
-                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.AdviserBonus", new object[] { adviserAdministrationMult.ToPercent("P0") }, new object[] { TIUtilities.FormatSmallNumber(economyScore * adviserAdministrationMult) }));
+                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.AdviserBonus", new object[] {
+                    adviserAdministrationMult.ToPercent("P0"),
+                    TIUtilities.FormatSmallNumber(economyScore * adviserAdministrationMult)
+                }));
             }
 
             float investmentPoints_occupationPenalty_frac = nation.investmentPoints_occupationPenalty_frac;
@@ -53,7 +56,10 @@ namespace TIEconomicEqualizationOverhaulMod
             if (investmentPoints_unrestPenalty_frac > 0f)
             {
                 penaltyUnrest = true;
-                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.IPUnrestPenalty", new object[] { investmentPoints_unrestPenalty_frac.ToPercent("P0") }, new object[] { TIUtilities.FormatSmallNumber(unrestPenalty) }));
+                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.IPUnrestPenalty", new object[] {
+                    investmentPoints_unrestPenalty_frac.ToPercent("P0"),
+                    TIUtilities.FormatSmallNumber(unrestPenalty)
+                }));
             }
 
             // Changed to reflect impact from mil tech
@@ -70,17 +76,26 @@ namespace TIEconomicEqualizationOverhaulMod
             if (armiesAtHome > 0)
             {
                 penaltyMilitary = true;
-                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.HomeArmiesPenalty", new object[] { TIUtilities.FormatSmallNumber(upkeepHomeMult) }, new object[] { TIUtilities.FormatSmallNumber(totalArmyHomeUpkeep) }));
+                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.HomeArmiesPenalty", new object[] {
+                    TIUtilities.FormatSmallNumber(upkeepHomeMult),
+                    TIUtilities.FormatSmallNumber(totalArmyHomeUpkeep)
+                }));
             }
             if (deployedArmies > 0)
             {
                 penaltyMilitary = true;
-                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.AwayArmiesPenalty", new object[] { TIUtilities.FormatSmallNumber(upkeepAwayMult) }, new object[] { TIUtilities.FormatSmallNumber(totalArmyAwayUpkeep) }));
+                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.AwayArmiesPenalty", new object[] {
+                    TIUtilities.FormatSmallNumber(upkeepAwayMult),
+                    TIUtilities.FormatSmallNumber(totalArmyAwayUpkeep)
+                }));
             }
             if (numNavies > 0)
             {
                 penaltyMilitary = true;
-                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.NaviesPenalty", new object[] { TIUtilities.FormatSmallNumber(upkeepNavyMult) }, new object[] { TIUtilities.FormatSmallNumber(totalNavyUpkeep) }));
+                stringBuilder.AppendLine().AppendLine(Loc.T("UI.Nation.NaviesPenalty", new object[] {
+                    TIUtilities.FormatSmallNumber(upkeepNavyMult),
+                    TIUtilities.FormatSmallNumber(totalNavyUpkeep)
+                }));
             }
 
             // Added additional tooltip that combines Home, Away, and Navy costs
