@@ -23,8 +23,12 @@ namespace TIEconomicEqualizationOverhaulMod
             if (!Main.enabled) { return true; }
 
             const float BASE_DEMOCRACY_EFFECT = -0.1f;
+            const float INEQUALITY_MULT_PER_RESOURCE_REGION = 0.2f;
 
-            __result = Tools.EffectStrength(BASE_DEMOCRACY_EFFECT, __instance.population);
+            float baseDemocracyLoss = Tools.EffectStrength(BASE_DEMOCRACY_EFFECT, __instance.population);
+            float resourceRegionsMult = 1f + (__instance.currentResourceRegions * INEQUALITY_MULT_PER_RESOURCE_REGION);
+
+            __result = baseDemocracyLoss * resourceRegionsMult;
 
 
             return false; // Skip original method

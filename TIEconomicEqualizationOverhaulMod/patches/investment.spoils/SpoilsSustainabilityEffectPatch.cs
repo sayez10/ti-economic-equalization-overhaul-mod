@@ -19,14 +19,12 @@ namespace TIEconomicEqualizationOverhaulMod
         [HarmonyPrefix]
         private static bool GetSpoilsSustainabilityChangeOverwrite(ref float __result, in TINationState __instance)
         {
-            // FIXME: Overall, the scaling should have lesser extremes. Might need tweaking.
-
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
             // BASE_SUSTAINABILITY is inverted, because for whatever reason sustainability increases with negative change, and decreases with positive change
             const float BASE_SUSTAINABILITY_EFFECT = 0.2f;
-            const float SUSTAINABILITY_MULT_PER_RESOURCE_REGION = 1f;
+            const float SUSTAINABILITY_MULT_PER_RESOURCE_REGION = 0.2f;
 
             float baseSustainabilityLoss = Tools.EffectStrength(BASE_SUSTAINABILITY_EFFECT, __instance.population);
 

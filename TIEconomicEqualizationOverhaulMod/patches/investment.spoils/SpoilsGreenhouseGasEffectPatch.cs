@@ -23,7 +23,7 @@ namespace TIEconomicEqualizationOverhaulMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float ENVIRONMENT_MULT_PER_RESOURCE_REGION = 0.5f;
+            const float ENVIRONMENT_MULT_PER_RESOURCE_REGION = 0.2f;
             float resourceRegionsMult = 1f + (nation.currentResourceRegions * ENVIRONMENT_MULT_PER_RESOURCE_REGION);
 
             // CO2

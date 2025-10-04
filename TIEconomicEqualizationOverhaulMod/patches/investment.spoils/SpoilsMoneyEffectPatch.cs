@@ -23,7 +23,7 @@ namespace TIEconomicEqualizationOverhaulMod
             if (!Main.enabled) { return true; }
 
             const float BASE_MONEY_EFFECT = 150f;
-            const float MONEY_MULT_PER_RESOURCE_REGION = 0.15f;
+            const float MONEY_MULT_PER_RESOURCE_REGION = 0.2f;
             const float MONEY_MULT_FROM_LOW_DEMOCRACY = 0.1f;
 
             // Add money per resource region
