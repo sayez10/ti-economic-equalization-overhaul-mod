@@ -1,4 +1,4 @@
-# Economic Equalization Overhaul
+# Economic Equalization Overhaul Mod
 This is a fan mod for the game *Terra Invicta*. It modifies the way national economies work, to better represent the way countries of different sizes compare.
 
 The project was originally started by [Verdiss](https://github.com/Verdiss/TI-Economic-Equalization-Overhaul). Development was later taken over by [explodoboy](https://github.com/explodoboy/Economic-Equalization-Overhaul). For now I am maintaining a fork while it's unclear if any other fork is still being actively maintained.
@@ -77,19 +77,17 @@ Version 0.2.3.0 of this mod was built for Terra Invicta version 0.4.102 (the cur
 
 This mod requires [Unity Mod Manager version 0.32.4](https://www.nexusmods.com/site/mods/21/?tab=description) to be installed on your Terra Invicta executable with the DoorstopProxy installation method.
 
-This mod should not be added to an in-progress campaign
+This mod can be safely added or removed during an ongoing campaign.
 
 To install the mod:
 
-1: Find the [Releases](https://github.com/sayez10/ti-economic-equalization-overhaul-mod) page on this repository and download the appropriate version's zip file (not source).
+1: Find the [Releases](https://github.com/sayez10/ti-economic-equalization-overhaul-mod) page on this repository and download the appropriate version's .zip file (not source).
 
-EITHER 2A: Unpack the TIEconomicEqualizationOverhaulMod folder inside this zip into your Terra Invicta\Mods\Enabled folder.
+EITHER 2A: Unpack the TIEconomicEqualizationOverhaulMod folder inside this .zip file into your Terra Invicta\Mods\Enabled folder.
 
-OR 2B: Open the Unity Mod Manager executable, select Terra Invicta, go to the Mods tab, and drag the zip file into the directed box.
+OR 2B: Open the Unity Mod Manager executable, select Terra Invicta, go to the Mods tab, and drag the .zip file into the directed box.
 
 3: You should now have a Terra Invicta\Mods\Enabled\TIEconomicEqualizationOverhaulMod folder containing a ModInfo.json file, among other things. If so, the mod is correctly installed.
-
-4: Now open the game and start a new game. If the investment point cost of the lower half investments appears unchanged (I.e. boost costs a vanilla 2 investment points, not 4), the game must be restarted until these values change (typically once).
 
 UPDATING: When updating this mod, completely remove the old version of the mod and replace it with the new one.
 
