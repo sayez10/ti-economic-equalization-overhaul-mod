@@ -27,6 +27,7 @@ namespace TIEconomicEqualizationOverhaulMod
 
             __instance.resourceMarketValues[FactionResource.Metals] *= RESOURCE_MARKET_VALUE_MULT;
             __instance.resourceMarketValues[FactionResource.NobleMetals] *= RESOURCE_MARKET_VALUE_MULT;
+            __instance.resourceMarketValues[FactionResource.Fissiles] *= RESOURCE_MARKET_VALUE_MULT;
 
 
             return false; // Skip original method
