@@ -81,7 +81,7 @@ This mod should not be added to an in-progress campaign
 
 To install the mod:
 
-1: Find the [Releases](https://github.com/sayez10/ti-economic-equalization-overhaul) page on this repository and download the appropriate version's zip file (not source).
+1: Find the [Releases](https://github.com/sayez10/ti-economic-equalization-overhaul-mod) page on this repository and download the appropriate version's zip file (not source).
 
 EITHER 2A: Unpack the TIEconomicEqualizationOverhaulMod folder inside this zip into your Terra Invicta\Mods\Enabled folder.
 

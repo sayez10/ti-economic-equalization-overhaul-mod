@@ -10,10 +10,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Economic Equalization Overhaul")]
+[assembly: AssemblyTitle("Economic Equalization Overhaul Mod")]
 [assembly: AssemblyDescription("General rework of Terra Invicta's GDP-to-IP scaling")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("https://github.com/sayez10/ti-economic-equalization-overhaul")]
+[assembly: AssemblyCompany("https://github.com/sayez10/ti-economic-equalization-overhaul-mod")]
 [assembly: AssemblyProduct("TIEconomicEqualizationOverhaulMod")]
 [assembly: AssemblyCopyright("Copyright © 2025 sayez10")]
 [assembly: AssemblyTrademark("")]
