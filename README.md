@@ -73,7 +73,7 @@ Current focuses for future updates are:
 
 
 ### Installation Info
-Version 0.2.3.0 of this mod was built for Terra Invicta version 0.4.90 (the current beta-release branch).
+Version 0.2.3.0 of this mod was built for Terra Invicta version 0.4.102 (the current experimental branch).
 
 This mod requires [Unity Mod Manager version 0.32.4](https://www.nexusmods.com/site/mods/21/?tab=description) to be installed on your Terra Invicta executable with the DoorstopProxy installation method.
 
