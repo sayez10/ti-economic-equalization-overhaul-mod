@@ -120,6 +120,7 @@
     <Compile Include="Patches\national.actions\AbsorbNationMiltechCalculationPatch.cs" />
     <Compile Include="Patches\national.actions\DirectInvestmentAnnualLimitPatch.cs" />
     <Compile Include="Patches\national.actions\DirectInvestmentPurchasePatch.cs" />
+    <Compile Include="Patches\national.actions\NationPriorityBonusesPatch.cs" />
     <Compile Include="Patches\national.values\ArmyUpkeepPatch.cs" />
     <Compile Include="Patches\national.values\ControlPointCostPatch.cs" />
     <Compile Include="Patches\national.values\CorruptionPatch.cs" />
