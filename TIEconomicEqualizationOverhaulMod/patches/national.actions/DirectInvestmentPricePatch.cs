@@ -65,10 +65,19 @@ namespace TIEconomicEqualizationOverhaulMod
             float costInfluence = _priorityDirectInvestmentCost[(int)priority, (int)CurrencyType.Influence];
             float costOps = _priorityDirectInvestmentCost[(int)priority, (int)CurrencyType.Ops];
 
+            // Lower value = lower cost for nations with low GDPPC
+            const double LOW_GDPPC_MULT_GROWTH_FACTOR = 5d;
+
+            // Upper limit of the GDPPC in 1000 USD for the crutch code to lower the cost of economy direct investments
+            const double LOW_GDPPC_UPPER_LIMIT = 30d + LOW_GDPPC_MULT_GROWTH_FACTOR;
+
             // Fix up anything that can't be included in a simple lookup-table
             switch (priority)
             {
             case PriorityType.Economy:
+                // Crutch code to allow economy direct investments at a lower cost in poor countries
+                float gdpPerCapita = __instance.perCapitaGDP * 0.001f;
+                costMoney *= (float)(LOW_GDPPC_MULT_GROWTH_FACTOR / Math.Max(LOW_GDPPC_MULT_GROWTH_FACTOR, (LOW_GDPPC_UPPER_LIMIT - gdpPerCapita)));
                 break;
             case PriorityType.Funding:
                 costInfluence *= __instance.spaceFundingPriorityIncomeChange;
