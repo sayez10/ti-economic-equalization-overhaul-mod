@@ -11,7 +11,7 @@ using PavonisInteractive.TerraInvicta;
 namespace TIEconomicEqualizationOverhaulMod
 {
     /// <summary>
-    /// Patch changes the cohesion effect of an oppression investment to scale inversely with population size
+    /// Patch changes the cohesion reduction of an oppression investment to scale inversely with population size
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.OppressionPriorityCohesionChange), MethodType.Getter)]
     internal static class OppressionCohesionEffectPatch
@@ -24,18 +24,14 @@ namespace TIEconomicEqualizationOverhaulMod
             if (!Main.enabled) { return true; }
 
             const float BASE_COHESION_EFFECT = -1f;
-            const float MIN_DEMOCRACY_FOR_COHESION_CHANGE = 5f;
-            const float COHESION_MULT_PER_DEMOCRACY_LEVEL = 0.2f;
+            const float COHESION_MULT_PER_DEMOCRACY_LEVEL = 0.1f;
 
             float baseCohesionLoss = Tools.EffectStrength(BASE_COHESION_EFFECT, __instance.population);
 
-            // Effect ramps up the higher Democracy is: 0% at/under 5, 100% at 10
-            float democracyMult = Math.Max(0f, COHESION_MULT_PER_DEMOCRACY_LEVEL * (__instance.democracy - MIN_DEMOCRACY_FOR_COHESION_CHANGE));
+            // Effect ramps up the higher Democracy is: 0% at 0, 100% at 10
+            float democracyMult = COHESION_MULT_PER_DEMOCRACY_LEVEL * __instance.democracy;
 
-            // Corruption reduces investment
-            float corruptionMult = 1f - __instance.corruption;
-
-            __result = baseCohesionLoss * democracyMult * corruptionMult;
+            __result = baseCohesionLoss * democracyMult;
 
 
             return false; // Skip original method
