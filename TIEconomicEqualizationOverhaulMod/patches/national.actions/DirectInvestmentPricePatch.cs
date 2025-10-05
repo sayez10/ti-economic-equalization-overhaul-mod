@@ -18,7 +18,7 @@ namespace TIEconomicEqualizationOverhaulMod
     /// Funding is a special case, the cost in influence depends directly on the financial benefits
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.InvestmentPointDirectPurchasePrice))]
-    internal static class DirectInvestmentPurchasePatch
+    internal static class DirectInvestmentPricePatch
     {
         private enum CurrencyType
         {
