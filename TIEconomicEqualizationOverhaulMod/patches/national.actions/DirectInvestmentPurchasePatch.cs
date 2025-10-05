@@ -15,7 +15,7 @@ namespace TIEconomicEqualizationOverhaulMod
     /// Patch removes all scaling with military level (double-dipping in vanilla)
     /// Patch removes all scaling with cost of investments (in IP)
     /// Cost of almost all investments is now constant, with very few exceptions
-    /// Spoils and Funding are special cases, their cost in influence depends directly on their financial benefits
+    /// Funding is a special case, the cost in influence depends directly on the financial benefits
     /// </summary>
     [HarmonyPatch(typeof(TINationState), nameof(TINationState.InvestmentPointDirectPurchasePrice))]
     internal static class DirectInvestmentPurchasePatch
@@ -73,9 +73,9 @@ namespace TIEconomicEqualizationOverhaulMod
             case PriorityType.Funding:
                 costInfluence *= __instance.spaceFundingPriorityIncomeChange;
                 break;
-            case PriorityType.Spoils:
-                costInfluence *= __instance.spoilsPriorityMoney;
-                break;
+//            case PriorityType.Spoils:
+//                costInfluence *= __instance.spoilsPriorityMoney;
+//                break;
             }
 
             // If the user set a nation IP bonus/malus at campaign start, we also use that factor to decrease/increase the cost of direct investments
