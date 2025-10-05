@@ -38,7 +38,7 @@ namespace TIEconomicEqualizationOverhaulMod
             { 250f, 500f,   0f }, // Government
             { 250f, 500f,   0f }, // Unity
             {   0f, 100f,  50f }, // Oppression
-            {   0f, 2.5f,   0f }, // Funding
+            {   0f,   2f,   0f }, // Funding
             {   0f, 0.5f,   0f }, // Spoils
             { 100f, 500f,   0f }, // Civilian_InitiateSpaceflightProgram
             { 100f, 500f,   0f }, // LaunchFacilities
