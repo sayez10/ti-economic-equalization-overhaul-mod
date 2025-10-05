@@ -118,6 +118,7 @@
     <Compile Include="Patches\investment.unity\UnityEffectsPatch.cs" />
     <Compile Include="Patches\investment.welfare\WelfareInequalityEffectPatch.cs" />
     <Compile Include="Patches\national.actions\AbsorbNationMiltechCalculationPatch.cs" />
+    <Compile Include="Patches\national.actions\DirectInvestmentAnnualCapPatch.cs" />
     <Compile Include="Patches\national.actions\DirectInvestmentPurchasePatch.cs" />
     <Compile Include="Patches\national.values\ArmyUpkeepPatch.cs" />
     <Compile Include="Patches\national.values\ControlPointCostPatch.cs" />

@@ -3,6 +3,7 @@
 		"dataName": "globalConfig",
 //		"spoilsPriorityPublicOpinionScaling": -0.15,
 //		"unityPublicOpinionBaseStrength": 5,
+		"nationalDirectInvestmentCapGlobalMultiplier": 10.0,
 		"nationalInvestmentNavyFactor": 1,
 		"priority_UNI":   1,
 		"priority_BOO":   4,
