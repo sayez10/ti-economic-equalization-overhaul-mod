@@ -90,7 +90,7 @@ namespace TIEconomicEqualizationOverhaulMod
             // If the user set a nation IP bonus/malus at campaign start, we also use that factor to decrease/increase the cost of direct investments
             float customizationNationalIPMult = 1f / (TIGlobalValuesState.Customizations.usingCustomizations ? TIGlobalValuesState.Customizations.nationalIPMultiplier : 1f);
 
-            float corruptionMult = 1f + (__instance.corruption * 0.75f);
+            float corruptionMult = 1f + __instance.corruption;
 
             TIResourcesCost resourcesCost = new TIResourcesCost();
 
