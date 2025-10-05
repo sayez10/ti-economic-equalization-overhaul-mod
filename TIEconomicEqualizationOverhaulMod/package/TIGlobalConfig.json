@@ -4,13 +4,14 @@
 //		"spoilsPriorityPublicOpinionScaling": -0.15,
 //		"unityPublicOpinionBaseStrength": 5,
 		"nationalInvestmentNavyFactor": 1,
-		"priority_UNI": 1,
+		"priority_UNI":   1,
+		"priority_BOO":   4,
+		"priority_MC":   50,
 		"priority_FLI": 100,
-		"priority_BOO": 4,
-		"priority_MC": 50,
+		"priority_FMI": 100,
 		"priority_ARM": 180,
 		"priority_NAV": 300,
-		"priority_NUC": 240,
-		"priority_NUK": 75
+		"priority_NUC": 300,
+		"priority_NUK":  75
 	}
 ]
