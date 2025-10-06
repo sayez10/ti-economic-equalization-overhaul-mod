@@ -34,7 +34,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float DECAY_BASE = 0.98f;
 
             // Per-capita GDP increments for applying diminishment
-            const float DECAY_INCREMENT_PER_CAPITA_GDP = 1_500f;
+            const float DECAY_INCREMENT_PER_CAPITA_GDP = 1f / 1_500f;
 
             float numSpecialRegions = __instance.currentResourceRegions + __instance.numCoreEconomicRegions_dailyCache;
             float specialRegionsMult = 1f + (numSpecialRegions * GROWTH_MULT_PER_SPECIAL_REGION);
@@ -63,7 +63,7 @@ namespace TIEconomicEqualizationOverhaulMod
              *
              * The main takeaway from this is that poor nations get a strong bonus, which drops off relatively quickly. Rich ones get diminishing - but (hopefully) manageable - returns.
              */
-            float scalingMult = (float)Math.Pow(DECAY_BASE, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
+            float scalingMult = (float)Math.Pow(DECAY_BASE, (__instance.perCapitaGDP * DECAY_INCREMENT_PER_CAPITA_GDP));
 
             // Corruption reduces investment
             float corruptionMult = 1f - __instance.corruption;
