@@ -24,14 +24,11 @@ namespace TIEconomicEqualizationOverhaulMod
             // If mod has been disabled, abort patch and use original method
             if (!Main.enabled) { return true; }
 
-            const float BASE_GDP_EFFECT = 250_000_000f;
+            const float BASE_GDP_EFFECT = 500_000_000f;
 
             const float GROWTH_MULT_PER_SPECIAL_REGION = 0.1f;
             const float GROWTH_MULT_PER_DEMOCRACY_LEVEL = 0.05f;
             const float GROWTH_MULT_PER_EDUCATION_LEVEL = 0.15f;
-
-            // Maximum GDP growth bonus from low per-capita GDP, as multiplier
-            const float MAX_SCALING_MULT = 2f;
 
             // Base GDP growth diminishment rate, as multiplier
             const float DECAY_BASE = 0.98f;
@@ -40,7 +37,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float DECAY_INCREMENT_PER_CAPITA_GDP = 1_500f;
 
             float numSpecialRegions = __instance.currentResourceRegions + __instance.numCoreEconomicRegions_dailyCache;
-            float specialRegionMult = 1f + (numSpecialRegions * GROWTH_MULT_PER_SPECIAL_REGION);
+            float specialRegionsMult = 1f + (numSpecialRegions * GROWTH_MULT_PER_SPECIAL_REGION);
             float democracyMult = 1f + (__instance.democracy * GROWTH_MULT_PER_DEMOCRACY_LEVEL);
             float educationMult = 1f + (__instance.education * GROWTH_MULT_PER_EDUCATION_LEVEL);
             float bonusGDPPCMult = 1f + TIEffectsState.SumEffectsModifiers(Context.Economy_BasePCGDPIncrease, __instance, 1f);
@@ -57,21 +54,21 @@ namespace TIEconomicEqualizationOverhaulMod
              * Democracy and education have a strong effect on GDP growth, so the US' raw multiplier (at game start) is about half of China's, but after other factors it's ~60%.
              *
              * Anyways, the big numbers, at default values:
-             * 200% growth rate at 0 GDPPC
-             * 150% growth rate at 21k GDPPC
-             * 125% growth rate at 35k GDPPC
-             * 100% growth rate at 51k GDPPC
-             *  75% growth rate at 73k GDPPC
-             *  50% growth rate at 102k GDPPC
+             * 100%   growth rate at   0k GDPPC
+             *  75%   growth rate at  21k GDPPC
+             *  62.5% growth rate at  35k GDPPC
+             *  50%   growth rate at  51k GDPPC
+             *  37.5% growth rate at  73k GDPPC
+             *  25%   growth rate at 102k GDPPC
              *
              * The main takeaway from this is that poor nations get a strong bonus, which drops off relatively quickly. Rich ones get diminishing - but (hopefully) manageable - returns.
              */
-            float scalingMult = MAX_SCALING_MULT * (float)Math.Pow(DECAY_BASE, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
+            float scalingMult = (float)Math.Pow(DECAY_BASE, __instance.perCapitaGDP / DECAY_INCREMENT_PER_CAPITA_GDP);
 
             // Corruption reduces investment
             float corruptionMult = 1f - __instance.corruption;
 
-            float gdpGain = BASE_GDP_EFFECT * specialRegionMult * democracyMult * educationMult * bonusGDPPCMult * scalingMult * corruptionMult;
+            float gdpGain = BASE_GDP_EFFECT * specialRegionsMult * democracyMult * educationMult * bonusGDPPCMult * scalingMult * corruptionMult;
 
             __result = gdpGain / __instance.population;
 
