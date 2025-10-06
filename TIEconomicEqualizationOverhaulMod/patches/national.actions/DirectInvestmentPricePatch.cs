@@ -38,8 +38,8 @@ namespace TIEconomicEqualizationOverhaulMod
             { 250f, 500f,   0f }, // Government
             { 250f, 500f,   0f }, // Unity
             {   0f, 100f,  25f }, // Oppression
-            {   0f,   2f,   0f }, // Funding
-            {   0f, 0.5f,   0f }, // Spoils
+            {   0f, 200f,   0f }, // Funding
+            {   0f, 200f,   0f }, // Spoils
             { 100f, 500f,   0f }, // Civilian_InitiateSpaceflightProgram
             { 100f, 500f,   0f }, // LaunchFacilities
             { 100f, 500f,   0f }, // MissionControl
@@ -79,12 +79,6 @@ namespace TIEconomicEqualizationOverhaulMod
                 float gdpPerCapita = __instance.perCapitaGDP * 0.001f;
                 costMoney *= (float)(LOW_GDPPC_MULT_GROWTH_FACTOR / Math.Max(LOW_GDPPC_MULT_GROWTH_FACTOR, (LOW_GDPPC_UPPER_LIMIT - gdpPerCapita)));
                 break;
-            case PriorityType.Funding:
-                costInfluence *= __instance.spaceFundingPriorityIncomeChange;
-                break;
-//            case PriorityType.Spoils:
-//                costInfluence *= __instance.spoilsPriorityMoney;
-//                break;
             }
 
             // If the user set a nation IP bonus/malus at campaign start, we also use that factor to decrease/increase the cost of direct investments
