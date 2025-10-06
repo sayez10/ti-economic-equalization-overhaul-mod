@@ -34,9 +34,9 @@ namespace TIEconomicEqualizationOverhaulMod
             { 500f,  25f,   0f }, // Economy
             { 500f, 100f,   0f }, // Welfare
             { 500f, 100f,   0f }, // Environment
-            { 250f, 500f,   0f }, // Knowledge
-            { 250f, 500f,   0f }, // Government
-            { 250f, 500f,   0f }, // Unity
+            { 200f, 500f,   0f }, // Knowledge
+            { 200f, 500f,   0f }, // Government
+            { 200f, 500f,   0f }, // Unity
             {   0f, 100f,  25f }, // Oppression
             {   0f, 200f,   0f }, // Funding
             {   0f, 200f,   0f }, // Spoils
