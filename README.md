@@ -19,8 +19,6 @@ In short, the goal of the mod is to remove the unintuitive and unrealistic meta-
 
 -The formula to calculate the control point cost of a nation uses a power function again, like vanilla, and unlike older versions of this mod. However, the parameters have been changed compared to vanilla. Nations with high GDP now require far fewer control points per generated IP than nations with low GDP.
 
--Arrival International Relations, Unity Movements, Great Nations, Arrival Governance, and Accelerando no longer reduce the control cost of a nation (unlike in previous versions of this mod).
-
 -Economy investments give an amount of GDP, as opposed to an amount of GDP per capita (though the tooltip shows the distributed GDP per capita). This makes all economies grow at the same % rate, disregarding modifiers.
 
 -GDP growth from economy investments has diminishing returns based on current GDP per capita. It is based on an exponential decay function of the country's GDP per capita, which gives a nation with 1,000 GDP per capita nearly 6 times the growth as a country with 45,000.
@@ -31,7 +29,7 @@ In short, the goal of the mod is to remove the unintuitive and unrealistic meta-
 
 -Military tech gain no longer depends on the population of a nation. Instead a military tech has a fixed cost per level, so large and wealthy nations can increase their military tech much faster than small and poor nations. Existing armies and navies increase the cost and thus slow down military technology progress. A 10% bonus to the military priority per level of education has been added. Nations which are far behind the global maximum tech level gain a linear bonus of 50% extra gain per 1 tech level behind the current maximum.
 
--The algorithm used to calculate the military technology level of a merged nation after absorbing another nation has been changed. Instead of weighing the military tech levels of both nations with their number of owned regions, the larger military technology value is used as starting point. If both military technology values are within 0.5 points, the merged nation's value will be increased by up to 0.5 to represent the often different capabilities of military forces with a roughly comparable technological level and the synergy of combining them. Existing armies and navies might give a malus to the merged nation's military technology value to represent the need to possibly replace or upgrade equipment and to train personnel. [Yard1](https://github.com/Yard1) and his mod [Unification Pop Based Miltech Calculation](https://github.com/Yard1/TerraInvicta-PopBasedMiltechCalculation) provided inspiration for this change and I copied the postfix patch from his mod, although I chose a completely different approach for the prefix patch and the actual formula to calculate the merged nation's military tech level. Thank you!
+-The algorithm used to calculate the military technology level of a merged nation after absorbing another nation has been changed. Instead of weighing the military tech levels of both nations with their number of owned regions, the larger military technology value is used as starting point. If both military technology values are within 0.5 points, the merged nation's value will be increased by up to 0.5 to represent the often different capabilities of military forces with a roughly comparable technological level and the synergy of combining them. Existing armies and navies might give a malus to the merged nation's military technology value to represent the need to possibly replace or upgrade equipment and to train personnel. [Yard1](https://github.com/Yard1) and his mod [Unification Pop Based Miltech Calculation](https://github.com/Yard1/TerraInvicta-PopBasedMiltechCalculation) provided inspiration for this change, for the general design of the patch, and for the postfix patch in particular, although I chose a completely different approach for the prefix patch and the actual formula to calculate the merged nation's military tech level. Thank you!
 
 -Small adjustments to the relationships between things such as education and GDP growth, broadly maintaining vanilla levels of impact.
 
@@ -39,7 +37,7 @@ In short, the goal of the mod is to remove the unintuitive and unrealistic meta-
 
 -The maximum annual income from funding in a nation has been increased by a factor of 10 to match the faster increase of the funding priority and to compensate for the nerf to spoils.
 
--The public opinion effect of unity priority investment completions now scales inversely with the nation's democracy and education levels.
+-The public opinion effects of unity and spoils priority investment completions now scale inversely with the nation's democracy and education levels.
 
 -Democracy now reduces the lower bound of a nation's corruption by 0.5% per level, down to 0% at 10 democracy
 
@@ -55,7 +53,15 @@ In short, the goal of the mod is to remove the unintuitive and unrealistic meta-
 
 -A region's education is no longer reduced if its population declines due to natural causes during the monthly update.
 
+-Corruption in a nation now reduces the positive effects of many investment completitions: Income from Spoils, income increase from Funding, GDP growth from Economy, sustainability increase from Environment, democracy increase from government, education increase from Knowledge, cohesion move towards five from Knowledge, inequality reuction from Welfare, unrest reduction from Unity, miltech increase from Military. It also reduces a nation's research output.
+
 -Research output of nations has been re-balanced. A nation no longer receives a flat 7.5 + education monthly research, however its research also increases linearly with population, not at a ^1.1 rate as vanilla. The limit of the quadratic scaling with education > 12 (introduced with vanilla 0.4.1) has been removed. Low democracy (below 5) now reduces research output and the bonus of democracy above 5 on research output has been slightly increased).
+
+-Completing economy priority investments now also increases the price of fissiles, antimatter and exotics on the global market by a very small amount.
+
+-The direct investment code has been rewritten almost completely. The additional scaling with population (on top of that in the actual investment completion methods) was removed. The double-dipping of several effects was removed. All effects now use the same scaling for direct investments and priority investment completions. Nations with low GDP per capita now benefit for a lower cost for economy direct investments. To compensate for the much weaker effects of investment completitions in this mod, the cost of direct investments has been reduced significantly and the annual limit on direct investments in a nation has been increased substantially.
+
+-The limit of annual direct investments in a nation now scales linearly with GDP. To help develop small and especially poor nations, the limit of every nation is increased by a flat amount of 200.
 
 -A few variables have been made configurable in the Unity Mod Manager settings menu: IP output, research production, and control point cost.
 
