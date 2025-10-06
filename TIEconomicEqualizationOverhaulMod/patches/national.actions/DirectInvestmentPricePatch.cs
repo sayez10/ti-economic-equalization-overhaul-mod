@@ -37,20 +37,20 @@ namespace TIEconomicEqualizationOverhaulMod
             { 250f, 500f,   0f }, // Knowledge
             { 250f, 500f,   0f }, // Government
             { 250f, 500f,   0f }, // Unity
-            {   0f, 100f,  50f }, // Oppression
+            {   0f, 100f,  25f }, // Oppression
             {   0f,   2f,   0f }, // Funding
             {   0f, 0.5f,   0f }, // Spoils
             { 100f, 500f,   0f }, // Civilian_InitiateSpaceflightProgram
             { 100f, 500f,   0f }, // LaunchFacilities
             { 100f, 500f,   0f }, // MissionControl
-            { 500f, 100f,  50f }, // Military_FoundMilitary
-            { 500f, 100f,  50f }, // Military
-            { 500f, 100f,  50f }, // Military_BuildArmy
-            { 500f, 100f,  50f }, // Military_BuildNavy
-            { 500f, 100f,  10f }, // Military_InitiateNuclearProgram
-            { 500f, 100f,  10f }, // Military_BuildNuclearWeapons
-            { 500f, 100f,  25f }, // Military_BuildSpaceDefenses
-            { 500f, 100f,  25f }  // Military_BuildSTOSquadron
+            { 500f, 100f,  25f }, // Military_FoundMilitary
+            { 500f, 100f,  25f }, // Military
+            { 500f, 100f,  25f }, // Military_BuildArmy
+            { 500f, 100f,  25f }, // Military_BuildNavy
+            { 500f, 100f,   5f }, // Military_InitiateNuclearProgram
+            { 500f, 100f,   5f }, // Military_BuildNuclearWeapons
+            { 500f, 100f,  10f }, // Military_BuildSpaceDefenses
+            { 500f, 100f,  10f }  // Military_BuildSTOSquadron
         };
 
 
