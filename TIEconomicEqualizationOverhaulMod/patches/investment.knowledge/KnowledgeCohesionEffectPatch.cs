@@ -27,13 +27,17 @@ namespace TIEconomicEqualizationOverhaulMod
             // Cohesion change is a centering effect, drawing it towards 5; additional logic is needed for that
             // Calculate the amount of change and prevent overshooting 5
             float cohesionChangeEffect = Math.Min(Math.Abs(__instance.cohesion - 5f), (Tools.EffectStrength(BASE_COHESION_EFFECT, __instance.population)));
+
+            // Reduce cohesion instead if it's currently above 5
             if (__instance.cohesion > 5f)
             {
-                // Reduce cohesion instead if it's currently above 5
                 cohesionChangeEffect *= -1f;
             }
 
-            __result = cohesionChangeEffect;
+            // Corruption reduces investment
+            float corruptionMult = 1f - __instance.corruption;
+
+            __result = cohesionChangeEffect * corruptionMult;
 
 
             return false; // Skip original method
