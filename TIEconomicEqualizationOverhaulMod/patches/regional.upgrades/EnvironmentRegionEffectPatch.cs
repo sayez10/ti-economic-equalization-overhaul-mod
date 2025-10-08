@@ -33,7 +33,7 @@ namespace TIEconomicEqualizationOverhaulMod
         {
             foreach (var instruction in instructions)
             {
-                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_DECONTAMINATE_THRESHOLD)
+                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == RegionalUpgradesShared.VANILLA_DECONTAMINATE_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getDecontaminateThreshold);
                 }
@@ -50,7 +50,7 @@ namespace TIEconomicEqualizationOverhaulMod
         {
             // If the mod is disabled, the vanilla value is inserted instead
             // This allows for the mod to be fully disabled during runtime
-            _decontaminateThreshold = (Main.enabled) ? Tools.VANILLA_DECONTAMINATE_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_DECONTAMINATE_THRESHOLD;
+            _decontaminateThreshold = (Main.enabled) ? RegionalUpgradesShared.VANILLA_DECONTAMINATE_THRESHOLD * RegionalUpgradesShared.REGION_UPGRADE_THRESHOLD_MULT : RegionalUpgradesShared.VANILLA_DECONTAMINATE_THRESHOLD;
         }
     }
 }

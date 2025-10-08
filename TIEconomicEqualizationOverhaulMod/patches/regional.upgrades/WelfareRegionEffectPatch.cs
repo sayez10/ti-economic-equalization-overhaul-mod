@@ -33,7 +33,7 @@ namespace TIEconomicEqualizationOverhaulMod
         {
             foreach (var instruction in instructions)
             {
-                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_DECOLONIZE_THRESHOLD)
+                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == RegionalUpgradesShared.VANILLA_DECOLONIZE_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getDecolonizeThreshold);
                 }
@@ -50,7 +50,7 @@ namespace TIEconomicEqualizationOverhaulMod
         {
             // If the mod is disabled, the vanilla value is inserted instead
             // This allows for the mod to be fully disabled during runtime
-            _decolonizeThreshold = (Main.enabled) ? Tools.VANILLA_DECOLONIZE_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_DECOLONIZE_THRESHOLD;
+            _decolonizeThreshold = (Main.enabled) ? RegionalUpgradesShared.VANILLA_DECOLONIZE_THRESHOLD * RegionalUpgradesShared.REGION_UPGRADE_THRESHOLD_MULT : RegionalUpgradesShared.VANILLA_DECOLONIZE_THRESHOLD;
         }
     }
 }

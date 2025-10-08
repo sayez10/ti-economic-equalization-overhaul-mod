@@ -55,7 +55,7 @@ namespace TIEconomicEqualizationOverhaulMod
                 float accumulatedTriggers = __instance.accumulatedLegitimizeClaimTriggers;
                 accumulatedTriggersTraverse.SetValue(accumulatedTriggers + 1f);
 
-                const float LEGITIMIZE_THRESHOLD = (float)(Tools.VANILLA_LEGITIMIZE_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT);
+                const float LEGITIMIZE_THRESHOLD = (float)(RegionalUpgradesShared.VANILLA_LEGITIMIZE_THRESHOLD * RegionalUpgradesShared.REGION_UPGRADE_THRESHOLD_MULT);
 
                 if (accumulatedTriggers >= LEGITIMIZE_THRESHOLD && __instance.CandidateLegitimizeClaimRegions().Count > 0)
                 {

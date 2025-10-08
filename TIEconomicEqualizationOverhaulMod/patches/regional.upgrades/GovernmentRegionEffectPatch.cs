@@ -33,7 +33,7 @@ namespace TIEconomicEqualizationOverhaulMod
         {
             foreach (var instruction in instructions)
             {
-                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == Tools.VANILLA_LEGITIMIZE_THRESHOLD)
+                if (instruction.opcode == OpCodes.Ldc_I4 && (int)instruction.operand == RegionalUpgradesShared.VANILLA_LEGITIMIZE_THRESHOLD)
                 {
                     yield return new CodeInstruction(OpCodes.Ldsfld, getLegitimizeThreshold);
                 }
@@ -50,7 +50,7 @@ namespace TIEconomicEqualizationOverhaulMod
         {
             // If the mod is disabled, the vanilla value is inserted instead
             // This allows for the mod to be fully disabled during runtime
-            _legitimizeThreshold = (Main.enabled) ? Tools.VANILLA_LEGITIMIZE_THRESHOLD * Tools.REGION_UPGRADE_THRESHOLD_MULT : Tools.VANILLA_LEGITIMIZE_THRESHOLD;
+            _legitimizeThreshold = (Main.enabled) ? RegionalUpgradesShared.VANILLA_LEGITIMIZE_THRESHOLD * RegionalUpgradesShared.REGION_UPGRADE_THRESHOLD_MULT : RegionalUpgradesShared.VANILLA_LEGITIMIZE_THRESHOLD;
         }
     }
 }
