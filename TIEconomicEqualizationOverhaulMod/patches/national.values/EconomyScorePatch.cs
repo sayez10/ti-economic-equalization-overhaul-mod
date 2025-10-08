@@ -85,8 +85,7 @@ namespace TIEconomicEqualizationOverhaulMod
 
             // Declared outside of EffectStrength() because that function will be called VERY often
             // For an explanation as to why I did this, check the comments inside the function
-            double GDPPerIP = 1_000_000_000d * Main.settings.GDPBillionsPerIP;
-            _theoreticalPopulation = (float)(GDPPerIP / IDEAL_POPULATION);
+            _theoreticalPopulation = (float)(1d / (IPPerGDP * IDEAL_POPULATION));
         }
     }
 }
