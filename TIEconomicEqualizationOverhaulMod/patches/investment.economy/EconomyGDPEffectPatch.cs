@@ -31,15 +31,17 @@ namespace TIEconomicEqualizationOverhaulMod
             const float GROWTH_MULT_PER_EDUCATION_LEVEL = 0.15f;
 
             // Base GDP growth diminishment rate, as multiplier
-            const float DECAY_BASE = 0.98f;
+            const double DECAY_BASE = 0.98d;
 
             // Per-capita GDP increments for applying diminishment
-            const float DECAY_INCREMENT_PER_CAPITA_GDP = 1f / 1_500f;
+            const double DECAY_INCREMENT_PER_CAPITA_GDP = 1d / 1_500d;
+
+            float nationEducation = __instance.education;
 
             float numSpecialRegions = __instance.currentResourceRegions + __instance.numCoreEconomicRegions_dailyCache;
             float specialRegionsMult = 1f + (numSpecialRegions * GROWTH_MULT_PER_SPECIAL_REGION);
             float democracyMult = 1f + (__instance.democracy * GROWTH_MULT_PER_DEMOCRACY_LEVEL);
-            float educationMult = 1f + (__instance.education * GROWTH_MULT_PER_EDUCATION_LEVEL);
+            float educationMult = 1f + (nationEducation * GROWTH_MULT_PER_EDUCATION_LEVEL);
             float bonusGDPPCMult = 1f + TIEffectsState.SumEffectsModifiers(Context.Economy_BasePCGDPIncrease, __instance, 1f);
 
             /*
@@ -53,7 +55,7 @@ namespace TIEconomicEqualizationOverhaulMod
              * Note that during testing, China invested 24% of its IP into Economy, and the US invested 21%. This is what the factionless AI does, so that is what I kept it at.
              * Democracy and education have a strong effect on GDP growth, so the US' raw multiplier (at game start) is about half of China's, but after other factors it's ~60%.
              *
-             * Anyways, the big numbers, at default values:
+             * Anyways, the big numbers, approximately, using current values:
              * 100%   growth rate at   0k GDPPC
              *  75%   growth rate at  21k GDPPC
              *  62.5% growth rate at  35k GDPPC
