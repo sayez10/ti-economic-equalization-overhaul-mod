@@ -129,7 +129,7 @@
     <Compile Include="Patches\regional.upgrades\EconomyRegionEffectPatch.cs" />
     <Compile Include="Patches\regional.upgrades\EnvironmentRegionEffectPatch.cs" />
     <Compile Include="Patches\regional.upgrades\GovernmentRegionEffectPatch.cs" />
-    <Compile Include="Patches\regional.upgrades\GlobalTools.cs" />
+    <Compile Include="Patches\regional.upgrades\RegionalUpgradesShared.cs" />
     <Compile Include="Patches\regional.upgrades\WelfareRegionEffectPatch.cs" />
     <Compile Include="Patches\regional.values\PopulationGrowthAnnualPatch.cs" />
     <Compile Include="Patches\regional.values\PopulationGrowthMonthPatch.cs" />
