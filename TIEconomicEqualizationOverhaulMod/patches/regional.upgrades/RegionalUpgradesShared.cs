@@ -6,7 +6,9 @@
 
 namespace TIEconomicEqualizationOverhaulMod
 {
-    // This is a helper class used to streamline things, and centralize important variables
+    /// <summary>
+    /// Defines some trivial constants which are shared by various files related to regional upgrades
+    /// </summary>
     internal static class RegionalUpgradesShared
     {
         // More convenient aliases of vanilla constants for region upgrade thresholds which are used in multiple files of this mod
