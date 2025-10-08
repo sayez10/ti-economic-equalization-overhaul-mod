@@ -26,7 +26,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float BASE_COHESION_EFFECT = -1f;
             const float COHESION_MULT_PER_DEMOCRACY_LEVEL = 0.1f;
 
-            float baseCohesionLoss = Tools.EffectStrength(BASE_COHESION_EFFECT, __instance.population);
+            float baseCohesionLoss = EconomyScorePatch.EffectStrength(BASE_COHESION_EFFECT, __instance.population);
 
             // Effect ramps up the higher Democracy is: 0% at 0, 100% at 10
             float democracyMult = COHESION_MULT_PER_DEMOCRACY_LEVEL * __instance.democracy;

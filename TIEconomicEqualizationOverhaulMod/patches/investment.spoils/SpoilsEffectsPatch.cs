@@ -51,7 +51,7 @@ namespace TIEconomicEqualizationOverhaulMod
             float basePropaganda = TemplateManager.global.spoilsPriorityPublicOpinionScaling * BASE_PROPAGANDA_MULT;
             float democracyEducationMult = (__instance.education + __instance.democracy) * PROPAGANDA_MULT_PER_DEMOCRACY_OR_EDUCATION_LEVEL;
 
-            float propagandaEffect = Tools.EffectStrength(basePropaganda, __instance.population) * democracyEducationMult;
+            float propagandaEffect = EconomyScorePatch.EffectStrength(basePropaganda, __instance.population) * democracyEducationMult;
 
             foreach (TIFactionState iFaction in __instance.FactionsWithControlPoint)
             {

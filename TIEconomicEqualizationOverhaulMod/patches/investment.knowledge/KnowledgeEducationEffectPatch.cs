@@ -26,7 +26,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float MAX_SCALE_FACTOR = 4f;
             const float DECAY_FACTOR = 0.87f;
 
-            float baseEducationGain = Tools.EffectStrength(BASE_EDUCATION_EFFECT, __instance.population);
+            float baseEducationGain = EconomyScorePatch.EffectStrength(BASE_EDUCATION_EFFECT, __instance.population);
 
             // Additionally, scale the education change based on current education, using an exponential decay relationship
             // With a multiplier of 4, and a base of 0.87, we get:

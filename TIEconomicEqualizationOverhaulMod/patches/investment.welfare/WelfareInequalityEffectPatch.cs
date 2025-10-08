@@ -29,7 +29,7 @@ namespace TIEconomicEqualizationOverhaulMod
             // Corruption reduces investment
             float corruptionMult = 1f - __instance.corruption;
 
-            __result = Tools.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population) * welfareInequalityReductionBonusMult * corruptionMult;
+            __result = EconomyScorePatch.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population) * welfareInequalityReductionBonusMult * corruptionMult;
 
 
             return false; // Skip original method

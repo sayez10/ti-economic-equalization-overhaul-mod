@@ -27,7 +27,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float INEQUALITY_MULT_PER_INEQUALITY_LEVEL = 0.25f;
 
             // Effect is ~13.3 times weaker than welfare
-            float baseInequalityGain = Tools.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population);
+            float baseInequalityGain = EconomyScorePatch.EffectStrength(BASE_INEQUALITY_EFFECT, __instance.population);
             float resourceRegionsMult = 1f + (__instance.currentResourceRegions * INEQUALITY_MULT_PER_RESOURCE_REGION);
             float inequalityMult = 1f + ((__instance.inequality - 5f) * INEQUALITY_MULT_PER_INEQUALITY_LEVEL);
 

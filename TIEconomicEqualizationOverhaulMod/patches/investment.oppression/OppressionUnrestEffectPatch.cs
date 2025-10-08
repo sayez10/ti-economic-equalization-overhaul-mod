@@ -29,7 +29,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float UNREST_PENALTY_MULT_PER_MILITARY_LEVEL = 0.1f;
             const float FRAC_ARMIES_MULT = 2f;
 
-            float baseUnrestLoss = Tools.EffectStrength(BASE_UNREST_EFFECT, __instance.population);
+            float baseUnrestLoss = EconomyScorePatch.EffectStrength(BASE_UNREST_EFFECT, __instance.population);
 
             // Effect is reduced by democracy
             float democracyMult = 1f - (__instance.democracy * UNREST_PENALTY_MULT_PER_DEMOCRACY_LEVEL);

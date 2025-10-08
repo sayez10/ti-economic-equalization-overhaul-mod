@@ -30,7 +30,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float PENALTY_PER_NUKED_REGION = 0.05f;
             const float MAX_PENALTY_FROM_NUKED_REGIONS = 0.5f;
 
-            float baseSustainabilityGain = Tools.EffectStrength(BASE_SUSTAINABILITY_EFFECT, __instance.population);
+            float baseSustainabilityGain = EconomyScorePatch.EffectStrength(BASE_SUSTAINABILITY_EFFECT, __instance.population);
 
             // Each full point of sustainability gives a +10% bonus, up to +100%
             float sustainabilityMult = 1f + (__instance.sustainability * SUSTAINABILITY_MULT_PER_SUSTAINABILITY_LEVEL);

@@ -25,7 +25,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float BASE_EDUCATION_EFFECT = -0.01f;
 
             // 1/10 effect of Knowledge priority
-            __result = Tools.EffectStrength(BASE_EDUCATION_EFFECT, __instance.population);
+            __result = EconomyScorePatch.EffectStrength(BASE_EDUCATION_EFFECT, __instance.population);
 
 
             return false; // Skip original method

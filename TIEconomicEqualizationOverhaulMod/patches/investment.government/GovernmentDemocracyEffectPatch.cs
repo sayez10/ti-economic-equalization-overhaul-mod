@@ -25,7 +25,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float BASE_DEMOCRACY_EFFECT = 0.05f;
             const float DEMOCRACY_MULT_PER_EDUCATION_LEVEL = 0.1f;
 
-            float baseDemocracyGain = Tools.EffectStrength(BASE_DEMOCRACY_EFFECT, __instance.population);
+            float baseDemocracyGain = EconomyScorePatch.EffectStrength(BASE_DEMOCRACY_EFFECT, __instance.population);
 
             // Each full point of Education gives +10% Democracy score
             float educationMult = 1f + (__instance.education * DEMOCRACY_MULT_PER_EDUCATION_LEVEL);

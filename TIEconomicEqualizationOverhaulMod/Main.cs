@@ -85,7 +85,7 @@ namespace TIEconomicEqualizationOverhaulMod
             // Allows changing settings without needing to restart
             public void OnChange()
             {
-                Tools.Recalculate();
+                EconomyScorePatch.Recalculate();
                 EconomyRegionEffectPatch.Recalculate();
                 EnvironmentRegionEffectPatch.Recalculate();
                 GovernmentRegionEffectPatch.Recalculate();

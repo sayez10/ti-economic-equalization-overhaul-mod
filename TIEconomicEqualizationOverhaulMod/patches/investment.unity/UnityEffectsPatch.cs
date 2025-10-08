@@ -34,7 +34,7 @@ namespace TIEconomicEqualizationOverhaulMod
             // A combined score of 45 causes the max effect
             float educationDemocracyPenaltyMult = Math.Min(EDUCATION_AND_DEMOCRACY_PENALTY_MAX, 1f - ((__instance.education + __instance.democracy) * PROPAGANDA_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL));
 
-            float propagandaEffect = Tools.EffectStrength(basePropaganda, __instance.population) * educationDemocracyPenaltyMult;
+            float propagandaEffect = EconomyScorePatch.EffectStrength(basePropaganda, __instance.population) * educationDemocracyPenaltyMult;
 
             TIFactionState religionCPOwner = __instance.GetControlPointOfTypeFaction(ControlPointType.Religion);
 

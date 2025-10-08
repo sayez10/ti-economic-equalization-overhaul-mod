@@ -26,7 +26,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float BASE_SUSTAINABILITY_EFFECT = 0.2f;
             const float SUSTAINABILITY_MULT_PER_RESOURCE_REGION = 0.2f;
 
-            float baseSustainabilityLoss = Tools.EffectStrength(BASE_SUSTAINABILITY_EFFECT, __instance.population);
+            float baseSustainabilityLoss = EconomyScorePatch.EffectStrength(BASE_SUSTAINABILITY_EFFECT, __instance.population);
 
             // Scaling is more aggressive than in Environment
             float resourceRegionsMult = 1f + (__instance.currentResourceRegions * SUSTAINABILITY_MULT_PER_RESOURCE_REGION);

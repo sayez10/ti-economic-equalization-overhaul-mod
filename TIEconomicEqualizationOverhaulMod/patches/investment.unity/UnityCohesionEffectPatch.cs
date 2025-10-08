@@ -27,7 +27,7 @@ namespace TIEconomicEqualizationOverhaulMod
             const float COHESION_PENALTY_MULT_PER_EDUCATION_AND_DEMOCRACY_LEVEL = 0.025f;
             const float EDUCATION_AND_DEMOCRACY_PENALTY_MAX = 0.5f;
 
-            float baseCohesionGain = Tools.EffectStrength(BASE_COHESION_EFFECT, __instance.population);
+            float baseCohesionGain = EconomyScorePatch.EffectStrength(BASE_COHESION_EFFECT, __instance.population);
 
             // Democracy and Education incurs a 2.5% penalty per point, up to -50%
             // A combined score of 20 causes the max effect

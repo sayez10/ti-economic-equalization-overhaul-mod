@@ -24,7 +24,7 @@ namespace TIEconomicEqualizationOverhaulMod
 
             const float BASE_DEMOCRACY_EFFECT = -0.0175f;
 
-            __result = Tools.EffectStrength(BASE_DEMOCRACY_EFFECT, __instance.population);
+            __result = EconomyScorePatch.EffectStrength(BASE_DEMOCRACY_EFFECT, __instance.population);
 
 
             return false; // Skip original method
