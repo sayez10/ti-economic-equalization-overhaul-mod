@@ -16,18 +16,18 @@ namespace TIEconomicEqualizationOverhaulMod
     /// <summary>
     /// Controls loading and managing the mod
     /// </summary>
-    public class Main
+    internal class Main
     {
-        public static bool enabled;
-        public static ModEntry mod;
-        public static Settings settings;
+        private static ModEntry mod;
+        internal static bool enabled;
+        internal static Settings settings;
 
         /// <summary>
         /// Entry point of the application (as per ModInfo.json), which applies the Harmony patches
         /// </summary>
         /// <param name="modEntry"></param>
         /// <returns></returns>
-        static bool Load(ModEntry modEntry)
+        private static bool Load(ModEntry modEntry)
         {
             var harmony = new Harmony(modEntry.Info.Id);
             settings = ModSettings.Load<Settings>(modEntry);
@@ -50,7 +50,7 @@ namespace TIEconomicEqualizationOverhaulMod
         /// <param name="modEntry"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        static bool OnToggle(ModEntry modEntry, bool value)
+        private static bool OnToggle(ModEntry modEntry, bool value)
         {
             enabled = value;
 
@@ -60,17 +60,17 @@ namespace TIEconomicEqualizationOverhaulMod
             return true;
         }
 
-        static void OnGUI(ModEntry modEntry)
+        private static void OnGUI(ModEntry modEntry)
         {
             settings.Draw(modEntry);
         }
 
-        static void OnSaveGUI(ModEntry modEntry)
+        private static void OnSaveGUI(ModEntry modEntry)
         {
             settings.Save(modEntry);
         }
 
-        public class Settings : ModSettings, IDrawable
+        internal class Settings : ModSettings, IDrawable
         {
             [Draw("GDP in billions per IP, lower = more IPs: (default: 100.0)", Min = 1.0, Precision = 1)] public double GDPBillionsPerIP = 100d;
             [Draw("Multiplier for nations' research production: (default: 1.00)", Min = 0.01, Precision = 2)] public float researchMult = 1f;
