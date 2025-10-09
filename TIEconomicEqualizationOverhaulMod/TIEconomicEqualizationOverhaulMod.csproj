@@ -141,8 +141,6 @@
     <None Include="package\ModInfo.json" />
     <None Include="package\TIGlobalConfig.json" />
     <None Include="package\UINation.en" />
-    <None Include="package\EconomicEqualizationOverhaul.png" />
-    <None Include="package\TIEconomyMod.dll" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
