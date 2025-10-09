@@ -95,7 +95,7 @@ namespace TIEconomicEqualizationOverhaulMod
                 costMoney *= 1f - TIEffectsState.SumEffectsModifiers(Context.DirectInvestGlobalDiscount_Money_PCT, faction, costMoney);
 
                 // Up to 10% discount if we control CPs in a nation
-                costInfluence *= 1f - (0.2f * TemplateManager.global.maxInvestmentPointDiscountfromControlPoints * __instance.CouncilControlPointFraction(faction, false, false));
+                costMoney *= 1f - (0.2f * TemplateManager.global.maxInvestmentPointDiscountfromControlPoints * __instance.CouncilControlPointFraction(faction, false, false));
 
                 if (costMoney > 0f)
                 {
