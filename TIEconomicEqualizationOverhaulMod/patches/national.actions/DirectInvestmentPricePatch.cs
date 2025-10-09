@@ -71,16 +71,6 @@ namespace TIEconomicEqualizationOverhaulMod
             // Upper limit of the GDPPC in 1000 USD for the crutch code to lower the cost of economy direct investments
             const double LOW_GDPPC_UPPER_LIMIT = 30d + LOW_GDPPC_MULT_GROWTH_FACTOR;
 
-            // Fix up anything that can't be included in a simple lookup-table
-            switch (priority)
-            {
-            case PriorityType.Economy:
-                // Crutch code to allow economy direct investments at a lower cost in poor countries
-                float gdpPerCapita = __instance.perCapitaGDP * 0.001f;
-                costMoney *= (float)(LOW_GDPPC_MULT_GROWTH_FACTOR / Math.Max(LOW_GDPPC_MULT_GROWTH_FACTOR, (LOW_GDPPC_UPPER_LIMIT - gdpPerCapita)));
-                break;
-            }
-
             // If the user set a nation IP bonus/malus at campaign start, we also use that factor to decrease/increase the cost of direct investments
             float customizationNationalIPMult = 1f / (TIGlobalValuesState.Customizations.usingCustomizations ? TIGlobalValuesState.Customizations.nationalIPMultiplier : 1f);
 
@@ -93,6 +83,13 @@ namespace TIEconomicEqualizationOverhaulMod
                 costMoney *= customizationNationalIPMult;
                 costMoney *= corruptionMult;
                 costMoney *= 1f - TIEffectsState.SumEffectsModifiers(Context.DirectInvestGlobalDiscount_Money_PCT, faction, costMoney);
+
+                if (priority == PriorityType.Economy)
+                {
+                    // Crutch code to allow economy direct investments at a lower cost in poor countries
+                    float gdpPerCapita = __instance.perCapitaGDP * 0.001f;
+                    costMoney *= (float)(LOW_GDPPC_MULT_GROWTH_FACTOR / Math.Max(LOW_GDPPC_MULT_GROWTH_FACTOR, (LOW_GDPPC_UPPER_LIMIT - gdpPerCapita)));
+                }
 
                 // Up to 10% discount if we control CPs in a nation
                 costMoney *= 1f - (0.2f * TemplateManager.global.maxInvestmentPointDiscountfromControlPoints * __instance.CouncilControlPointFraction(faction, false, false));
